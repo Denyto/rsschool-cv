@@ -1,6 +1,6 @@
 1. #Dzianis Tkachenka#
 1. objective **Front End Development**
-1. My сontacts: phone: [+37529772636]; email: [denyto@tut.by]
+1. My сontacts: phone: +37529772636; email: denyto@tut.by; [GitHub](https://github.com/Denyto)
 1. I want to find myself again in life. I wanted to learn something new. I decided it would be a web-development. because I think it will give me more freedom
 1. My small skills at the moment: Computer Science Basics, Computer Science Basics, Career Counseling, HTML CSS and JS for beginners
 1. Code:
