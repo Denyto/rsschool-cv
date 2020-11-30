@@ -69,7 +69,7 @@ hr {
     font-size: large;
 }
 .skills {
-    list-style-image: url(/img/ready25.png);
+    list-style-image: url(./ready.png);
     position: relative;
     bottom: 160px;
     width: 300px;
