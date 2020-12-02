@@ -1,97 +1,169 @@
 * {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 body {
-    margin-right: 550px;
-    margin-left: 550px;
-    margin-top: 70px;
-    margin-bottom: 100px;
-    background-color: rgb(50, 51, 48);
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(51, 51, 51);
 }
-.list{
-    padding: 60px 70px 60px 70px;
-    background-color: #ffffff;
+.article {
+  margin-top: 30px;
 }
-.blok-head {
-    top: 10px;
-    font-size: large;
-    position: relative;
+.page {
+  min-height: 1100px;
+  padding: 5px 50px;
+  margin: 50px 60px;
+  width: 800px;
+  background-color: #ffffff;
 }
-.image {
-    position: relative;
-    left: 420px;
-    bottom: 240px;
+header {
+  padding: 5px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: large;
 }
-.block-inst {
-    width: 150px;
-    position: relative;
-    top: 20px;
+h1 {
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
-.block-tel {
-    width: 200px;
-    position: relative;
-    left: 200px;
-    bottom: -87px;
+.objective-block {
+  width: 390px;
 }
-.block-mail {
-    width: 180px;
-    position: relative;
-    bottom: -30px;
-}
-.block-git {
-    top: 80px;
-    position: relative;
-    left: 200px;
-}
-a {
-    color: #000000;
-    font-size: large;
-    text-decoration: none;
-    vertical-align: super;
+.aside {
+  margin-top: 70px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 .objective {
-    position: relative;
-    bottom: 5px;
-    text-align: center;
-    padding: 8px;
-    font-size: 19px;
-    width: 350px;
-    background-color: rgb(194, 194, 194);
+  width: max-content;
+  margin-top: 10px;
+  margin-left: 10px;
+  text-align: center;
+  padding: 8px;
+  font-size: 19px;
+  background-color: rgb(194, 194, 194);
 }
-hr {
-    position: relative;
-    bottom: 200px;
+.main {
+  min-height: 500px;
+  margin-top: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.block-inst {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.block-tel {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.block-mail {
+  margin-right: 10px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+.block-git {
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+a {
+  margin: 10px;
+  color: #000000;
+  font-size: large;
+  text-decoration: none;
+  vertical-align: super;
 }
 .text-about {
-    text-align: justify;
-    bottom: 150px;
-    position: relative;
-    font-size: large;
+  text-align: justify;
+  font-size: large;
 }
 .skills {
-    list-style-image: url(./ready.png);
-    position: relative;
-    bottom: 160px;
-    width: 300px;
-    font-size: large;
+  list-style-image: url(./ready.png);
+  font-size: large;
 }
 .my-first-code {
-    position: relative;
-    width: 250px;
-    bottom: 50px;
-    left: 420px;
-    font-size: large;
+  font-size: large;
 }
 .education {
-        width: 220px;
-        left: 420px;
-        position: relative;
-        bottom: 100px;
-        font-size: large;
+  max-width: 400px;
+  font-size: large;
+  width: max-content;
 }
 .english {
-    position: relative;
-    width: 350px;
-    bottom: 270px;
-    font-size: large;
+  margin-right: 130px;
+  font-size: large;
 }
+@media screen and (max-width: 913px) {
+
+  .objective-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  }
+  header {
+  padding: 5px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+  font-size: large;
+  }
+.aside {
+  margin-top: 0px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.objective {
+  width: max-content;
+  margin-top: 10px;
+  margin-left: 25px;
+  text-align: center;
+  padding: 8px;
+  font-size: 19px;
+}
+  }
+@media screen and (max-width: 750px) {
+  .main {
+  margin-bottom: 50px;
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.skills {
+  list-style-image: url(./ready.png);
+  font-size: large;
+}
+.my-first-code {
+  margin-right: 120px;
+  font-size: large;
+}
+.education {
+  margin-left: 110px;
+  font-size: large;
+}
+}
+@media screen and (max-width: 540px) {
+.article {
+  margin-left: 90px;
+  width: 330px;
+  font-size: 1px;
+}
+hr {
+  width: 300px;
+}
+ }
