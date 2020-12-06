@@ -6,19 +6,15 @@ body {
   justify-content: space-around;
   background-color: rgb(51, 51, 51);
 }
-.article {
-  margin-top: 30px;
-}
 .page {
   min-height: 1100px;
-  padding: 5px 50px;
+  padding: 50px 50px;
   margin: 50px 60px;
   width: 800px;
   background-color: #ffffff;
 }
 header {
   padding: 5px;
-  margin-top: 40px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -26,55 +22,56 @@ header {
   font-size: large;
 }
 h1 {
-  margin-top: 10px;
-  margin-bottom: 10px;
+  display: block;
+  margin: 0px 0px ;
+}
+.aside img {
+  vertical-align: top;
+  width: 25px;
 }
 .objective-block {
-  width: 390px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 400px;
 }
 .aside {
-  margin-top: 70px;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: left;
+  vertical-align: super;
 }
 .objective {
-  width: max-content;
-  margin-top: 10px;
-  margin-left: 10px;
-  text-align: center;
+  max-width: max-content;
+  margin: 0 ;
+  text-align: left;
   padding: 8px;
   font-size: 19px;
   background-color: rgb(194, 194, 194);
 }
-.main {
-  min-height: 500px;
-  margin-top: 90px;
+
+.mainside {
+  min-height: 700px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-around;
 }
-.block-inst {
-  margin-top: 3px;
-  margin-bottom: 3px;
+.main {
+  padding: 1px;
+  width: 300px;
+  height: max-content;
 }
-.block-tel {
-  margin-top: 3px;
-  margin-bottom: 3px;
-}
-.block-mail {
-  margin-right: 10px;
-  margin-top: 3px;
-  margin-bottom: 3px;
-}
-.block-git {
-  margin-top: 3px;
-  margin-bottom: 3px;
+.block {
+  padding: 3px 0px;
+  min-width: 200px;
+  text-align: left;
+  vertical-align: super;
 }
 a {
-  margin: 10px;
+  height: 25px;
+  margin: 0px auto;
   color: #000000;
   font-size: large;
   text-decoration: none;
@@ -92,26 +89,26 @@ a {
   font-size: large;
 }
 .education {
-  max-width: 400px;
   font-size: large;
-  width: max-content;
 }
 .english {
-  margin-right: 130px;
   font-size: large;
 }
+
+
 @media screen and (max-width: 913px) {
 
-  .objective-block {
+.objective-block {
+    padding: 0px 5px;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  flex-wrap: wrap;
+  text-align: center;
+  align-items: center;
   }
-  header {
+header {
   padding: 5px;
-  margin-top: 40px;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -119,51 +116,56 @@ a {
   font-size: large;
   }
 .aside {
-  margin-top: 0px;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-direction: column;
+}
+.block {
+  text-align: left;
 }
 .objective {
-  width: max-content;
-  margin-top: 10px;
-  margin-left: 25px;
-  text-align: center;
   padding: 8px;
   font-size: 19px;
 }
   }
-@media screen and (max-width: 750px) {
-  .main {
-  margin-bottom: 50px;
-  min-height: 500px;
+
+@media screen and (max-width: 876px) {
+
+  .objective-block {
+  text-align: center;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   justify-content: center;
+  text-align: center;
   align-items: center;
-}
-.skills {
-  list-style-image: url(./ready.png);
+  }
+  header {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
   font-size: large;
+  }
+.aside {
+  display: flex;
+  flex-direction: column;
 }
-.my-first-code {
-  margin-right: 120px;
-  font-size: large;
+.objective {
+  padding: 8px;
+  font-size: 19px;
 }
-.education {
-  margin-left: 110px;
-  font-size: large;
-}
-}
-@media screen and (max-width: 540px) {
-.article {
-  margin-left: 90px;
-  width: 330px;
-  font-size: 1px;
-}
-hr {
-  width: 300px;
-}
- }
+  }
+  @media screen and (max-width: 860px) {
+
+.mainside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  }
+  }
+   @media screen and (max-width: 615px) {
+
+.objective {
+  text-align: center;
+  }
+  }
