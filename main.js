@@ -1,6 +1,6 @@
 const time = document.getElementById("time"),
   greeting = document.getElementById("greeting"),
-  namerrr = document.getElementById("name"),
+  Name = document.getElementById("name"),
   focus = document.getElementById("focus");
 
 function showTime() {
@@ -11,7 +11,7 @@ function showTime() {
 
   const amPm = hour >= 12 ? "PM" : "AM";
 
-  time.textContent = `${hour}:${addZero(min)}:${addZero(sec)} ${amPm}`;
+  time.innerText = `${hour}:${addZero(min)}:${addZero(sec)} ${amPm}`;
   setTimeout(showTime, 1000);
 }
 
@@ -37,9 +37,9 @@ function setBgGreet() {
 }
 function getName() {
   if (localStorage.getItem("name") === null) {
-    namerrr.textContent = "[Введите свое имя]";
+    Name.innerText = "[Введите свое имя]";
   } else {
-    namerrr.textContent = localStorage.getItem("name");
+    Name.innerText = localStorage.getItem("name");
   }
 }
 function getFocus() {
@@ -49,11 +49,12 @@ function getFocus() {
     focus.textContent = localStorage.getItem("focus");
   }
 }
-function setName(e) {
+
+/*function setName(e) {
   if (e.type === "keypress") {
-    if (e.which == 13 || e.kecode == 13) {
+    if (e.which === 13 || e.keycode === 13) {
       localStorage.setItem("name", e.target.innerText);
-      namerrr.blur();
+      Name.blur();
     }
   } else {
     localStorage.setItem("name", e.target.innerText);
@@ -62,18 +63,42 @@ function setName(e) {
 
 function setFocus(e) {
   if (e.type === "keypress") {
-    if (e.which == 13 || e.kecode == 13) {
+    if (e.which == 13 || e.keycode == 13) {
       localStorage.setItem("focus", e.target.innerText);
       focus.blur();
     }
   } else {
     localStorage.setItem("focus", e.target.innerText);
   }
+}*/
+
+function setNameFocus(e) {
+  if (e.target === Name) {
+    if (e.type === "keypress") {
+      if (e.which === 13 || e.keycode === 13) {
+        localStorage.setItem("name", e.target.innerText);
+        Name.blur();
+      }
+    } else {
+      localStorage.setItem("name", e.target.innerText);
+    }
+  }
+  if (e.target === focus) {
+    if (e.type === "keypress") {
+      if (e.which === 13 || e.keycode === 13) {
+        localStorage.setItem("focus", e.target.innerText);
+        focus.blur();
+      }
+    } else {
+      localStorage.setItem("focus", e.target.innerText);
+    }
+  }
 }
-namerrr.addEventListener("keypress", setName);
-namerrr.addEventListener("blur", setName);
-focus.addEventListener("keypress", setFocus);
-focus.addEventListener("blur", setFocus);
+
+Name.addEventListener("keypress", setNameFocus);
+Name.addEventListener("blur", setNameFocus);
+focus.addEventListener("keypress", setNameFocus);
+focus.addEventListener("blur", setNameFocus);
 
 showTime();
 setBgGreet();
