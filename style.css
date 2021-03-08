@@ -1,0 +1,171 @@
+* {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+body {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgb(51, 51, 51);
+}
+.page {
+  min-height: 1100px;
+  padding: 50px 50px;
+  margin: 50px 60px;
+  width: 800px;
+  background-color: #ffffff;
+}
+header {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  font-size: large;
+}
+h1 {
+  display: block;
+  margin: 0px 0px ;
+}
+.aside img {
+  vertical-align: top;
+  width: 25px;
+}
+.objective-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 400px;
+}
+.aside {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+  vertical-align: super;
+}
+.objective {
+  max-width: max-content;
+  margin: 0 ;
+  text-align: left;
+  padding: 8px;
+  font-size: 19px;
+  background-color: rgb(194, 194, 194);
+}
+
+main {
+  min-height: 700px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-content: space-around;
+}
+.main {
+  padding: 1px;
+  width: 300px;
+  height: max-content;
+}
+.block {
+  padding: 3px 0px;
+  min-width: 200px;
+  text-align: left;
+  vertical-align: super;
+}
+a {
+  height: 25px;
+  margin: 0px auto;
+  color: #000000;
+  font-size: large;
+  text-decoration: none;
+  vertical-align: super;
+}
+.text-about {
+  text-align: justify;
+  font-size: large;
+}
+.skills {
+  list-style-image: url(./ready.png);
+  font-size: large;
+}
+.my-first-code {
+  font-size: large;
+}
+.education {
+  font-size: large;
+}
+.english {
+  font-size: large;
+}
+
+
+@media screen and (max-width: 913px) {
+
+.objective-block {
+    padding: 0px 5px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  }
+header {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+  font-size: large;
+  }
+.aside {
+  display: flex;
+  flex-direction: column;
+}
+.block {
+  text-align: left;
+}
+.objective {
+  padding: 8px;
+  font-size: 19px;
+}
+  }
+
+@media screen and (max-width: 876px) {
+
+  .objective-block {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  }
+  header {
+  padding: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap-reverse;
+  font-size: large;
+  }
+.aside {
+  display: flex;
+  flex-direction: column;
+}
+.objective {
+  padding: 8px;
+  font-size: 19px;
+}
+  }
+  @media screen and (max-width: 860px) {
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  }
+  }
+   @media screen and (max-width: 615px) {
+
+.objective {
+  text-align: center;
+  }
+  }
