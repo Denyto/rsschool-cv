@@ -8,11 +8,8 @@ function showTime() {
     hour = today.getHours(),
     min = today.getMinutes(),
     sec = today.getSeconds();
-
   const amPm = hour >= 12 ? "PM" : "AM";
-
-  time.innerText = `${hour}:${addZero(min)}:${addZero(sec)} ${amPm}`;
-  setTimeout(showTime, 1000);
+  time.innerText = `${hour}:${addZero(min)}:${addZero(sec)} ${amPm}`;  
 }
 
 function addZero(n) {
@@ -72,7 +69,7 @@ function setFocus(e) {
   }
 }*/
 
-function setNameFocus(e) {
+/*function setNameFocus(e) {
   if (e.target === Name) {
     if (e.type === "keypress") {
       if (e.which === 13 || e.keycode === 13) {
@@ -93,14 +90,24 @@ function setNameFocus(e) {
       localStorage.setItem("focus", e.target.innerText);
     }
   }
+}*/
+
+function setNameFocus(e, key) {
+localStorage.setItem(key, e.target.innerText);
+if (e.which === 13 || e.keycode === 13) {
+  e.target.blur();
+}
 }
 
-Name.addEventListener("keypress", setNameFocus);
-Name.addEventListener("blur", setNameFocus);
-focus.addEventListener("keypress", setNameFocus);
-focus.addEventListener("blur", setNameFocus);
 
-showTime();
+Name.addEventListener("keypress", (e) => setNameFocus(e, 'name'));
+Name.addEventListener("blur", (e) => setNameFocus(e, "name"));
+focus.addEventListener("keypress", (e) => setNameFocus(e, "focus"));
+focus.addEventListener("blur", (e) => setNameFocus(e, "focus"));
+
+let timerId = setInterval(showTime, 1000);
+//clearInterval(timerId);
+
 setBgGreet();
 getName();
 getFocus();
