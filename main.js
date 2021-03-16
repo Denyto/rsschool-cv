@@ -14,15 +14,14 @@ function app() {
 
   play.addEventListener("click", checkPlaying);
 
-  sounds.forEach(sound => {
-sound.addEventListener('click', function(){
-  song.src = this.getAttribute('data-sound');
-  video.src = this.getAttribute("data-video");
-  checkPlaying();
-})
+  sounds.forEach((sound) => {
+    sound.addEventListener("click", function () {
+      song.src = this.getAttribute("data-sound");
+      video.src = this.getAttribute("data-video");
+      checkPlaying();
+    });
   });
-
-  timeSelect.forEach(Option => {
+  timeSelect.forEach((Option) => {
     Option.addEventListener("click", function () {
       fakeDuration = this.getAttribute("data-time");
       timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(
@@ -30,7 +29,6 @@ sound.addEventListener('click', function(){
       )}`;
     });
   });
-
   function checkPlaying() {
     if (song.paused) {
       song.play();
@@ -49,15 +47,17 @@ sound.addEventListener('click', function(){
     let minutes = Math.floor(elapsed / 60);
     let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
     outline.style.strokeDashoffset = progress;
-    timeDisplay.textContent = `${minutes}:${second}`;
-    if(currentTime >= fakeDuration) {
+    timeDisplay.textContent = `${minutes}:${addZero(second)}`;
+    if (currentTime >= fakeDuration) {
       song.pause();
       song.currentTime = 0;
       play.src = "./svg/play.svg";
       video.pause();
     }
   };
-  
+}
+function addZero(n) {
+  return (n < 10 ? "0" : "") + n;
 }
 
 app();
