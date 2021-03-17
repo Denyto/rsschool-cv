@@ -21,14 +21,17 @@ function app() {
       checkPlaying();
     });
   });
+
   timeSelect.forEach((Option) => {
     Option.addEventListener("click", function () {
       fakeDuration = this.getAttribute("data-time");
-      timeDisplay.textContent = `${Math.floor(fakeDuration / 60)}:${Math.floor(
-        fakeDuration % 60
-      )}`;
+      song.currentTime = 0;
+        timeDisplay.textContent = `${addZero(
+          Math.floor(fakeDuration / 60)
+        )}:${addZero(Math.floor(fakeDuration % 60))}`;      
     });
   });
+
   function checkPlaying() {
     if (song.paused) {
       song.play();
@@ -40,6 +43,7 @@ function app() {
       play.src = "./svg/play.svg";
     }
   }
+
   song.ontimeupdate = () => {
     let currentTime = song.currentTime;
     let elapsed = fakeDuration - currentTime;
@@ -47,7 +51,7 @@ function app() {
     let minutes = Math.floor(elapsed / 60);
     let progress = outlineLength - (currentTime / fakeDuration) * outlineLength;
     outline.style.strokeDashoffset = progress;
-    timeDisplay.textContent = `${minutes}:${addZero(second)}`;
+    timeDisplay.textContent = `${addZero(minutes)}:${addZero(second)}`;
     if (currentTime >= fakeDuration) {
       song.pause();
       song.currentTime = 0;
@@ -56,6 +60,7 @@ function app() {
     }
   };
 }
+
 function addZero(n) {
   return (n < 10 ? "0" : "") + n;
 }
