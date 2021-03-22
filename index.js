@@ -1,16 +1,14 @@
-const numKeys = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
-const urlSongs = [
-  "./sounds/clap.wav",
-  "./sounds/hihat.wav",
-  "./sounds/kick.wav",
-  "./sounds/openhat.wav",
-  "./sounds/boom.wav",
-  "./sounds/ride.wav",
-  "./sounds/snare.wav",
-  "./sounds/tom.wav",
-  "./sounds/tink.wav",
+let groups = [
+  { key: "A", url: "./sounds/clap.wav", name: "clap" },
+  { key: "S", url: "./sounds/hihat.wav", name: "hihat" },
+  { key: "D", url: "./sounds/kick.wav", name: "kick" },
+  { key: "F", url: "./sounds/openhat.wav", name: "openhat" },
+  { key: "G", url: "./sounds/boom.wav", name: "boom" },
+  { key: "H", url: "./sounds/ride.wav", name: "ride" },
+  { key: "J", url: "./sounds/snare.wav", name: "snare" },
+  { key: "K", url: "./sounds/tom.wav", name: "tom" },
+  { key: "L", url: "./sounds/tink.wav", name: "tink" },
 ];
-const nameKeys = ['clap', 'hihat', 'kick', 'openhat', 'boom', 'ride', 'snare', 'tom', 'tink'];
 
 let divContainer = document.createElement("div");
 divContainer.className = "container";
@@ -19,24 +17,26 @@ divKeys.className = "keys";
 divContainer.prepend(divKeys);
 document.body.prepend(divContainer);
 
-for (let i = 0; i < numKeys.length; i++) {
-  let arrAudio = document.createElement("audio");
-  arrAudio.setAttribute("data-key", `${numKeys[i].charCodeAt(0)}`);
-  arrAudio.src = `${urlSongs[i]}`;
-  document.body.prepend(arrAudio);
-  createKbds(numKeys, nameKeys, i);
+groups.map((item) => {createAudio(item);
+  createKbds(item)});
+
+function createAudio(obj) {
+  let audio = document.createElement("audio");
+  audio.setAttribute("data-key", `${obj.key.charCodeAt(0)}`);
+  audio.src = `${obj.url}`;
+  document.body.prepend(audio);
 }
 
-function createKbds(arr1, arr2, n) {
+function createKbds(obj) {
   let createKbd = document.createElement("kbd");
+  createKbd.innerHTML = obj.key;
   let divData = document.createElement("div");
-  let createSpan = document.createElement("span");
-  createSpan.className = 'sound';
-  createSpan.innerHTML = arr2[n];
-  divData.setAttribute("data-key", `${numKeys[n].charCodeAt(0)}`);
   divData.className = "key";
+  divData.setAttribute("data-key", `${obj.key.charCodeAt(0)}`);
+  let createSpan = document.createElement("span");
+  createSpan.className = "sound";
+  createSpan.innerHTML = obj.name;
   divData.append(createSpan);
   divData.prepend(createKbd);
-  createKbd.innerHTML = arr1[n];
   divKeys.append(divData);
 }
