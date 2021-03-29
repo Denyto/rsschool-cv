@@ -17,7 +17,7 @@ divKeys.className = "keys";
 divContainer.prepend(divKeys);
 document.body.prepend(divContainer);
 
-groups.map((item) => {createAudio(item);
+groups.forEach((item) => {createAudio(item);
   createKbds(item)});
 
 function createAudio(obj) {
