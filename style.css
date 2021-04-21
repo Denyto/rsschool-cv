@@ -27,22 +27,11 @@ body {
   overflow: hidden;
 }
 
-/* This css is only applied when fullscreen is active. */
-.player:fullscreen {
-  max-width: none;
+.video {
   width: 100%;
 }
 
-.player:-webkit-full-screen {
-  max-width: none;
-  width: 100%;
-}
-
-.player__video {
-  width: 100%;
-}
-
-.player__button {
+.button {
   background: none;
   border: 0;
   line-height: 1;
@@ -54,16 +43,12 @@ body {
   max-width: 50px;
 }
 
-.player__button:focus {
-  border-color: #ffc600;
-}
-
-.player__slider {
+.slider {
   width: 10px;
   height: 30px;
 }
 
-.player__controls {
+.controls {
   display: flex;
   position: absolute;
   bottom: 0;
@@ -74,7 +59,7 @@ body {
   background: rgba(0,0,0,0.1);
 }
 
-.player:hover .player__controls {
+.player:hover .controls {
   transform: translateY(0);
 }
 
@@ -82,7 +67,7 @@ body {
   height: 10px;
 }
 
-.player__controls > * {
+.controls > * {
   flex: 1;
 }
 
@@ -101,10 +86,10 @@ body {
   width: 50%;
   background: #ffc600;
   flex: 0;
-  flex-basis: 50%;
+  flex-basis: 0%;
 }
 
-/* unholy css to style input type="range" */
+
 
 input[type=range] {
   -webkit-appearance: none;
