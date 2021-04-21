@@ -1,29 +1,31 @@
-const scoreBoard = document.querySelector(".score");
-const moles = document.querySelectorAll(".mole");
-let lastHole;
-let timeUp = false;
+const scoreBoard = document.querySelector('.score');
+const moles = document.querySelectorAll('.mole');
+const start = document.getElementById('#start');
+let lastMole;
+let timeUp;
 let score;
+let timeStart = false;
 
 function randomTime(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-function randomHole(moles) {
+function randomMole(moles) {
   const idx = Math.floor(Math.random() * moles.length);
   const mole = moles[idx];
-  if (mole === lastHole) {
-    return randomHole(moles);
+  if (mole === lastMole) {
+    return randomMole(moles);
   }
-  lastHole = mole;
+  lastMole = mole;
   return mole;
 }
 
 function peep() {
   const time = randomTime(200, 1000);
-  const mole = randomHole(moles);
-  mole.classList.add("up");
+  const mole = randomMole(moles);
+  mole.classList.add('up');
   setTimeout(() => {
-    mole.classList.remove("up");
+    mole.classList.remove('up');
     if (!timeUp) peep();
   }, time);
 }
@@ -33,14 +35,23 @@ function startGame() {
   timeUp = false;
   score = 0;
   peep();
-  setTimeout(() => (timeUp = true), 10000);
+  setTimeout(() => {
+    timeUp = true;
+    timeStart = false;
+  }, 5000);
 }
 
 function bonk(e) {
   if (!e.isTrusted) return;
   score++;
-  this.classList.remove("up");
+  this.classList.remove('up');
   scoreBoard.textContent = score;
 }
 
-moles.forEach((mole) => mole.addEventListener("click", bonk));
+start.addEventListener('click', () => {
+  if (!timeStart) {
+    startGame();
+    timeStart = true;
+  };
+});
+moles.forEach((mole) => mole.addEventListener('click', bonk));
