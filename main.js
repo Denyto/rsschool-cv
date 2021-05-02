@@ -1,6 +1,6 @@
 const scoreBoard = document.querySelector('.score');
 const moles = document.querySelectorAll('.mole');
-const start = document.getElementById('#start');
+let start = document.getElementById('#start');
 let lastMole;
 let timeUp;
 let score;
@@ -38,6 +38,7 @@ function startGame() {
   setTimeout(() => {
     timeUp = true;
     timeStart = false;
+    start.style.opacity = 1;
   }, 5000);
 }
 
@@ -51,6 +52,7 @@ function bonk(e) {
 start.addEventListener('click', () => {
   if (!timeStart) {
     startGame();
+    start.style.opacity = 0;
     timeStart = true;
   };
 });
