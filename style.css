@@ -1,0 +1,240 @@
+html {
+  font-size: 10px;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 100vw;
+  height: 98vh;
+  display: flex;
+  justify-content: space-between;
+}
+
+.section1 {
+  flex: 1;
+  max-width: 70%;
+  background-color: rgb(193, 255, 136);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.section2 {
+  flex: 1;
+  max-width: 30%;
+  background-color: rgb(111, 199, 206);
+}
+
+.score {
+  margin-bottom: 5vh;
+  border-radius: 0px 0px 50px 50px;
+  text-align: center;
+  font-size: 3rem;
+  background: chocolate;
+  height: 4rem;
+}
+
+.screen-input {
+  padding: 0px;
+  margin: 0 auto;
+  font-size: 6.2vw;
+  max-width: 20.8vw;
+  text-align: right;
+}
+
+.calculator {
+  margin: 0 auto;
+  max-width: 25vw;
+  min-height: 25vw;
+  margin-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  min-height: 3vw;
+  min-width: 7vw;
+  font-size: 3.5rem;
+  text-align: center;
+  border-color: #6fbcce;
+  box-shadow: 0 0 13px #004eff;
+}
+
+.btn.operator.enter {
+  font-size: 3.5vw;
+  min-width: 21vw;
+  min-height: 8vh;
+  color: red;
+}
+
+.btn.operator {
+  min-height: 3vw;
+  font-size: 1.5rem;
+  min-width: 7vw;
+  text-align: center;
+}
+
+.calc {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.buttons {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.space {
+  flex: 1;
+  max-height: 90%;
+  background-color: rgb(146, 182, 206);
+}
+
+.sea {
+  flex: 1;
+  max-height: 10%;
+  background: rgb(104, 166, 168);
+}
+
+.drop {
+  text-align: center;
+  top: 1vh;
+  left: 10vw;
+  position: absolute;
+  width: 7.7vw;
+  height: 12.8vw;
+  background: url(./src/assets/img/drop.png) no-repeat;
+  background-position: center center;
+  background-size: 15vw;
+}
+
+span {
+  position: relative;
+  top: 55%;
+  font-size: 3vw;
+}
+
+.button {
+  margin: 1rem;
+  width: 13rem;
+  height: 13rem;
+  border-radius: 50%;
+  border: 1px;
+  background-color: rgb(111, 199, 206);
+}
+
+.button:active {
+  transform: scale(0.9);
+  box-shadow: 0 0 8px #222222;
+}
+
+.button_1 {
+  background-position: -17px -43px;
+  background-image: url(./src/assets/img/startstop.jpg);
+  background-size: 245%;
+}
+
+.button_active {
+  transform: scale(0.93);
+  background-position: -168px -43px;
+  background-size: 245%;
+  box-shadow: 0 0 8px #333333;
+}
+
+.button_2 {
+  background-position: -0.9rem -0.6rem;
+  background-image: url(./src/assets/img/demo.jpg);
+  background-size: 115%;
+}
+
+.button_demo_active {
+  transform: scale(0.93);
+  opacity: 0.2;
+  background-position: -9px -8px;
+  background-size: 115%;
+  box-shadow: 0 0 8px #333333;
+}
+
+.button_demo_hidden {
+  display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  span {
+    top: 50%;
+    font-size: 4vw;
+  }
+
+  .button {
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+    border: 1px;
+    background-color: rgb(111, 199, 206);
+  }
+
+  .button_1 {
+    background-position: -19.6rem -29rem;
+    background-image: url(./src/assets/img/startstop.jpg);
+    background-size: 235%;
+  }
+
+  .button_2 {
+    background-position: -0.6rem -0.4rem;
+  }
+
+  .button_active {
+    background-position: -28.5rem -29rem;
+    box-shadow: 0 0 8px #333333;
+  }
+}
+
+@media screen and (max-width: 655px) {
+  span {
+    top: 45%;
+    font-size: 5vw;
+  }
+
+  .score {
+    margin-bottom: 5vh;
+    border-radius: 0px 0px 50px 50px;
+    text-align: center;
+    font-size: 2rem;
+    background: chocolate;
+    height: 3rem;
+  }
+
+  .btn {
+    padding: 0;
+    min-height: 3vw;
+    min-width: 7vw;
+    font-size: 2.5rem;
+    text-align: center;
+    border-color: #6fbcce;
+    box-shadow: 0 0 13px #004eff;
+  }
+
+  .btn.operator {
+    padding: 0;
+    min-height: 7vw;
+    font-size: 2.4vw;
+    min-width: 7vw;
+    text-align: center;
+  }
+
+  .btn.operator.enter {
+    font-size: 3.5vw;
+    width: 21vw;
+    min-height: 8vh;
+    color: red;
+  }
+}
