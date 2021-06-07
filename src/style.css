@@ -164,44 +164,41 @@ span {
   box-shadow: 0 0 8px #333333;
 }
 
-.button_demo_hidden {  
-  
+.button_demo_hidden {
   display: none;
 }
 
 @media screen and (max-width: 1000px) {
-  
-    span {
+  span {
     top: 50%;
     font-size: 4vw;
   }
 
-.button {
+  .button {
     width: 8rem;
     height: 8rem;
     border-radius: 50%;
     border: 1px;
     background-color: rgb(111, 199, 206);
-}
+  }
 
-.button_1 {
+  .button_1 {
     background-position: -19.6rem -29rem;
     background-image: url(./assets/img/startstop.jpg);
     background-size: 235%;
-}
+  }
 
-.button_2 {
-  background-position: -0.6rem -0.4rem;
-}
+  .button_2 {
+    background-position: -0.6rem -0.4rem;
+  }
 
-.button_active { 
-  background-position: -28.5rem -29rem;
-  box-shadow: 0 0 8px #333333;
-}
+  .button_active {
+    background-position: -28.5rem -29rem;
+    box-shadow: 0 0 8px #333333;
+  }
 }
 
 @media screen and (max-width: 655px) {
-
   span {
     top: 45%;
     font-size: 5vw;
@@ -224,7 +221,7 @@ span {
     text-align: center;
     border-color: #6fbcce;
     box-shadow: 0 0 13px #004eff;
-}
+  }
 
   .btn.operator {
     padding: 0;
@@ -232,14 +229,12 @@ span {
     font-size: 2.4vw;
     min-width: 7vw;
     text-align: center;
-}
+  }
 
-.btn.operator.enter {
+  .btn.operator.enter {
     font-size: 3.5vw;
     width: 21vw;
     min-height: 8vh;
     color: red;
-}
-
-
+  }
 }
