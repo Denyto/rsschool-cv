@@ -1,15 +1,14 @@
-import { Raindrops } from "./Raindrops";
+import { createDomNodeMixin } from "./Utils";
 
-export class Calculator extends Raindrops {
-    constructor () {
-        super();
+export class Calculator {
+    constructor () {     
         this.calculator = null;
         this.screen = null;
         this.calc = null;
         this.input = null;
     }
 
-    initCalculator () {
+    create () {
         this.calculator = this.createDomNode(this.calculator, 'div', 'calculator');
         this.screen = this.createDomNode(this.screen, 'div', 'screen');
         this.calc = this.createDomNode(this.calc, 'div', 'calc');
@@ -56,12 +55,13 @@ export class Calculator extends Raindrops {
 
                     btnElement.classList.add("enter");
                     btnElement.innerHTML = key;
-                    btnElement.addEventListener("click", () => {
-                        if (this.input.value !== '') {
-                            let result = +this.input.value;
-                            console.log(result);
-                        }
-                    });
+                    // btnElement.addEventListener("click", () => {
+                    //     if (this.input.value !== '') {
+                    //         let result = +this.input.value;
+                    //         console.log(+document.querySelector('.drop:first-child').innerText === result);
+                    //         console.log(+document.querySelector('.drop:first-child').innerText);
+                    //     }
+                    // });
 
                     break;
 
@@ -86,6 +86,12 @@ export class Calculator extends Raindrops {
         this.calculator.append(this.screen);
         this.calculator.append(this.calc);
         this.screen.append(this.input);
-        document.querySelector('.section2').append(this.calculator);
+        document.querySelector('.section-calc').append(this.calculator);
+    }
+
+    default () {
+        this.input.value = '';
     }
 }
+
+Object.assign(Calculator.prototype, createDomNodeMixin);

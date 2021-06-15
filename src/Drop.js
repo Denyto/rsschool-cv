@@ -1,55 +1,63 @@
-import { Raindrops } from "./Raindrops";
+import { createDomNodeMixin } from "./Utils";
 
-export class Drop extends Raindrops {
-    constructor(expression, id) {
-        super();
-        this.id = id;
-        this.expression = expression;
+
+export class Drop {
+
+    constructor() {
+        this.expression = `${Math.round(Math.random() * 100)}`;
         this.drop = null;
         this.space = null;
-        this.span = null;
-        this.topSea = 0;
-        this.start = 0;
-        this.result = 0;
-        this.timeId = 0;
-        this.zIndex = 0;
+        this.span = null;        
+        this.start = 1;
+        this.timeId;
+        this.droplevel = 1;
+        this.sealevel;
+
     }
 
-    initDrop() {
+    create(callback) {
         this.drop = this.createDomNode(this.drop, 'div', 'drop');
-        this.drop.setAttribute('id', this.id);
         this.drop.style.left = Math.round(62 * Math.random()) + 'vw';
         this.span = document.createElement('span');
         this.span.innerHTML = this.expression;
         this.drop.prepend(this.span);
-        document.querySelector('.space').append(this.drop);        
-        this.run();
+        document.querySelector('.space').append(this.drop);
+        this.move(callback);
     }
 
-    move() {        
-        let bottomDrop = this.drop.getBoundingClientRect().top + pageYOffset + this.drop.getBoundingClientRect().height;
-        this.topSea = document.querySelector('.sea').getBoundingClientRect().top + pageYOffset;
-        
-        this.drop.style.top = this.start + 'vh';
-        this.start += 0.2;
+    move(callback) {
 
-        if (bottomDrop > this.topSea) {
-            document.querySelector('.score').innerHTML = `Score: ${this.result - 1}`
-            this.drop.remove();
-            clearInterval(this.timeId, 100);
-            console.log('ok');
-            document.querySelector('.sea').style.maxHeight = parseInt(window.getComputedStyle(document.querySelector('.sea')).maxHeight) + 5 + '%';
-        }
+        this.timeId = setInterval(() => {            
+            this.sealevel = document.querySelector('.sea').getBoundingClientRect().top + pageYOffset;
+            this.droplevel = this.drop.getBoundingClientRect().top + pageYOffset + this.drop.getBoundingClientRect().height;
+
+            this.drop.style.top = this.start + 'vh';
+            this.start += 0.2;
+
+            
+            if (this.droplevel > this.sealevel) {
+                this.drop.remove();
+                clearInterval(this.timeId);
+                callback();
+
+            }
+            if (this.start > 90) {
+                
+                this.drop.remove();
+                clearInterval(this.timeId);
+            }
+        }, 20);
     }
 
-    run() {
-        this.timeId = setInterval(() => {     
-            this.move();
-        }, 100);
+    default() {
+        document.querySelectorAll('.drop').forEach(item => {
+            clearInterval(this.timeId);
+            item.remove();
+        });
     }
 
-    stop() {
 
-    }
 
 }
+
+Object.assign(Drop.prototype, createDomNodeMixin);

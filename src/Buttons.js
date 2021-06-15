@@ -1,37 +1,38 @@
-import { Raindrops } from "./Raindrops";
+import { createDomNodeMixin } from "./Utils";
 
-export class Buttons extends Raindrops {
+export class Buttons {
     constructor() {
-        super();
         this.buttons = null;
-        this.button1 = null;
-        this.button2 = null;
+        this.buttonGame = null;
+        this.buttonDemo = null;
     }
 
-    initButtons() {
+    create () {
         this.buttons = this.createDomNode(this.buttons, 'div', 'buttons'); 
-        this.button1 = this.createDomNode(this.button1, "button", "button", "button_1");
-        this.buttons.append(this.button1);
-        this.button2 = this.createDomNode(this.button2, "button", "button", "button_2");
-        this.buttons.append(this.button2);
-        document.querySelector('.section2').append(this.buttons);
+        this.buttonGame = this.createDomNode(this.buttonGame, "button", "button", "button__startstop");
+        this.buttons.append(this.buttonGame);
+        this.buttonDemo = this.createDomNode(this.buttonDemo, "button", "button", "button__demo");
+        this.buttons.append(this.buttonDemo);
+        document.querySelector('.section-calc').append(this.buttons);
 
-            this.button1.addEventListener('click', () => {
-            this.button2.classList.remove('button_demo_active');
+        this.buttonGame.addEventListener('click', () => {
+            this.buttonDemo.classList.remove('button__demo_active');
             this.toggleStartStop();
         });
-        this.button2.addEventListener('click', () => {
-            this.button1.classList.remove('button_active');
+        this.buttonDemo.addEventListener('click', () => {
+            this.buttonGame.classList.remove('button__startstop_active');
             this.toggleDemo();
         });
     }
 
     toggleStartStop() {
-        this.button1.classList.toggle('button_active');
-        this.button2.classList.toggle('button_demo_hidden');
+        this.buttonGame.classList.toggle('button__startstop_active');
+        this.buttonDemo.classList.toggle('button__demo_hidden');
     }
 
     toggleDemo() {
-        this.button2.classList.toggle('button_demo_active');
+        this.buttonDemo.classList.toggle('button__demo_active');
     }
 }
+
+Object.assign(Buttons.prototype, createDomNodeMixin);
