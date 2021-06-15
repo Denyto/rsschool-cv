@@ -1,16 +1,27 @@
-import { Raindrops } from "./Raindrops";
-
-export class Score extends Raindrops {
-    constructor(number = 0) {
-        super();
-        this.number = number;
+export class Score {
+    constructor() {        
+        this.number = 0;
         this.score = null;
     }
 
-    initScore () {
+    create () {        
         this.score = document.createElement('div');
         this.score.classList.add('score');
         this.score.innerHTML = `Score: ${this.number}`
-        document.querySelector('.section2').append(this.score);
+        document.querySelector('.section-calc').append(this.score);
+    }
+
+    default () {
+        this.number = 0;
+        this.score.innerHTML = `Score: ${this.number}`
+    }
+
+    add () {
+        this.score.innerHTML = `Score: ${this.number += 10}`
+    }
+
+    minus () {
+        this.score.innerHTML = `Score: ${this.number -= 10}`
     }
 }
+0
