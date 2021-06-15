@@ -1,41 +1,31 @@
-import { Raindrops } from "./src/Raindrops";
-import { Score } from "./src/Score";
-import { Calculator } from "./src/Calc";
-import { Buttons } from "./src/Buttons";
-import { Drop } from "./src/Drop";
+import { App } from "./src/App";
+
 window.addEventListener("DOMContentLoaded", function () {
-    generateRaindrops();
-    generateScore();
-    generateCalculator();
-    generateButtons();
-    generateDrop();  
-    setTimeout(generateDrop, Math.random() * 20000);
-    setTimeout(generateDrop, Math.random() * 20000);
+    const app = new App;
+    app.init();
+
+    document.querySelector('.button__startstop').addEventListener('click', () => { app.start() });
+
+
+    document.querySelector('.enter').addEventListener("click", () => {
+
+
+        if (document.querySelector('.screen-input').value !== '') {
+            let result = +document.querySelector('.screen-input').value;
+            if (document.querySelector('.drop:first-child')) {
+                if (+document.querySelector('.drop:first-child').innerText === result) {
+                    document.querySelector('.drop:first-child').remove();
+                    document.querySelector('.ok').play();
+                    app.result();
+                } else {
+                    document.querySelector('.mistake').play();
+                    document.querySelector('.drop:first-child').style.borderColor = 'red';
+                }
+            }
+        }
+
+    });
+
+
 
 });
-
-const generateRaindrops = () => {
-    let raindrops = new Raindrops;
-    raindrops.initRaindrops();
-};
-
-const generateCalculator = () => {
-    let calc = new Calculator;    
-    calc.initCalculator();
-}
-
-const generateScore = () => {
-    let score = new Score();
-    score.initScore();
-};
-
-const generateButtons = () => {
-    let buttons = new Buttons;
-    buttons.initButtons();
-};
-
-const generateDrop = () => {
-    let drop = new Drop('1+2', Math.random());
-    drop.initDrop();   
-}
-

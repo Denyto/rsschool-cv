@@ -14,7 +14,7 @@ body {
   justify-content: space-between;
 }
 
-.section1 {
+.section-game {
   flex: 1;
   max-width: 70%;
   background-color: rgb(193, 255, 136);
@@ -23,7 +23,7 @@ body {
   justify-content: space-between;
 }
 
-.section2 {
+.section-calc {
   flex: 1;
   max-width: 30%;
   background-color: rgb(111, 199, 206);
@@ -137,26 +137,26 @@ span {
   box-shadow: 0 0 8px #222222;
 }
 
-.button_1 {
+.button__startstop {
   background-position: -17px -43px;
   background-image: url(./src/assets/img/startstop.jpg);
   background-size: 245%;
 }
 
-.button_active {
+.button__startstop_active {
   transform: scale(0.93);
   background-position: -168px -43px;
   background-size: 245%;
   box-shadow: 0 0 8px #333333;
 }
 
-.button_2 {
+.button__demo {
   background-position: -0.9rem -0.6rem;
   background-image: url(./src/assets/img/demo.jpg);
   background-size: 115%;
 }
 
-.button_demo_active {
+.button__demo_active {
   transform: scale(0.93);
   opacity: 0.2;
   background-position: -9px -8px;
@@ -164,8 +164,12 @@ span {
   box-shadow: 0 0 8px #333333;
 }
 
-.button_demo_hidden {
+.button__demo_hidden {
   display: none;
+}
+
+.drop:first-child {
+  border: 1px solid rgb(145, 255, 0);  
 }
 
 @media screen and (max-width: 1000px) {
@@ -182,17 +186,17 @@ span {
     background-color: rgb(111, 199, 206);
   }
 
-  .button_1 {
+  .button__startstop {
     background-position: -19.6rem -29rem;
     background-image: url(./src/assets/img/startstop.jpg);
     background-size: 235%;
   }
 
-  .button_2 {
+  .button__demo {
     background-position: -0.6rem -0.4rem;
   }
 
-  .button_active {
+  .button__startstop_active {
     background-position: -28.5rem -29rem;
     box-shadow: 0 0 8px #333333;
   }
