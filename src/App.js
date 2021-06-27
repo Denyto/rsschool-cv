@@ -11,6 +11,7 @@ import { Sectiongame } from "./Sectiongame";
 import { Sectioncalc } from "./Sectioncalc";
 import { Space } from "./Space";
 import { Waves } from "./Waves";
+import { Expression } from "./Exp";
 
 
 export class App {
@@ -29,18 +30,20 @@ export class App {
         this.toggle = true;
         this.tick = 3000;
         this.waves = new Waves();
+        this.speedtick = 50;
+        this.bonus = false;
     }
 
-    init() {      
-        this.raindropsApp.prepend(this.wrapper);        
+    init() {
+        this.raindropsApp.prepend(this.wrapper);
         this.wrapper.prepend(this.sectionCalc);
-        this.wrapper.prepend(this.sectionGame);       
+        this.wrapper.prepend(this.sectionGame);
         this.sectionGame.prepend(this.space);
         this.sectionGame.append(this.seaApp.create());
-        document.body.prepend(this.raindropsApp);        
+        document.body.prepend(this.raindropsApp);
         this.scoreApp.create();
         this.calculatorApp.create();
-        this.buttonsApp.create();        
+        this.buttonsApp.create();
         document.querySelector('.section-game').prepend(this.waves.create());
     }
 
@@ -48,67 +51,16 @@ export class App {
         if (this.toggle) {
             this.calculatorApp.default();
             this.toggle = false;
-            // if (this.scoreApp.number % 50 === 0 && this.scoreApp.number > 0) {
-            //     // this.tick = 10000;
-            //     // let bonus = ['*'];
-            //     // this.createDrobs().create(() => {
-            //     //     document.querySelector('.mistake').play();
-            //     //     this.seaApp.riseLevel();
-            //     //     this.scoreApp.minus();
-            //     //     this.calculatorApp.default();
 
-            //     // }, () => {
-            //     //     document.querySelector('.gameover').play();
-            //     //     setTimeout(() => {
-            //     //         clearInterval(this.timeId);
-            //     //         this.calculatorApp.default();
-            //     //         this.seaApp.default();
-            //     //         this.dropApp.default();
-            //     //         this.buttonsApp.default();
-            //     //         new Modal(this.scoreApp.show()).create();
-            //     //         this.scoreApp.default();
-            //     //         this.toggle = true;
-            //     //     }, 1000);
-            //     // }, bonus);
-            //     console.log('bonus');
-            // } else {
 
-            // }
-
-            this.timeId = setInterval(() => {
-                this.createDrobs().create(() => {
-                    document.querySelector('.mistake').play();
-                    this.seaApp.riseLevel();
-                    
-                    this.waves.riseLevel();
-                    this.scoreApp.minus();
-                    this.calculatorApp.default();
-
-                }, () => {
-                    document.querySelector('.gameover').play();
-                    setTimeout(() => {
-                        clearInterval(this.timeId);
-                        this.calculatorApp.default();
-                        this.seaApp.default();
-                        this.waves.default();
-                        this.dropApp.default();
-                        this.buttonsApp.default();
-                        new Modal(this.scoreApp.show()).create();
-                        this.scoreApp.default();
-                        this.toggle = true;
-                    }, 100);
-                });
+            this.timeId = setInterval(() => {              
+                    this.createDrobs().create(() => { this.mistake() }, () => { this.gameover() }, this.speed(), this.expression());
             }, this.tick);
 
-        } else {
 
-            clearInterval(this.timeId);
-            this.calculatorApp.default();
-            document.querySelector('.melody').pause();
-            this.scoreApp.default();
-            this.seaApp.default();
-            this.dropApp.default();
-            this.toggle = true;
+
+        } else {
+            this.stop();
         }
     }
 
@@ -124,6 +76,57 @@ export class App {
 
     calcDefault() {
         this.calculatorApp.default();
+    }
+
+    speed() {
+        if (this.scoreApp.show() > 100) {
+            this.speedtick -= 0.3;
+            return this.speedtick;
+        }
+        if (this.scoreApp.show() > 50) {
+            this.speedtick -= 0.1;
+            return this.speedtick;
+        }
+        return this.speedtick;
+    }
+
+    stop() {
+        new Modal(this.scoreApp.show()).create();
+        clearInterval(this.timeId);
+        this.calculatorApp.default();
+        document.querySelector('.melody').pause();
+        this.scoreApp.default();
+        this.seaApp.default();
+        this.dropApp.default();
+        this.toggle = true;        
+    }
+
+    mistake() {
+        document.querySelector('.mistake').play();
+        this.seaApp.riseLevel();
+        this.waves.riseLevel();
+        this.scoreApp.minus();
+        this.calculatorApp.default();
+    }
+
+    gameover() {
+        document.querySelector('.gameover').play();
+        setTimeout(() => {
+            clearInterval(this.timeId);
+            this.calculatorApp.default();
+            this.seaApp.default();
+            this.waves.default();
+            this.dropApp.default();
+            this.buttonsApp.default();
+            new Modal(this.scoreApp.show()).create();
+            this.scoreApp.default();
+            this.toggle = true;
+        }, 100);
+    }
+
+    expression() {
+        console.log();
+        return new Expression().create();
     }
 
 }

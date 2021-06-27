@@ -18,9 +18,7 @@ export class Sea {
 
     default () {
         this.sea.style.maxHeight = 8 + '%';
-    }
-
-  
+    }  
 
 }
 

@@ -1,66 +1,49 @@
-import { Expression } from "./Exp";
 import { createDomNodeMixin } from "./Utils";
-
 
 export class Drop {
 
-    constructor() {        
-        this.expression = new Expression;
+    constructor() {       
         this.drop = null;
         this.space = null;
-        this.span = null;        
+        this.span = null;
         this.start = 1;
         this.timeId;
         this.droplevel = 1;
         this.sealevel;
-        
-
     }
 
-    create(callback, stop, speed, bonus) {
-        if (bonus) {
-            this.drop = this.createDomNode(this.drop, 'div', 'drop', 'dropbonus');
-            this.drop.style.left = Math.round(62 * Math.random()) + 'vw';
-            this.span = document.createElement('span');
-            this.span.innerHTML = this.expression.create(bonus);
-            this.drop.prepend(this.span);
-            document.querySelector('.space').append(this.drop);
-            this.move(callback, stop, 100);
-        } else {
-            this.drop = this.createDomNode(this.drop, 'div', 'drop');
-            this.drop.style.left = Math.round(62 * Math.random()) + 'vw';
-            this.span = document.createElement('span');
-            this.span.innerHTML = this.expression.create();
-            this.drop.prepend(this.span);
-            document.querySelector('.space').append(this.drop);
-            this.move(callback, stop, speed);
-        }
-
+    create(mistake, gameover, speed, expression) {
+        this.drop = this.createDomNode(this.drop, 'div', 'drop');
+        this.drop.style.left = Math.round(62 * Math.random()) + 'vw';
+        this.span = document.createElement('span');
+        this.span.innerHTML = expression;
+        this.drop.prepend(this.span);
+        document.querySelector('.space').append(this.drop);
+        this.move(mistake, gameover, speed);
     }
 
-    move(callback, stop, speed = 10) {
+    move(mistake, gameover, speed) {
 
-        this.timeId = setInterval(() => {            
+        this.timeId = setInterval(() => {
             this.sealevel = document.querySelector('.sea').getBoundingClientRect().top + pageYOffset;
             this.droplevel = this.drop.getBoundingClientRect().top + pageYOffset + this.drop.getBoundingClientRect().height;
             this.drop.style.top = this.start + 'vh';
-            this.start += 0.2;           
-            
-            if (this.droplevel > this.sealevel) {                
+            this.start += 0.2;
+
+            if (this.droplevel > this.sealevel) {
                 this.drop.remove();
                 clearInterval(this.timeId);
-                callback();
+                mistake();
                 if (parseInt(document.querySelector('.sea').style.maxHeight) > 30) {
-                stop();
+                    gameover();
                 }
             }
-            if (this.start > 90) {                
+            if (this.start > 90) {
                 this.drop.remove();
                 clearInterval(this.timeId);
             }
         }, speed);
-        speed += 10;
-        console.log(speed);
+
     }
 
     default() {
@@ -69,7 +52,6 @@ export class Drop {
             item.remove();
         });
     }
-
 
 
 }

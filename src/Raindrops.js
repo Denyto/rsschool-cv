@@ -5,7 +5,7 @@ export class Raindrops {
         this.raindrops = null;       
     }
 
-    create() {
+    create() {        
         this.raindrops = this.createDomNode(this.raindrops, 'div', 'raindrops');
         return this.raindrops;
     }  

@@ -3,14 +3,13 @@ import { App } from "./src/App";
 
 window.addEventListener("DOMContentLoaded", function () {
     const app = new App;
-    app.init();
-    
-    
-    
+    app.init(); 
+        
 
     document.querySelector('.button__startstop').addEventListener('click', () => {
-        app.start();
-      
+        app.start();       
+        document.querySelector('.melody').play();
+        document.querySelector('.ocean').play();
     });
 
 
@@ -27,7 +26,7 @@ window.addEventListener("DOMContentLoaded", function () {
                 if (result1 === result2) {
                     document.querySelector('.drop:first-child').remove();
                     document.querySelector('.ok').play();
-                    app.result();
+                    app.result();                    
                 } else {
                     document.querySelector('.mistake').play();
                     document.querySelector('.drop:first-child').style.borderColor = 'red';
@@ -37,8 +36,7 @@ window.addEventListener("DOMContentLoaded", function () {
         }
 
     });
- 
-  
+   
 
     function processing (str) {
         if (str.includes('+')) {
@@ -55,20 +53,15 @@ window.addEventListener("DOMContentLoaded", function () {
 
     let y = 0;
     let waves = document.querySelector('.waves');
-
-    requestAnimationFrame(move);
+    let requestId = requestAnimationFrame(move);
 
     function move() {
         y += 0.3;
         waves.style.backgroundPosition = y + "px " + "0px";        
-        requestAnimationFrame(move);
+        requestId = requestAnimationFrame(move);
     }
 
    
     
 });
 
-
-// window.onload = function () {
-//     document.querySelector('.melody').play();
-// }
