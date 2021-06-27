@@ -17,7 +17,7 @@ body {
 .section-game {
   flex: 1;
   max-width: 70%;
-  background-color: rgb(193, 255, 136);
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -95,8 +95,7 @@ body {
 
 .space {
   flex: 1;
-  max-height: 90%;
-  background-color: rgb(146, 182, 206);
+  max-height: 95%;
 }
 
 .sea {
@@ -119,7 +118,7 @@ body {
 
 span {
   position: relative;
-  top: 55%;
+  top: 60%;
   font-size: 3vw;
 }
 
@@ -169,13 +168,96 @@ span {
 }
 
 .drop:first-child {
-  border: 1px solid rgb(145, 255, 0);  
+  border: 1px solid rgb(145, 255, 0);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(80, 80, 80, 0.7);
+}
+
+.modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgb(111, 199, 206);
+  color: rgb(168, 78, 14);
+  left: 25%;
+  position: relative;
+  top: 25%;
+  width: 40vw;
+  height: 25vw;
+  border-radius: 1rem;
+  box-shadow: 0 0 13px #001547;
+  font-size: 5vw;
+}
+
+.btn__modal {
+  min-height: 3.5vw;
+  min-width: 10vw;
+  font-size: 2vw;
+  color: violet;
+  border-color: #6fbcce;
+  box-shadow: 0 0 13px #002d96;
+}
+
+.waves {
+  width: 69.4vw;
+  height: 98vh;
+  position: absolute;
+  background-image: url(./src/assets/img/clouds.jpg);
+  background-size: 171vh;
+  background-repeat: repeat;
+  box-shadow: 0px 0px 20px #0c121b;
+  overflow: hidden;
+  flex-direction: column;
+  justify-content: flex-end;
+  display: flex;
+}
+
+.wave1,
+.wave2 {
+  position: absolute;
+  width: 300vw;
+  height: 300vw;
+}
+.wave1 {
+  left: -100vw;
+  top: 100%;
+  background-color: #a0e9ff;
+  border-radius: 136vw;
+  animation: wave 10s linear infinite;
+}
+.wave2 {
+  left: -140vw;
+  top: 99%;
+  background-color: #57d0ff;
+  border-radius: 135vw;
+  animation: wave 8s linear infinite;
+}
+
+.stone {
+  height: 18vh;
+  background-size: contain;
+  background-image: url(./src/assets/img/stone.png);
+  background-repeat: no-repeat;
+}
+
+@keyframes wave {
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media screen and (max-width: 1000px) {
   span {
-    top: 50%;
-    font-size: 4vw;
+    top: 57%;
+    font-size: 3vw;
   }
 
   .button {
@@ -204,8 +286,8 @@ span {
 
 @media screen and (max-width: 655px) {
   span {
-    top: 45%;
-    font-size: 5vw;
+    top: 55%;
+    font-size: 3vw;
   }
 
   .score {

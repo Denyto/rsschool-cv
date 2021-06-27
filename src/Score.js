@@ -23,5 +23,8 @@ export class Score {
     minus () {
         this.score.innerHTML = `Score: ${this.number -= 10}`
     }
+
+    show () {
+      return this.number;
+    }
 }
-0

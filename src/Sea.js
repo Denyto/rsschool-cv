@@ -7,17 +7,20 @@ export class Sea {
 
     create() {
         this.sea = this.createDomNode(this.sea, 'div', 'sea');        
-        this.sea.style.maxHeight = 10 + '%';
+        this.sea.style.maxHeight = 8 + '%';
         return this.sea;
     }
 
     riseLevel() {
-        this.sea.style.maxHeight = parseInt(window.getComputedStyle(document.querySelector('.sea')).maxHeight) + 7 + '%';
+        this.sea.style.maxHeight = parseInt(window.getComputedStyle(document.querySelector('.sea')).maxHeight) + 10 + '%';
+   
     }
 
     default () {
-        this.sea.style.maxHeight = 10 + '%';
+        this.sea.style.maxHeight = 8 + '%';
     }
+
+  
 
 }
 

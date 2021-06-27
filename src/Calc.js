@@ -1,14 +1,14 @@
 import { createDomNodeMixin } from "./Utils";
 
 export class Calculator {
-    constructor () {     
+    constructor() {
         this.calculator = null;
         this.screen = null;
         this.calc = null;
         this.input = null;
     }
 
-    create () {
+    create() {
         this.calculator = this.createDomNode(this.calculator, 'div', 'calculator');
         this.screen = this.createDomNode(this.screen, 'div', 'screen');
         this.calc = this.createDomNode(this.calc, 'div', 'calc');
@@ -19,10 +19,9 @@ export class Calculator {
         this.input.type = "text";
         this.input.disabled = "disabled";
         this.appendCalcElements();
-   
     }
 
-    createButtons () {
+    createButtons() {
         const fragment = document.createDocumentFragment();
         const btnLayout = [
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "DEL", "CLR",
@@ -55,14 +54,6 @@ export class Calculator {
 
                     btnElement.classList.add("enter");
                     btnElement.innerHTML = key;
-                    // btnElement.addEventListener("click", () => {
-                    //     if (this.input.value !== '') {
-                    //         let result = +this.input.value;
-                    //         console.log(+document.querySelector('.drop:first-child').innerText === result);
-                    //         console.log(+document.querySelector('.drop:first-child').innerText);
-                    //     }
-                    // });
-
                     break;
 
                 default:
@@ -82,14 +73,14 @@ export class Calculator {
         return fragment;
     }
 
-    appendCalcElements () {
+    appendCalcElements() {
         this.calculator.append(this.screen);
         this.calculator.append(this.calc);
         this.screen.append(this.input);
         document.querySelector('.section-calc').append(this.calculator);
     }
 
-    default () {
+    default() {
         this.input.value = '';
     }
 }

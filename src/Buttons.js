@@ -7,8 +7,8 @@ export class Buttons {
         this.buttonDemo = null;
     }
 
-    create () {
-        this.buttons = this.createDomNode(this.buttons, 'div', 'buttons'); 
+    create() {
+        this.buttons = this.createDomNode(this.buttons, 'div', 'buttons');
         this.buttonGame = this.createDomNode(this.buttonGame, "button", "button", "button__startstop");
         this.buttons.append(this.buttonGame);
         this.buttonDemo = this.createDomNode(this.buttonDemo, "button", "button", "button__demo");
@@ -33,6 +33,13 @@ export class Buttons {
     toggleDemo() {
         this.buttonDemo.classList.toggle('button__demo_active');
     }
+
+    default() {
+        this.buttonDemo.classList.remove('button__demo_active');
+        this.buttonGame.classList.remove('button__startstop_active');
+        this.buttonDemo.classList.remove('button__demo_hidden');
+    }
+
 }
 
 Object.assign(Buttons.prototype, createDomNodeMixin);
