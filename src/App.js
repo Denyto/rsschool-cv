@@ -21,24 +21,25 @@ export class App {
         this.wrapper = new Wrapper().create();
         this.sectionGame = new Sectiongame().create();
         this.sectionCalc = new Sectioncalc().create();
-        this.space = new Space().create();
+        this.spaceApp = new Space();
         this.scoreApp = new Score();
         this.calculatorApp = new Calculator();
         this.buttonsApp = new Buttons();
         this.dropApp = new Drop();
         this.seaApp = new Sea();
-        this.toggle = true;
+        this.togglestart = true;
         this.tick = 3000;
         this.waves = new Waves();
-        this.speedtick = 50;
-        this.bonus = false;
+        this.speedtick = 30;
+        this.toggledemo = true;
+        this.counterdrop = 1;        
     }
 
     init() {
         this.raindropsApp.prepend(this.wrapper);
         this.wrapper.prepend(this.sectionCalc);
         this.wrapper.prepend(this.sectionGame);
-        this.sectionGame.prepend(this.space);
+        this.sectionGame.prepend(this.spaceApp.create());
         this.sectionGame.append(this.seaApp.create());
         document.body.prepend(this.raindropsApp);
         this.scoreApp.create();
@@ -48,34 +49,46 @@ export class App {
     }
 
     start() {
-        if (this.toggle) {
+        if (this.togglestart) {
             this.calculatorApp.default();
-            this.toggle = false;
+            this.togglestart = false;
+            this.timeId = setInterval(() => {
+                if (this.counterdrop % 5 === 0) {
+                    this.createDrobs().create(() => { this.mistake() }, () => { this.gameover() }, this.speed(), this.expressionBonus(), true);
+                    this.counterdrop++;
+                } else {
+                    this.counterdrop++;
+                    this.createDrobs().create(() => { this.mistake() }, () => { this.gameover() }, this.speed(), this.expression(), '');
+                }
 
-
-            this.timeId = setInterval(() => {              
-                    this.createDrobs().create(() => { this.mistake() }, () => { this.gameover() }, this.speed(), this.expression());
             }, this.tick);
-
-
-
         } else {
             this.stop();
         }
     }
+
+    demo() {
+        if (this.toggledemo) {
+            console.log('demostart');
+            this.start();
+            this.toggledemo = false;
+        } else {
+            console.log('demostop');
+            this.stop();
+            this.toggledemo = true;
+        }
+    }
+
 
     createDrobs() {
         this.dropApp = new Drop();
         return this.dropApp;
     }
 
-    result() {
-        this.scoreApp.add();
-        this.calculatorApp.default();
-    }
-
-    calcDefault() {
-        this.calculatorApp.default();
+    calc(e) {
+        if (!this.togglestart) {
+            this.calculatorApp.calculation(e, () => this.scoreApp.add(), () => this.scoreApp.addBonus());
+        }
     }
 
     speed() {
@@ -98,7 +111,7 @@ export class App {
         this.scoreApp.default();
         this.seaApp.default();
         this.dropApp.default();
-        this.toggle = true;        
+        this.togglestart = true;
     }
 
     mistake() {
@@ -120,13 +133,33 @@ export class App {
             this.buttonsApp.default();
             new Modal(this.scoreApp.show()).create();
             this.scoreApp.default();
-            this.toggle = true;
+            this.togglestart = true;
         }, 100);
     }
 
     expression() {
-        console.log();
-        return new Expression().create();
+        let exp = new Expression().create();
+        return exp;
+    }
+
+    expressionBonus() {
+        let expbonus = new Expression().createBonus();
+        return expbonus;
+    }
+
+    processing(str) {
+        if (str.includes('+')) {
+            return +str.split('+')[0] + +str.split('+')[1];
+        }
+        if (str.includes('-')) {
+            return +str.split('-')[0] - +str.split('-')[1];
+        }
+        if (str.includes('×')) {
+            return +str.split('×')[0] * +str.split('×')[1];
+        }
+        if(str.includes('÷')) {
+            return +str.split('÷')[0] / +str.split('÷')[1];
+        }
     }
 
 }

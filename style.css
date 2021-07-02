@@ -116,10 +116,25 @@ body {
   background-size: 15vw;
 }
 
+.drop-bonus {
+  background-image: url(./src/assets/img/sun.png);
+  background-size: 115%;
+  width: 12.8vw;
+  height: 12.8vw;
+  animation: scale 1s ease-in-out infinite;
+}
+
 span {
   position: relative;
   top: 60%;
   font-size: 3vw;
+}
+
+.span-bonus {
+  color: rgb(20, 55, 255);
+  top: 30%;
+  font-size: 4.5vw;
+  
 }
 
 .button {
@@ -165,10 +180,6 @@ span {
 
 .button__demo_hidden {
   display: none;
-}
-
-.drop:first-child {
-  border: 1px solid rgb(145, 255, 0);
 }
 
 .overlay {
@@ -247,6 +258,13 @@ span {
   background-image: url(./src/assets/img/stone.png);
   background-repeat: no-repeat;
 }
+
+@keyframes scale {   
+    10% { transform: scale(0.9); }   
+    110% { transform: none; } 
+  
+}
+
 
 @keyframes wave {
   100% {

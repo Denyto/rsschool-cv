@@ -35,37 +35,16 @@ export class Calculator {
             switch (key) {
                 case "DEL":
                     btnElement.innerHTML = key;
-                    btnElement.addEventListener("click", () => {
-                        this.input.value.length === 1 ? this.input.value = '' : this.input.value = this.input.value.slice(0, this.input.value.length - 1);
-                    });
-
                     break;
-
                 case "CLR":
-
                     btnElement.innerHTML = key;
-                    btnElement.addEventListener("click", () => {
-                        this.input.value = '';
-                    });
-
                     break;
-
                 case "Enter":
-
                     btnElement.classList.add("enter");
                     btnElement.innerHTML = key;
                     break;
-
                 default:
-
                     btnElement.textContent = key;
-                    btnElement.addEventListener("click", () => {
-                        if (this.input.value === '' || this.input.value === '0') {
-                            this.input.value = key;
-                        } else {
-                            this.input.value += key;
-                        }
-                    });
                     break;
             }
             fragment.append(btnElement);
@@ -83,6 +62,53 @@ export class Calculator {
     default() {
         this.input.value = '';
     }
+
+    calculation(e, callback, callback2) {
+        switch (e.target.innerText) {
+            case "DEL":
+                this.input.value.length === 1 ? this.input.value = '' : this.input.value = this.input.value.slice(0, this.input.value.length - 1);
+                break;
+            case "CLR":
+                this.input.value = '';
+                break;
+            case "Enter":
+                if (this.input.value !== '') {
+                    let result2 = +this.input.value;
+                    let arr = document.querySelectorAll('.drop');
+                    let arr2 = [];
+                    arr.forEach(item => arr2.push(+item.getAttribute('data-result')));
+
+                    if (arr2.includes(result2)) {
+                        if (document.querySelector(`.drop[data-result="${result2}"]`).getAttribute('data-bonus')) {                    
+                            document.querySelectorAll('.drop').forEach(item => item.remove());
+                            document.querySelector('.bonus').play();
+                            callback2();
+                            this.default();
+                        } else {
+                            document.querySelector(`.drop[data-result="${result2}"]`).remove();
+                            document.querySelector('.ok').play();
+                            callback();
+                            this.default();
+                        }
+
+                    } else {
+                        this.default();
+                        document.querySelector('.mistake').play();
+                    }
+
+                }
+                break;
+            default:
+                if (this.input.value === '' || this.input.value === '0') {
+                    this.input.value = e.target.innerText;
+                } else {
+                    this.input.value += e.target.innerText;
+                }
+                break;
+        }
+    }
+
+
 }
 
 Object.assign(Calculator.prototype, createDomNodeMixin);

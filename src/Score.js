@@ -20,6 +20,10 @@ export class Score {
         this.score.innerHTML = `Score: ${this.number += 10}`
     }
 
+    addBonus() {
+        this.score.innerHTML = `Score: ${this.number += 50}`
+    }
+
     minus () {
         this.score.innerHTML = `Score: ${this.number -= 10}`
     }

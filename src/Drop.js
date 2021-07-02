@@ -2,7 +2,7 @@ import { createDomNodeMixin } from "./Utils";
 
 export class Drop {
 
-    constructor() {       
+    constructor() {
         this.drop = null;
         this.space = null;
         this.span = null;
@@ -10,16 +10,34 @@ export class Drop {
         this.timeId;
         this.droplevel = 1;
         this.sealevel;
+
+
     }
 
-    create(mistake, gameover, speed, expression) {
-        this.drop = this.createDomNode(this.drop, 'div', 'drop');
-        this.drop.style.left = Math.round(62 * Math.random()) + 'vw';
-        this.span = document.createElement('span');
-        this.span.innerHTML = expression;
-        this.drop.prepend(this.span);
-        document.querySelector('.space').append(this.drop);
-        this.move(mistake, gameover, speed);
+    create(mistake, gameover, speed, expression, isbonusdrop) {
+        if (isbonusdrop) {
+            this.drop = this.createDomNode(this.drop, 'div', 'drop', 'drop-bonus');
+            this.drop.style.left = Math.round(62 * Math.random()) + 'vw';
+            this.span = document.createElement('span');
+            this.span.classList.add('span-bonus');
+            this.span.innerHTML = expression;
+            this.drop.setAttribute('data-result', this.processing(expression));
+            this.drop.setAttribute('data-bonus', isbonusdrop);
+            this.drop.prepend(this.span);
+            document.querySelector('.space').append(this.drop);
+            this.move(mistake, gameover, speed);
+        } else {
+            this.drop = this.createDomNode(this.drop, 'div', 'drop');
+            this.drop.style.left = Math.round(62 * Math.random()) + 'vw';
+            this.span = document.createElement('span');
+            this.span.innerHTML = expression;
+            this.drop.setAttribute('data-result', this.processing(expression));
+            this.drop.setAttribute('data-bonus', isbonusdrop);
+            this.drop.prepend(this.span);
+            document.querySelector('.space').append(this.drop);
+            this.move(mistake, gameover, speed);
+        }
+
     }
 
     move(mistake, gameover, speed) {
@@ -53,6 +71,20 @@ export class Drop {
         });
     }
 
+    processing(str) {
+        if (str.includes('+')) {
+            return +str.split('+')[0] + +str.split('+')[1];
+        }
+        if (str.includes('-')) {
+            return +str.split('-')[0] - +str.split('-')[1];
+        }
+        if (str.includes('×')) {
+            return +str.split('×')[0] * +str.split('×')[1];
+        }
+        if (str.includes('÷')) {
+            return +str.split('÷')[0] / +str.split('÷')[1];
+        }
+    }
 
 }
 
