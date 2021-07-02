@@ -1,7 +1,7 @@
 export class Expression {
     constructor() {
-        this.num1 = Math.round(Math.random() * 10);
-        this.num2 = Math.round(Math.random() * 10);
+        this.num1 = Math.ceil(Math.random() * 10);
+        this.num2 = Math.ceil(Math.random() * 10);
         this.symbols = ['+', '-'];
         this.symbolsBonus = ['×', '÷'];
         

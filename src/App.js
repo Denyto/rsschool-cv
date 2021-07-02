@@ -30,7 +30,7 @@ export class App {
         this.togglestart = true;
         this.tick = 3000;
         this.waves = new Waves();
-        this.speedtick = 30;
+        this.speedtick = 40;
         this.toggledemo = true;
         this.counterdrop = 1;        
     }
@@ -54,7 +54,7 @@ export class App {
             this.togglestart = false;
             this.timeId = setInterval(() => {
                 if (this.counterdrop % 5 === 0) {
-                    this.createDrobs().create(() => { this.mistake() }, () => { this.gameover() }, this.speed(), this.expressionBonus(), true);
+                    this.createDrobs().create(() => { this.mistake() }, () => { this.gameover() }, 100, this.expressionBonus(), true);
                     this.counterdrop++;
                 } else {
                     this.counterdrop++;
