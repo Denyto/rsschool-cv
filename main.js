@@ -18,7 +18,10 @@ window.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector('.button__demo').addEventListener('click', () => {
-        app.demo();       
+       
+            app.demo();
+            app.calcDemo();
+               
     });
 
     let y = 0;

@@ -73,27 +73,32 @@ export class Calculator {
                 break;
             case "Enter":
                 if (this.input.value !== '') {
-                    let result2 = +this.input.value;
-                    let arr = document.querySelectorAll('.drop');
-                    let arr2 = [];
-                    arr.forEach(item => arr2.push(+item.getAttribute('data-result')));
-
-                    if (arr2.includes(result2)) {
-                        if (document.querySelector(`.drop[data-result="${result2}"]`).getAttribute('data-bonus')) {                    
-                            document.querySelectorAll('.drop').forEach(item => item.remove());
-                            document.querySelector('.bonus').play();
-                            callback2();
-                            this.default();
+                    let userresult = +this.input.value;
+                    let allscreendrobs = document.querySelectorAll('.drop');
+                    let rightresultsofdrops = [];
+                    let rightresultsofbonusdrops = [];
+                    allscreendrobs.forEach(item => {
+                        if (item.getAttribute('data-bonus')) {
+                            rightresultsofbonusdrops.push(+item.getAttribute('data-result'));
                         } else {
-                            document.querySelector(`.drop[data-result="${result2}"]`).remove();
+                            rightresultsofdrops.push(+item.getAttribute('data-result'));
+                        }
+                    });
+                    if (rightresultsofbonusdrops.includes(userresult)) {
+                        document.querySelectorAll('.drop').forEach(item => setTimeout(() => item.remove(), 100));
+                        document.querySelector('.bonus').play();
+                        callback2();
+                        this.default();
+                    } else {
+                        if (rightresultsofdrops.includes(userresult)) {
+                            setTimeout(() => document.querySelector(`.drop[data-result="${userresult}"]`).remove(), 100);
                             document.querySelector('.ok').play();
                             callback();
                             this.default();
+                        } else {
+                            this.default();
+                            document.querySelector('.mistake').play();
                         }
-
-                    } else {
-                        this.default();
-                        document.querySelector('.mistake').play();
                     }
 
                 }
@@ -106,6 +111,66 @@ export class Calculator {
                 }
                 break;
         }
+    }
+
+    calculationDemo(callback, callback2) {
+
+        let rightresultsofdropsdemo = [];
+        let rightresultsofbonusdropsdemo = [];
+        let allscreendrobsdemo = [];
+        document.querySelectorAll('.drop').forEach(item => {
+            if (item.getAttribute('data-bonus')) {
+                rightresultsofbonusdropsdemo.push(+item.getAttribute('data-result'));
+            } else {
+                rightresultsofdropsdemo.push(+item.getAttribute('data-result'));
+            }
+            allscreendrobsdemo.push(+item.getAttribute('data-result'));
+        });
+        let i = Math.round(Math.random() * (allscreendrobsdemo.length - 1));
+
+        if (!allscreendrobsdemo[i] && allscreendrobsdemo[i] !== 0) {
+            this.input.value = '';
+        } else {
+            setTimeout(() => {
+                this.input.value = allscreendrobsdemo[i];
+            }, 500);
+
+        }
+
+        setTimeout(() => {
+            if (document.querySelector(`.drop[data-result="${allscreendrobsdemo[i]}"]`)) {
+                document.querySelector(`.drop[data-result="${allscreendrobsdemo[i]}"]`).style.color = 'green';
+                document.querySelector(`.drop[data-result="${allscreendrobsdemo[i]}"]`).style.border = '3px solid';
+                setTimeout(() => {
+                    if (document.querySelector(`.drop[data-result="${allscreendrobsdemo[i]}"]`).getAttribute('data-bonus')) {
+                        setTimeout(() => {
+                            document.querySelectorAll('.drop').forEach(item => item.remove());
+                            document.querySelector('.bonus').play();
+                            callback2();
+                        }, 2000);
+
+
+                    } else {
+                        document.querySelector(`.drop[data-result="${allscreendrobsdemo[i]}"]`).remove();
+                        document.querySelector('.ok').play();
+                        this.input.value = '';
+                        callback();
+                    }
+
+                }, 1000);
+            }
+
+
+        }, 2000);
+
+
+
+
+
+
+
+
+
     }
 
 

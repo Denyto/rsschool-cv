@@ -33,7 +33,7 @@ export class Expression {
         switch (randomSymbolBonus) {
             case "÷":
                 this.num1 > this.num2 && this.num2 !== 0 ? resultBonus = `${this.num1 * this.num2}${randomSymbolBonus}${this.num2}` :
-                    resultBonus = `${this.num1 * this.num2}${randomSymbolBonus}${this.num1}`;
+                    resultBonus = `${(this.num1 + 1) * this.num2}${randomSymbolBonus}${(this.num1 + 1)}`;
                 break;           
             default:
                 resultBonus = `${this.num1}${randomSymbolBonus}${this.num2}`;

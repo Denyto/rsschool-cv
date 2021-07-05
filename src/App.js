@@ -17,6 +17,7 @@ import { Expression } from "./Exp";
 export class App {
     constructor() {
         this.timeId;
+        this.timeIdDemo;
         this.raindropsApp = new Raindrops().create();
         this.wrapper = new Wrapper().create();
         this.sectionGame = new Sectiongame().create();
@@ -28,11 +29,11 @@ export class App {
         this.dropApp = new Drop();
         this.seaApp = new Sea();
         this.togglestart = true;
+        this.toggdemo = true;
         this.tick = 3000;
         this.waves = new Waves();
         this.speedtick = 40;
-        this.toggledemo = true;
-        this.counterdrop = 1;        
+        this.counterdrop = 1;
     }
 
     init() {
@@ -49,6 +50,10 @@ export class App {
     }
 
     start() {
+        this.dropApp.default();
+        clearInterval(this.timeIdDemo);
+        this.speedtick = 40;
+        this.counterdrop = 1;       
         if (this.togglestart) {
             this.calculatorApp.default();
             this.togglestart = false;
@@ -68,14 +73,22 @@ export class App {
     }
 
     demo() {
-        if (this.toggledemo) {
-            console.log('demostart');
-            this.start();
-            this.toggledemo = false;
+        if (this.toggdemo) {
+            this.toggdemo = false;
+            this.timeIdDemo = setInterval(() => {
+
+                if (this.counterdrop % 5 === 0) {
+                    this.createDrobs().create(() => { this.mistake() }, () => { this.gameover() }, 100, this.expressionBonus(), true);
+                    this.counterdrop++;
+                } else {
+                    this.counterdrop++;
+                    this.createDrobs().create(() => { this.mistake() }, () => { this.gameover() }, this.speed(), this.expression(), '');
+                }
+                this.calcDemo();
+            }, this.tick);
         } else {
-            console.log('demostop');
             this.stop();
-            this.toggledemo = true;
+
         }
     }
 
@@ -89,6 +102,12 @@ export class App {
         if (!this.togglestart) {
             this.calculatorApp.calculation(e, () => this.scoreApp.add(), () => this.scoreApp.addBonus());
         }
+    }
+
+    calcDemo() {
+
+        this.calculatorApp.calculationDemo(() => this.scoreApp.add(), () => this.scoreApp.addBonus());
+
     }
 
     speed() {
@@ -106,12 +125,15 @@ export class App {
     stop() {
         new Modal(this.scoreApp.show()).create();
         clearInterval(this.timeId);
+        clearInterval(this.timeIdDemo);
         this.calculatorApp.default();
-        document.querySelector('.melody').pause();
         this.scoreApp.default();
         this.seaApp.default();
         this.dropApp.default();
         this.togglestart = true;
+        this.toggdemo = true;
+        this.speedtick = 40;
+        this.counterdrop = 1;
     }
 
     mistake() {
@@ -126,6 +148,7 @@ export class App {
         document.querySelector('.gameover').play();
         setTimeout(() => {
             clearInterval(this.timeId);
+            clearInterval(this.timeIdDemo);
             this.calculatorApp.default();
             this.seaApp.default();
             this.waves.default();
@@ -157,7 +180,7 @@ export class App {
         if (str.includes('×')) {
             return +str.split('×')[0] * +str.split('×')[1];
         }
-        if(str.includes('÷')) {
+        if (str.includes('÷')) {
             return +str.split('÷')[0] / +str.split('÷')[1];
         }
     }
