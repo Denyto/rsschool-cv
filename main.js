@@ -4,35 +4,35 @@ window.addEventListener("DOMContentLoaded", function () {
 
     const app = new App;
     app.init();
+    cloudsMove();
 
-    const melody = document.querySelector('.melody');
+    const melody = document.getElementById('melody');
     const calc = document.querySelector('.calc');
-    const ocean = document.querySelector('.ocean');
+    const ocean = document.getElementById('ocean');
 
     calc.addEventListener('click', (e) => app.calc(e));
 
-    document.querySelector('.button__startstop').addEventListener('click', () => {
+    document.querySelector('.button-startstop').addEventListener('click', () => {
         app.start();        
         melody.play();
         ocean.play();
     });
 
-    document.querySelector('.button__demo').addEventListener('click', () => {
-       
+    document.querySelector('.button-demo').addEventListener('click', () => {       
             app.demo();
-            app.calcDemo();
-               
+            app.calcDemo();               
     });
 
-    let y = 0;
-    let waves = document.querySelector('.waves');
-    let requestId = requestAnimationFrame(move);
+    function cloudsMove() {
+        let y = 0;
+        let waves = document.querySelector('.waves');
+        let requestId = requestAnimationFrame(move);
 
-    function move() {
-        y += 0.3;
-        waves.style.backgroundPosition = y + "px " + "0px";
-        requestId = requestAnimationFrame(move);
-    }
-
+        function move() {
+            y += 0.5;
+            waves.style.backgroundPosition = y + "px " + "0px";
+            requestId = requestAnimationFrame(move);
+        }
+    };    
 });
 

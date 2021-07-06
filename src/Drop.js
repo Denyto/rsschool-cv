@@ -10,8 +10,6 @@ export class Drop {
         this.timeId;
         this.droplevel = 1;
         this.sealevel;
-
-
     }
 
     create(mistake, gameover, speed, expression, isbonusdrop) {
@@ -37,7 +35,6 @@ export class Drop {
             document.querySelector('.space').append(this.drop);
             this.move(mistake, gameover, speed);
         }
-
     }
 
     move(mistake, gameover, speed) {
@@ -70,21 +67,7 @@ export class Drop {
             item.remove();
         });
     }
-
-    processing(str) {
-        if (str.includes('+')) {
-            return +str.split('+')[0] + +str.split('+')[1];
-        }
-        if (str.includes('-')) {
-            return +str.split('-')[0] - +str.split('-')[1];
-        }
-        if (str.includes('×')) {
-            return +str.split('×')[0] * +str.split('×')[1];
-        }
-        if (str.includes('÷')) {
-            return +str.split('÷')[0] / +str.split('÷')[1];
-        }
-    }
+    
 
 }
 

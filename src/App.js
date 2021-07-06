@@ -12,6 +12,7 @@ import { Sectioncalc } from "./Sectioncalc";
 import { Space } from "./Space";
 import { Waves } from "./Waves";
 import { Expression } from "./Exp";
+import { Fullscreen } from "./Fullscreen";
 
 
 export class App {
@@ -25,6 +26,7 @@ export class App {
         this.spaceApp = new Space();
         this.scoreApp = new Score();
         this.calculatorApp = new Calculator();
+        this.fullscreen = new Fullscreen();
         this.buttonsApp = new Buttons();
         this.dropApp = new Drop();
         this.seaApp = new Sea();
@@ -44,20 +46,22 @@ export class App {
         this.sectionGame.append(this.seaApp.create());
         document.body.prepend(this.raindropsApp);
         this.scoreApp.create();
-        this.calculatorApp.create();
+        this.calculatorApp.create();        
         this.buttonsApp.create();
+        this.fullscreen.create();
         document.querySelector('.section-game').prepend(this.waves.create());
     }
 
     start() {
-        this.dropApp.default();
         clearInterval(this.timeIdDemo);
+        this.dropApp.default();                      
         this.speedtick = 40;
-        this.counterdrop = 1;       
+        this.counterdrop = 1;     
         if (this.togglestart) {
             this.calculatorApp.default();
+            this.scoreApp.default();
             this.togglestart = false;
-            this.timeId = setInterval(() => {
+            this.timeId = setInterval(() => {               
                 if (this.counterdrop % 5 === 0) {
                     this.createDrobs().create(() => { this.mistake() }, () => { this.gameover() }, 100, this.expressionBonus(), true);
                     this.counterdrop++;
@@ -122,13 +126,14 @@ export class App {
         return this.speedtick;
     }
 
-    stop() {
+    stop() {        
         new Modal(this.scoreApp.show()).create();
         clearInterval(this.timeId);
         clearInterval(this.timeIdDemo);
         this.calculatorApp.default();
         this.scoreApp.default();
         this.seaApp.default();
+        this.waves.default();
         this.dropApp.default();
         this.togglestart = true;
         this.toggdemo = true;
@@ -137,7 +142,7 @@ export class App {
     }
 
     mistake() {
-        document.querySelector('.mistake').play();
+        document.getElementById('mistake').play();
         this.seaApp.riseLevel();
         this.waves.riseLevel();
         this.scoreApp.minus();
@@ -145,7 +150,7 @@ export class App {
     }
 
     gameover() {
-        document.querySelector('.gameover').play();
+        document.getElementById('gameover').play();
         setTimeout(() => {
             clearInterval(this.timeId);
             clearInterval(this.timeIdDemo);
@@ -157,6 +162,7 @@ export class App {
             new Modal(this.scoreApp.show()).create();
             this.scoreApp.default();
             this.togglestart = true;
+            this.toggdemo = true;
         }, 100);
     }
 
@@ -170,20 +176,6 @@ export class App {
         return expbonus;
     }
 
-    processing(str) {
-        if (str.includes('+')) {
-            return +str.split('+')[0] + +str.split('+')[1];
-        }
-        if (str.includes('-')) {
-            return +str.split('-')[0] - +str.split('-')[1];
-        }
-        if (str.includes('×')) {
-            return +str.split('×')[0] * +str.split('×')[1];
-        }
-        if (str.includes('÷')) {
-            return +str.split('÷')[0] / +str.split('÷')[1];
-        }
-    }
 
 }
 

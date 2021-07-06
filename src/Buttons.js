@@ -9,9 +9,10 @@ export class Buttons {
 
     create() {
         this.buttons = this.createDomNode(this.buttons, 'div', 'buttons');
-        this.buttonGame = this.createDomNode(this.buttonGame, "button", "button", "button__startstop");
+        this.buttonGame = this.createDomNode(this.buttonGame, "button", "button", "button-startstop");
         this.buttons.append(this.buttonGame);
-        this.buttonDemo = this.createDomNode(this.buttonDemo, "button", "button", "button__demo");
+        this.buttonDemo = this.createDomNode(this.buttonDemo, "button", "button", "button-demo");
+        //this.buttonDemo.setAttribute("disabled", true);
         this.buttons.append(this.buttonDemo);
         document.querySelector('.section-calc').append(this.buttons);
 

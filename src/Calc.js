@@ -86,18 +86,18 @@ export class Calculator {
                     });
                     if (rightresultsofbonusdrops.includes(userresult)) {
                         document.querySelectorAll('.drop').forEach(item => setTimeout(() => item.remove(), 100));
-                        document.querySelector('.bonus').play();
+                        document.getElementById('bonus').play();
                         callback2();
                         this.default();
                     } else {
                         if (rightresultsofdrops.includes(userresult)) {
                             setTimeout(() => document.querySelector(`.drop[data-result="${userresult}"]`).remove(), 100);
-                            document.querySelector('.ok').play();
+                            document.getElementById('ok').play();
                             callback();
                             this.default();
                         } else {
                             this.default();
-                            document.querySelector('.mistake').play();
+                            document.getElementById('mistake').play();
                         }
                     }
 
@@ -138,21 +138,20 @@ export class Calculator {
         }
 
         setTimeout(() => {
-            if (document.querySelector(`.drop[data-result="${allscreendrobsdemo[i]}"]`)) {
-                document.querySelector(`.drop[data-result="${allscreendrobsdemo[i]}"]`).style.color = 'green';
-                document.querySelector(`.drop[data-result="${allscreendrobsdemo[i]}"]`).style.border = '3px solid';
+            if (document.querySelector(`.drop[data-result="${allscreendrobsdemo[i]}"]`)) {                
+                document.querySelector(`.drop[data-result="${allscreendrobsdemo[i]}"]`).style.border = '3px solid yellow';
                 setTimeout(() => {
-                    if (document.querySelector(`.drop[data-result="${allscreendrobsdemo[i]}"]`).getAttribute('data-bonus')) {
+                    if (document.querySelector(`.drop[data-result="${allscreendrobsdemo[i]}"]`).getAttribute('data-bonus')) {                        
                         setTimeout(() => {
                             document.querySelectorAll('.drop').forEach(item => item.remove());
-                            document.querySelector('.bonus').play();
+                            document.getElementById('bonus').play();
                             callback2();
                         }, 2000);
 
 
                     } else {
                         document.querySelector(`.drop[data-result="${allscreendrobsdemo[i]}"]`).remove();
-                        document.querySelector('.ok').play();
+                        document.getElementById('ok').play();
                         this.input.value = '';
                         callback();
                     }
@@ -162,13 +161,6 @@ export class Calculator {
 
 
         }, 2000);
-
-
-
-
-
-
-
 
 
     }

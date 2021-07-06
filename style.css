@@ -33,9 +33,8 @@ body {
   margin-bottom: 5vh;
   border-radius: 0px 0px 50px 50px;
   text-align: center;
-  font-size: 3rem;
+  font-size: 3vw;
   background: chocolate;
-  height: 4rem;
 }
 
 .screen-input {
@@ -50,7 +49,7 @@ body {
   margin: 0 auto;
   max-width: 25vw;
   min-height: 25vw;
-  margin-bottom: 5vh;
+  margin-bottom: 1vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -134,7 +133,6 @@ span {
   color: rgb(20, 55, 255);
   top: 30%;
   font-size: 4.5vw;
-  
 }
 
 .button {
@@ -151,7 +149,7 @@ span {
   box-shadow: 0 0 8px #222222;
 }
 
-.button__startstop {
+.button-startstop {
   background-position: -17px -43px;
   background-image: url(./src/assets/img/startstop.jpg);
   background-size: 245%;
@@ -164,7 +162,7 @@ span {
   box-shadow: 0 0 8px #333333;
 }
 
-.button__demo {
+.button-demo {
   background-position: -0.9rem -0.6rem;
   background-image: url(./src/assets/img/demo.jpg);
   background-size: 115%;
@@ -259,12 +257,29 @@ span {
   background-repeat: no-repeat;
 }
 
-@keyframes scale {   
-    10% { transform: scale(0.9); }   
-    110% { transform: none; } 
-  
+.fullscreen-button {
+  position: absolute;
+  bottom: 2vh;
+  right: 1vw;  
+  height: 4vw;
+  width: 4vw;
+  background-image: url(./src/assets/img/fullscreen.png);
+  background-repeat: no-repeat;
+  background-size: 4vw;
 }
 
+.fullscreen-button:hover {
+  cursor: pointer;
+}
+
+@keyframes scale {
+  10% {
+    transform: scale(0.9);
+  }
+  110% {
+    transform: none;
+  }
+}
 
 @keyframes wave {
   100% {
@@ -286,13 +301,13 @@ span {
     background-color: rgb(111, 199, 206);
   }
 
-  .button__startstop {
+  .button-startstop {
     background-position: -19.6rem -29rem;
     background-image: url(./src/assets/img/startstop.jpg);
     background-size: 235%;
   }
 
-  .button__demo {
+  .button-demo {
     background-position: -0.6rem -0.4rem;
   }
 
