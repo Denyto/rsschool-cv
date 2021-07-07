@@ -12,7 +12,6 @@ export class Buttons {
         this.buttonGame = this.createDomNode(this.buttonGame, "button", "button", "button-startstop");
         this.buttons.append(this.buttonGame);
         this.buttonDemo = this.createDomNode(this.buttonDemo, "button", "button", "button-demo");
-        //this.buttonDemo.setAttribute("disabled", true);
         this.buttons.append(this.buttonDemo);
         document.querySelector('.section-calc').append(this.buttons);
 

@@ -17,8 +17,8 @@ import { Fullscreen } from "./Fullscreen";
 
 export class App {
     constructor() {
-        this.timeId;
-        this.timeIdDemo;
+        this.timeId = null;
+        this.timeIdDemo = null;
         this.raindropsApp = new Raindrops().create();
         this.wrapper = new Wrapper().create();
         this.sectionGame = new Sectiongame().create();
@@ -38,7 +38,7 @@ export class App {
         this.counterdrop = 1;
     }
 
-    init() {
+    initComponents() {
         this.raindropsApp.prepend(this.wrapper);
         this.wrapper.prepend(this.sectionCalc);
         this.wrapper.prepend(this.sectionGame);
@@ -52,7 +52,7 @@ export class App {
         document.querySelector('.section-game').prepend(this.waves.create());
     }
 
-    start() {
+    startGame() {
         clearInterval(this.timeIdDemo);
         this.dropApp.default();                      
         this.speedtick = 40;
@@ -63,58 +63,55 @@ export class App {
             this.togglestart = false;
             this.timeId = setInterval(() => {               
                 if (this.counterdrop % 5 === 0) {
-                    this.createDrobs().create(() => { this.mistake() }, () => { this.gameover() }, 100, this.expressionBonus(), true);
+                    this.createDrobs().create(() => { this.addMistake() }, () => { this.setGameover() }, 100, this.createExpressionBonus(), true);
                     this.counterdrop++;
                 } else {
                     this.counterdrop++;
-                    this.createDrobs().create(() => { this.mistake() }, () => { this.gameover() }, this.speed(), this.expression(), '');
+                    this.createDrobs().create(() => { this.addMistake() }, () => { this.setGameover() }, this.setSpeedDrop(), this.createExpression(), '');
                 }
 
             }, this.tick);
         } else {
-            this.stop();
+            this.stopGame();
         }
     }
 
-    demo() {
+    setDemoMode() {
         if (this.toggdemo) {
             this.toggdemo = false;
             this.timeIdDemo = setInterval(() => {
 
                 if (this.counterdrop % 5 === 0) {
-                    this.createDrobs().create(() => { this.mistake() }, () => { this.gameover() }, 100, this.expressionBonus(), true);
+                    this.createDrobs().create(() => { this.addMistake() }, () => { this.setGameover() }, 100, this.createExpressionBonus(), true);
                     this.counterdrop++;
                 } else {
                     this.counterdrop++;
-                    this.createDrobs().create(() => { this.mistake() }, () => { this.gameover() }, this.speed(), this.expression(), '');
+                    this.createDrobs().create(() => { this.addMistake() }, () => { this.setGameover() }, this.setSpeedDrop(), this.createExpression(), '');
                 }
-                this.calcDemo();
+                this.calculationDemo();
             }, this.tick);
         } else {
-            this.stop();
+            this.stopGame();
 
         }
     }
-
 
     createDrobs() {
         this.dropApp = new Drop();
         return this.dropApp;
     }
 
-    calc(e) {
+    calculationGame(e) {
         if (!this.togglestart) {
             this.calculatorApp.calculation(e, () => this.scoreApp.add(), () => this.scoreApp.addBonus());
         }
     }
 
-    calcDemo() {
-
+    calculationDemo() {
         this.calculatorApp.calculationDemo(() => this.scoreApp.add(), () => this.scoreApp.addBonus());
-
     }
 
-    speed() {
+    setSpeedDrop() {
         if (this.scoreApp.show() > 100) {
             this.speedtick -= 0.3;
             return this.speedtick;
@@ -126,7 +123,7 @@ export class App {
         return this.speedtick;
     }
 
-    stop() {        
+    stopGame() {        
         new Modal(this.scoreApp.show()).create();
         clearInterval(this.timeId);
         clearInterval(this.timeIdDemo);
@@ -141,7 +138,7 @@ export class App {
         this.counterdrop = 1;
     }
 
-    mistake() {
+    addMistake() {
         document.getElementById('mistake').play();
         this.seaApp.riseLevel();
         this.waves.riseLevel();
@@ -149,7 +146,7 @@ export class App {
         this.calculatorApp.default();
     }
 
-    gameover() {
+    setGameover() {
         document.getElementById('gameover').play();
         setTimeout(() => {
             clearInterval(this.timeId);
@@ -166,12 +163,12 @@ export class App {
         }, 100);
     }
 
-    expression() {
+    createExpression() {
         let exp = new Expression().create();
         return exp;
     }
 
-    expressionBonus() {
+    createExpressionBonus() {
         let expbonus = new Expression().createBonus();
         return expbonus;
     }

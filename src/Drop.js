@@ -23,7 +23,7 @@ export class Drop {
             this.drop.setAttribute('data-bonus', isbonusdrop);
             this.drop.prepend(this.span);
             document.querySelector('.space').append(this.drop);
-            this.move(mistake, gameover, speed);
+            this.moveDrop(mistake, gameover, speed);
         } else {
             this.drop = this.createDomNode(this.drop, 'div', 'drop');
             this.drop.style.left = Math.round(62 * Math.random()) + 'vw';
@@ -33,11 +33,11 @@ export class Drop {
             this.drop.setAttribute('data-bonus', isbonusdrop);
             this.drop.prepend(this.span);
             document.querySelector('.space').append(this.drop);
-            this.move(mistake, gameover, speed);
+            this.moveDrop(mistake, gameover, speed);
         }
     }
 
-    move(mistake, gameover, speed) {
+    moveDrop(mistake, gameover, speed) {
 
         this.timeId = setInterval(() => {
             this.sealevel = document.querySelector('.sea').getBoundingClientRect().top + pageYOffset;
