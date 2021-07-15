@@ -113,6 +113,7 @@ body {
   background: url(./src/assets/img/drop.png) no-repeat;
   background-position: center center;
   background-size: 15vw;
+  border: 3px solid rgba(80, 80, 80, 0.0);
 }
 
 .drop-bonus {
@@ -203,7 +204,7 @@ span {
   height: 25vw;
   border-radius: 1rem;
   box-shadow: 0 0 13px #001547;
-  font-size: 5vw;
+  font-size: 4vw;
 }
 
 .btn__modal {
@@ -251,7 +252,7 @@ span {
 }
 
 .stone {
-  height: 18vh;
+  height: 18vw;
   background-size: contain;
   background-image: url(./src/assets/img/stone.png);
   background-repeat: no-repeat;

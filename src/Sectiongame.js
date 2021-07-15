@@ -1,14 +1,18 @@
-import { createDomNodeMixin } from "./Utils";
+import { createDomNodeMixin } from './Utils';
 
 export class Sectiongame {
-    constructor() {
-        this.sectionGame = null;
-    }
+  constructor() {
+    this.sectionGame = null;
+  }
 
-    create() {
-        this.sectionGame = this.createDomNode(this.sectionGame, 'section', 'section-game');
-        return this.sectionGame;
-    }
+  create() {
+    this.sectionGame = this.createDomNode(
+      this.sectionGame,
+      'section',
+      'section-game',
+    );
+    return this.sectionGame;
+  }
 }
 
 Object.assign(Sectiongame.prototype, createDomNodeMixin);

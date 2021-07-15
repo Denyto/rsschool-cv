@@ -1,34 +1,42 @@
 export class Score {
-    constructor() {        
-        this.number = 0;
-        this.score = null;
-    }
+  constructor() {
+    this.number = 0;
+    this.countCorrectAnswer = 0;
+    this.score = null;
+  }
 
-    create () {        
-        this.score = document.createElement('div');
-        this.score.classList.add('score');
-        this.score.innerHTML = `Score: ${this.number}`
-        document.querySelector('.section-calc').append(this.score);
-    }
+  create() {
+    this.score = document.createElement('div');
+    this.score.classList.add('score');
+    this.score.innerHTML = `Score: ${this.number}`;
+    document.querySelector('.section-calc').append(this.score);
+  }
 
-    default () {
-        this.number = 0;
-        this.score.innerHTML = `Score: ${this.number}`
-    }
+  default() {
+    this.number = 0;
+    this.countCorrectAnswer = 0;
+    this.score.innerHTML = `Score: ${this.number}`;
+  }
 
-    add () {
-        this.score.innerHTML = `Score: ${this.number += 10}`
-    }
+  add() {
+    this.score.innerHTML = `Score: ${(this.number += 10)}`;
+    this.countCorrectAnswer += 1;
+  }
 
-    addBonus() {
-        this.score.innerHTML = `Score: ${this.number += 50}`
-    }
+  addBonus() {
+    this.score.innerHTML = `Score: ${(this.number += 50)}`;
+    this.countCorrectAnswer += 1;
+  }
 
-    minus () {
-        this.score.innerHTML = `Score: ${this.number -= 10}`
-    }
+  minus() {
+    this.score.innerHTML = `Score: ${(this.number -= 10)}`;
+  }
 
-    show () {
-      return this.number;
-    }
+  show() {
+    return this.number;
+  }
+
+  showCountCorrectAnswer() {
+    return this.countCorrectAnswer;
+  }
 }
