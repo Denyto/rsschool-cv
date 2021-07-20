@@ -12,15 +12,12 @@ export class Drop {
   }
 
   create(playMistake, setGameover, speed, expression, isBonusDrop) {
+    this.createDrop(expression, isBonusDrop);
     if (isBonusDrop) {
-      this.createDrop(expression, isBonusDrop);
       this.span.classList.add('span-bonus');
       this.drop.classList.add('drop-bonus');
-      this.moveDrop(playMistake, setGameover, speed);
-    } else {
-      this.createDrop(expression, isBonusDrop);
-      this.moveDrop(playMistake, setGameover, speed);
     }
+    this.moveDrop(playMistake, setGameover, speed);
   }
 
   moveDrop(playMistake, setGameover, speed) {

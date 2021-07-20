@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('keydown', (e) => app.calculationGame(e));
   window.addEventListener('keydown', (e) => {
     if (e.code === 'Escape' && !melody.paused) {
-      app.stopGame();
+      app.setDefaultGame();
       melody.pause();
       melody.currentTime = 0;
     }
@@ -36,10 +36,9 @@ window.addEventListener('DOMContentLoaded', () => {
   document.querySelector('.button-demo').addEventListener('click', () => {
     checkPlaying();
     app.setDemoMode(() => checkPlaying());
-    app.calculationDemo();
   });
 
-  function cloudsMove() {
+  function moveClouds() {
     let y = 0;
     const waves = document.querySelector('.waves');
 
@@ -51,5 +50,5 @@ window.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(move);
   }
 
-  cloudsMove();
+  moveClouds();
 });

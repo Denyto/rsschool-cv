@@ -4,9 +4,16 @@ export class Expression {
   }
 
   create() {
-    const num1 = Math.ceil(Math.random() * 10);
-    const num2 = Math.ceil(Math.random() * 10);
     const randomSymbol = this.symbols[Math.round(Math.random())];
-    return { num1, randomSymbol, num2 };
+    return {
+      num1: this.getRandomNum(),
+      randomSymbol,
+      num2: this.getRandomNum(),
+    };
+  }
+
+  // eslint-disable-next-line class-methods-use-this
+  getRandomNum() {
+    return Math.ceil(Math.random() * 10);
   }
 }

@@ -61,38 +61,11 @@ export class App {
       this.toggleStart = false;
       this.counterdrop = 1;
       this.timeId = setInterval(() => {
-        if (this.counterdrop % 5 === 0) {
-          this.createDrobs().create(
-            () => {
-              this.addMistake();
-            },
-            () => {
-              this.setGameover();
-            },
-            100,
-            this.createExpression(['×', '÷']),
-            true,
-          );
-          this.counterdrop += 1;
-        } else {
-          this.counterdrop += 1;
-          this.createDrobs().create(
-            () => {
-              this.addMistake();
-            },
-            () => {
-              this.setGameover();
-              stopMelody();
-            },
-            this.setSpeedDrop(),
-            this.createExpression(['+', '-']),
-            '',
-          );
-        }
+        this.selectDrop(stopMelody);
       }, this.tick);
     } else {
       stopMelody();
-      this.stopGame();
+      this.setDefaultGame();
     }
   }
 
@@ -100,38 +73,41 @@ export class App {
     if (this.toggDemo) {
       this.toggDemo = false;
       this.timeIdDemo = setInterval(() => {
-        if (this.counterdrop % 5 === 0) {
-          this.createDrobs().create(
-            () => {
-              this.addMistake();
-            },
-            () => {
-              this.setGameover();
-            },
-            100,
-            this.createExpression(['×', '÷']),
-            true,
-          );
-          this.counterdrop += 1;
-        } else {
-          this.counterdrop += 1;
-          this.createDrobs().create(
-            () => {
-              this.addMistake();
-            },
-            () => {
-              this.setGameover();
-              stopMelody();
-            },
-            this.setSpeedDrop(),
-            this.createExpression(['+', '-']),
-            '',
-          );
-        }
+        this.selectDrop(stopMelody);
         this.calculationDemo();
       }, this.tick);
     } else {
-      this.stopGame();
+      this.setDefaultGame();
+    }
+  }
+
+  selectDrop(stopMelody) {
+    this.counterdrop += 1;
+    if (this.counterdrop % 5 === 0) {
+      this.createDrobs().create(
+        () => {
+          this.addMistake();
+        },
+        () => {
+          this.setGameover();
+        },
+        100,
+        this.createExpression(['×', '÷']),
+        true,
+      );
+    } else {
+      this.createDrobs().create(
+        () => {
+          this.addMistake();
+        },
+        () => {
+          this.setGameover();
+          stopMelody();
+        },
+        this.setSpeedDrop(),
+        this.createExpression(['+', '-']),
+        '',
+      );
     }
   }
 
@@ -142,34 +118,44 @@ export class App {
 
   calculationGame(e) {
     if (!this.toggleStart) {
-      this.calculatorApp.calculation(
-        e,
+      this.calculatorApp.calculate(
         () => this.scoreApp.add(),
         () => this.scoreApp.addBonus(),
+        e,
       );
     }
   }
 
   calculationDemo() {
-    this.calculatorApp.calculationDemo(
+    this.calculatorApp.calculate(
       () => this.scoreApp.add(),
       () => this.scoreApp.addBonus(),
     );
   }
 
   setSpeedDrop() {
-    if (this.scoreApp.show() > 100) {
-      this.speedTick -= 0.3;
-      return this.speedTick;
-    }
-    if (this.scoreApp.show() > 50) {
-      this.speedTick -= 0.1;
-      return this.speedTick;
-    }
+    const score = this.scoreApp.show();
+    if (score <= 50) return this.speedTick;
+    this.speedTick -= score > 100 ? 0.3 : 0.1;
     return this.speedTick;
   }
 
-  stopGame() {
+  addMistake() {
+    document.getElementById('mistake').play();
+    this.seaApp.riseLevel();
+    this.waves.riseLevel();
+    this.scoreApp.minus();
+    this.calculatorApp.default();
+  }
+
+  setGameover() {
+    document.getElementById('gameover').play();
+    setTimeout(() => {
+      this.setDefaultGame();
+    }, 100);
+  }
+
+  setDefaultGame() {
     new Modal(
       this.scoreApp.show(),
       this.scoreApp.showCountCorrectAnswer(),
@@ -187,35 +173,6 @@ export class App {
     this.toggDemo = true;
     this.speedTick = 40;
     this.counterdrop = 1;
-  }
-
-  addMistake() {
-    document.getElementById('mistake').play();
-    this.seaApp.riseLevel();
-    this.waves.riseLevel();
-    this.scoreApp.minus();
-    this.calculatorApp.default();
-  }
-
-  setGameover() {
-    document.getElementById('gameover').play();
-    setTimeout(() => {
-      clearInterval(this.timeId);
-      clearInterval(this.timeIdDemo);
-      this.calculatorApp.default();
-      this.seaApp.default();
-      this.waves.default();
-      this.dropApp.default();
-      this.buttonsApp.default();
-      new Modal(
-        this.scoreApp.show(),
-        this.scoreApp.showCountCorrectAnswer(),
-        this.counterdrop - 1,
-      ).create();
-      this.scoreApp.default();
-      this.toggleStart = true;
-      this.toggDemo = true;
-    }, 100);
   }
 
   // eslint-disable-next-line class-methods-use-this
