@@ -3,6 +3,7 @@ export class Score {
     this.number = 0;
     this.countCorrectAnswer = 0;
     this.score = null;
+    this.additionalPoints = 0;
   }
 
   create() {
@@ -15,12 +16,15 @@ export class Score {
   default() {
     this.number = 0;
     this.countCorrectAnswer = 0;
+    this.additionalPoints = 0;
     this.score.innerHTML = `Score: ${this.number}`;
   }
 
   add() {
-    this.score.innerHTML = `Score: ${(this.number += 10)}`;
+    this.score.innerHTML = `Score: ${(this.number
+      += 10 + this.additionalPoints)}`;
     this.countCorrectAnswer += 1;
+    this.additionalPoints += 1;
   }
 
   addBonus() {
@@ -38,5 +42,9 @@ export class Score {
 
   showCountCorrectAnswer() {
     return this.countCorrectAnswer;
+  }
+
+  resetAdditionalPoints() {
+    this.additionalPoints = 0;
   }
 }

@@ -76,7 +76,7 @@ export class Calculator {
     this.input.value = '';
   }
 
-  calculate(scoreAdd, scoreAddBonus, e) {
+  calculate(scoreAdd, scoreAddBonus, e, resetAdditionalPoints) {
     if (!e) {
       const allScreenDrobsDemo = [];
       document.querySelectorAll('.drop').forEach((item) => {
@@ -93,7 +93,9 @@ export class Calculator {
 
       setTimeout(() => {
         if (
-          document.querySelector(`.drop[data-result="${allScreenDrobsDemo[i]}"]`)
+          document.querySelector(
+            `.drop[data-result="${allScreenDrobsDemo[i]}"]`,
+          )
         ) {
           document.querySelector(
             `.drop[data-result="${allScreenDrobsDemo[i]}"]`,
@@ -125,7 +127,8 @@ export class Calculator {
     } else {
       let key;
       if (e.type === 'keydown') {
-        key = (e.keyCode > 47 && e.keyCode < 58) || (e.keyCode > 95 && e.keyCode < 106)
+        key = (e.keyCode > 47 && e.keyCode < 58)
+          || (e.keyCode > 95 && e.keyCode < 106)
           ? e.key
           : e.code === 'Enter'
             ? e.code
@@ -147,7 +150,10 @@ export class Calculator {
           if (this.input.value.length === 1) {
             this.input.value = '';
           } else {
-            this.input.value = this.input.value.slice(0, this.input.value.length - 1);
+            this.input.value = this.input.value.slice(
+              0,
+              this.input.value.length - 1,
+            );
           }
           break;
         case 'CLR':
@@ -186,6 +192,7 @@ export class Calculator {
             } else {
               this.default();
               document.getElementById('mistake').play();
+              resetAdditionalPoints();
             }
           }
           break;

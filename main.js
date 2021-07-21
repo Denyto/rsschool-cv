@@ -8,8 +8,8 @@ window.addEventListener('DOMContentLoaded', () => {
   const ocean = document.getElementById('ocean');
 
   calc.addEventListener('click', (e) => app.calculationGame(e));
-  window.addEventListener('keydown', (e) => app.calculationGame(e));
   window.addEventListener('keydown', (e) => {
+    app.calculationGame(e);
     if (e.code === 'Escape' && !melody.paused) {
       app.setDefaultGame();
       melody.pause();
@@ -38,17 +38,14 @@ window.addEventListener('DOMContentLoaded', () => {
     app.setDemoMode(() => checkPlaying());
   });
 
-  function moveClouds() {
+  const moveClouds = () => {
     let y = 0;
     const waves = document.querySelector('.waves');
-
-    function move() {
+    return function move() {
       y += 0.5;
       waves.style.backgroundPosition = `${y}px 0px`;
       requestAnimationFrame(move);
-    }
-    requestAnimationFrame(move);
-  }
-
-  moveClouds();
+    };
+  };
+  moveClouds()();
 });

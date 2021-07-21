@@ -113,7 +113,7 @@ body {
   background: url(./src/assets/img/drop.png) no-repeat;
   background-position: center center;
   background-size: 15vw;
-  border: 3px solid rgba(80, 80, 80, 0.0);
+  border: 3px solid rgba(80, 80, 80, 0);
 }
 
 .drop-bonus {
@@ -261,7 +261,7 @@ span {
 .fullscreen-button {
   position: absolute;
   bottom: 2vh;
-  right: 1vw;  
+  right: 1vw;
   height: 4vw;
   width: 4vw;
   background-image: url(./src/assets/img/fullscreen.png);
@@ -294,6 +294,10 @@ span {
     font-size: 3vw;
   }
 
+  .waves {
+    width: 69vw;
+  }
+
   .button {
     width: 8rem;
     height: 8rem;
@@ -322,6 +326,10 @@ span {
   span {
     top: 55%;
     font-size: 3vw;
+  }
+
+  .waves {
+    width: 68.2vw;
   }
 
   .score {
@@ -356,5 +364,114 @@ span {
     width: 21vw;
     min-height: 8vh;
     color: red;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .wrapper {
+    width: 320px;
+    max-width: 320px;
+    height: 568px;
+  }
+
+  .waves {
+    width: 223px;
+    height: 568px;
+    background-size: 990px;
+  }
+
+  .score {
+    width: 100px;
+    margin-bottom: 25px;
+  }
+
+  .section-game {
+    flex: 1;
+    max-width: 161px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 222px;
+  }
+
+  .section-calc {
+    max-width: 161px;
+    min-width: 95px;
+  }
+
+  .calculator {
+    width: 75px;
+    max-width: 75px;
+    height: 240px;
+    min-height: 240px;
+    margin-bottom: 25px;
+  }
+
+  .btn {
+    min-height: 3px;
+    min-width: 23px;
+  }
+
+  .btn.operator {
+    font-size: 8px;
+    min-width: 23px;
+  }
+
+  .btn.operator.enter {
+    font-size: 20px;
+    min-width: 69px;
+    width: 21vw;
+    min-height: 50px;
+  }
+
+  .screen-input {
+    font-size: 23px;
+    max-width: 68px;
+  }
+
+  .fullscreen-button {
+    position: relative;
+    bottom: -25px;
+    right: -30px;
+    height: 20px;
+    width: 20px;
+    background-size: 20px;
+  }
+
+  .stone {
+    height: 70px;
+  }
+
+  .wave1,
+  .wave2 {
+    width: 1040px;
+    height: 1040px;
+    border-radius: 450px;
+  }
+
+  .wave1 {
+    left: -320px;
+  }
+
+  .wave2 {
+    left: -450px;
+  }
+
+  .modal {
+    top: 30%;
+    font-size: 15px;
+    width: 190px;
+    height: 114px;
+  }
+
+  .btn__modal {
+    min-height: 18px;
+    min-width: 52px;
+    font-size: 10px;
+  }
+
+  .overlay {   
+    width: 320px;
+    height: 578px;
   }
 }

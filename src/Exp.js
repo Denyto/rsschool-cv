@@ -1,6 +1,7 @@
 export class Expression {
-  constructor(symbols) {
+  constructor(symbols, counter) {
     this.symbols = symbols;
+    this.counter = counter;
   }
 
   create() {
@@ -14,6 +15,12 @@ export class Expression {
 
   // eslint-disable-next-line class-methods-use-this
   getRandomNum() {
-    return Math.ceil(Math.random() * 10);
+    if (this.counter > 20) {
+      return Math.ceil(Math.random() * 15);
+    }
+    if (this.counter > 10) {
+      return Math.ceil(Math.random() * 10);
+    }
+    return Math.ceil(Math.random() * 5);
   }
 }

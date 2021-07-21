@@ -29,8 +29,8 @@ export class App {
     this.buttonsApp = new Buttons();
     this.dropApp = new Drop();
     this.seaApp = new Sea();
-    this.toggleStart = true;
-    this.toggDemo = true;
+    this.isToggleStart = true;
+    this.isToggleDemo = true;
     this.tick = 3000;
     this.waves = new Waves();
     this.speedTick = 40;
@@ -55,10 +55,10 @@ export class App {
     clearInterval(this.timeIdDemo);
     this.dropApp.default();
     this.speedTick = 40;
-    if (this.toggleStart) {
+    if (this.isToggleStart) {
       this.calculatorApp.default();
       this.scoreApp.default();
-      this.toggleStart = false;
+      this.isToggleStart = false;
       this.counterdrop = 1;
       this.timeId = setInterval(() => {
         this.selectDrop(stopMelody);
@@ -70,8 +70,8 @@ export class App {
   }
 
   setDemoMode(stopMelody) {
-    if (this.toggDemo) {
-      this.toggDemo = false;
+    if (this.isToggleDemo) {
+      this.isToggleDemo = false;
       this.timeIdDemo = setInterval(() => {
         this.selectDrop(stopMelody);
         this.calculationDemo();
@@ -82,7 +82,6 @@ export class App {
   }
 
   selectDrop(stopMelody) {
-    this.counterdrop += 1;
     if (this.counterdrop % 5 === 0) {
       this.createDrobs().create(
         () => {
@@ -92,7 +91,7 @@ export class App {
           this.setGameover();
         },
         100,
-        this.createExpression(['×', '÷']),
+        this.createExpression(['×', '÷'], this.counterdrop),
         true,
       );
     } else {
@@ -105,10 +104,11 @@ export class App {
           stopMelody();
         },
         this.setSpeedDrop(),
-        this.createExpression(['+', '-']),
+        this.createExpression(['+', '-'], this.counterdrop),
         '',
       );
     }
+    this.counterdrop += 1;
   }
 
   createDrobs() {
@@ -117,11 +117,12 @@ export class App {
   }
 
   calculationGame(e) {
-    if (!this.toggleStart) {
+    if (!this.isToggleStart) {
       this.calculatorApp.calculate(
         () => this.scoreApp.add(),
         () => this.scoreApp.addBonus(),
         e,
+        () => this.scoreApp.resetAdditionalPoints(),
       );
     }
   }
@@ -169,15 +170,15 @@ export class App {
     this.seaApp.default();
     this.waves.default();
     this.dropApp.default();
-    this.toggleStart = true;
-    this.toggDemo = true;
+    this.isToggleStart = true;
+    this.isToggleDemo = true;
     this.speedTick = 40;
     this.counterdrop = 1;
   }
 
   // eslint-disable-next-line class-methods-use-this
-  createExpression(array) {
-    const exp = new Expression(array).create();
+  createExpression(array, number) {
+    const exp = new Expression(array, number).create();
     return exp;
   }
 }
