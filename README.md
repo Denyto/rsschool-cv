@@ -1,3 +1,1 @@
-https://Denyto.github.io/rsschool-cv/cv
-
-https://Denyto.github.io/rsschool-cv
+https://denyto.github.io/rsschool-cv/
