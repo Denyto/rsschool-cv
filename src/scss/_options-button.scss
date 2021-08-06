@@ -1,0 +1,71 @@
+.options-button {
+  display: flex;
+  align-items: center;
+}
+
+.options-button__button > sup {
+  font-size: 8px;
+  padding-top: 5px;
+}
+
+.options-button__button {
+  width: 44px;
+  height: 44px;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+option {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  height: 20px;
+  background-color: rgb(146, 141, 141);
+}
+
+select:active,
+select:hover {
+  outline: none;
+}
+
+.options-button__refresh {
+  margin-right: 10px;
+  background: rgba(180, 184, 187, 0.4);
+  background-repeat: no-repeat;
+  background-position: center;
+  &_dis {
+    background: rgba(53, 57, 59, 0.4);
+    svg path {
+      fill: rgba(255, 255, 255, 0.4);
+    }
+  }
+}
+
+.options-button__lang {
+  width: 71px;
+  margin-right: 10px;
+  padding: 0px 10px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  background: rgba(174, 181, 185, 0.5);
+}
+
+.options-button__temp {
+  border-radius: 5px 0px 0px 5px;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(76, 82, 85, 0.4);
+  &:last-child {
+    border-radius: 0px 5px 5px 0px;
+  }
+  &_active {
+    color: #fff;
+    background: rgba(174, 181, 185, 0.5);
+  }
+}

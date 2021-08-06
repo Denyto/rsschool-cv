@@ -1,0 +1,36 @@
+.group-days {
+  max-width: 582px;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.group-days__day {
+  width: 160px;
+  height: 107px;
+}
+
+.group-days__day__flex {
+    height: 80%;
+  display: flex;
+}
+
+.group-days__day__temp {
+    width: 50%;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 80px;
+  line-height: 98px;
+  display: flex;
+  & sup {
+    font-size: 30px;
+    line-height: 63px;
+  }
+}
+
+.group-days__day__clouds {
+  width: 50%; 
+  background: url('./assets/img/clouds-small-2.svg') 37px 20px/25px, url('./assets/img/clouds-big.svg'), url('./assets/img/sun.svg');
+  background-repeat: no-repeat;  
+}

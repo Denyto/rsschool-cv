@@ -1,0 +1,235 @@
+@font-face {
+  font-family: Montserrat;
+  src: url(./assets/fonts/Montserrat-Regular.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(./assets/fonts/Montserrat-Bold.ttf);
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: Montserrat;
+  src: url(./assets/fonts/Montserrat-SemiBold.ttf);
+  font-weight: 600;
+  font-style: normal;
+}
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Montserrat;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("./assets/img/city.jpg");
+  background-size: cover;
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  height: 100vh;
+  background-image: url("./assets/img/gradient.svg");
+  background-size: cover;
+}
+
+.container {
+  width: 1260px;
+  min-height: 800px;
+  display: flex;
+}
+
+.weather {
+  width: 60%;
+  margin: 3% 0;
+}
+
+.location {
+  width: 40%;
+  margin: 3% 0;
+  border: 1px #d9ff00 solid;
+}
+
+.options-button {
+  display: flex;
+  align-items: center;
+}
+
+.options-button__button > sup {
+  font-size: 8px;
+  padding-top: 5px;
+}
+
+.options-button__button {
+  width: 44px;
+  height: 44px;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+}
+.options-button__button:hover {
+  cursor: pointer;
+}
+
+option {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  height: 20px;
+  background-color: #928d8d;
+}
+
+select:active,
+select:hover {
+  outline: none;
+}
+
+.options-button__refresh {
+  margin-right: 10px;
+  background: rgba(180, 184, 187, 0.4);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.options-button__refresh_dis {
+  background: rgba(53, 57, 59, 0.4);
+}
+.options-button__refresh_dis svg path {
+  fill: rgba(255, 255, 255, 0.4);
+}
+
+.options-button__lang {
+  width: 71px;
+  margin-right: 10px;
+  padding: 0px 10px;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
+  text-transform: uppercase;
+  background: rgba(174, 181, 185, 0.5);
+}
+
+.options-button__temp {
+  border-radius: 5px 0px 0px 5px;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(76, 82, 85, 0.4);
+}
+.options-button__temp:last-child {
+  border-radius: 0px 5px 5px 0px;
+}
+.options-button__temp_active {
+  color: #fff;
+  background: rgba(174, 181, 185, 0.5);
+}
+
+.title {
+  max-width: 396px;
+  padding-top: 7.7%;
+  line-height: 54px;
+  color: #ffffff;
+}
+
+.title__city {
+  font-weight: bold;
+  font-size: 44px;
+  text-transform: uppercase;
+}
+
+.title__line {
+  display: flex;
+  flex-direction: row;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 36px;
+}
+
+.title__line__time {
+  padding-left: 18px;
+}
+
+.today {
+  max-width: 597px;
+  min-height: 373px;
+  color: #fff;
+  display: flex;
+}
+
+.today__temp {
+  width: 55%;
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 306px;
+  line-height: 360px;
+  text-transform: uppercase;
+}
+
+.today__description {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+.today__description__clouds {
+  height: 40%;
+  background: url("./assets/img/clouds-small-1.svg") 108px 58px/63px, url("./assets/img/clouds-big.svg") 0 0/187px, url("./assets/img/sun.svg") 0 0/59px;
+  background-repeat: no-repeat;
+}
+
+.today__description__description {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 22px;
+  line-height: 37px;
+  display: flex;
+  justify-content: flex-end;
+  text-transform: uppercase;
+}
+
+.group-days {
+  max-width: 582px;
+  display: flex;
+  justify-content: space-between;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.group-days__day {
+  width: 160px;
+  height: 107px;
+}
+
+.group-days__day__flex {
+  height: 80%;
+  display: flex;
+}
+
+.group-days__day__temp {
+  width: 50%;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 80px;
+  line-height: 98px;
+  display: flex;
+}
+.group-days__day__temp sup {
+  font-size: 30px;
+  line-height: 63px;
+}
+
+.group-days__day__clouds {
+  width: 50%;
+  background: url("./assets/img/clouds-small-2.svg") 37px 20px/25px, url("./assets/img/clouds-big.svg"), url("./assets/img/sun.svg");
+  background-repeat: no-repeat;
+}
+
+/*# sourceMappingURL=style.css.map */

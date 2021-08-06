@@ -1,0 +1,25 @@
+.title {
+  max-width: 396px;
+  padding-top: 7.7%;
+  line-height: 54px;
+  color: #ffffff;
+}
+
+.title__city {
+  font-weight: bold;
+  font-size: 44px;
+  text-transform: uppercase;
+}
+
+.title__line {
+  display: flex;
+  flex-direction: row;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 26px;
+  line-height: 36px;
+}
+
+.title__line__time {
+  padding-left: 18px;
+}
