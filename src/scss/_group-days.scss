@@ -4,33 +4,81 @@
   justify-content: space-between;
   color: #fff;
   text-transform: uppercase;
+  @include media-laptop {
+    max-width: 400px;
+  }
 }
 
 .group-days__day {
-  width: 160px;
-  height: 107px;
+  width: 100%;
 }
 
 .group-days__day__flex {
-    height: 80%;
+  // height: 80%;
   display: flex;
 }
 
 .group-days__day__temp {
-    width: 50%;
   font-style: normal;
   font-weight: 600;
   font-size: 80px;
   line-height: 98px;
-  display: flex;
-  & sup {
+  @include media-laptop {
+    font-size: 55px;
+    line-height: 65px;
+  }
+    @include media-tablet {
     font-size: 30px;
-    line-height: 63px;
+    line-height: 45px;
+  }
+      @include media-mobile {
+    line-height: 38px;
   }
 }
 
 .group-days__day__clouds {
-  width: 50%; 
-  background: url('./assets/img/clouds-small-2.svg') 37px 20px/25px, url('./assets/img/clouds-big.svg'), url('./assets/img/sun.svg');
-  background-repeat: no-repeat;  
+  min-width: 75px;
+  margin: 0 10px;
+  background: url('./assets/img/clouds-small-2.svg') 40px 22px/26px,
+    url('./assets/img/clouds-big.svg') 0px 0px/72px,
+    url('./assets/img/sun.svg') 0px 0px/29%;
+  background-repeat: no-repeat;
+  @include media-laptop {
+    min-width: 50px;
+    background: url('./assets/img/clouds-small-2.svg') 28px 15px/18px,
+      url('./assets/img/clouds-big.svg') 0px 0px/50px,
+      url('./assets/img/sun.svg') 0px 0px/29%;
+    background-repeat: no-repeat;
+  }
+    @include media-tablet {
+    min-width: 33px;
+    background: url('./assets/img/clouds-small-2.svg') 16px 9px/13px,
+      url('./assets/img/clouds-big.svg') 0px 0px/31px,
+      url('./assets/img/sun.svg') 0px 0px/29%;
+    background-repeat: no-repeat;
+  }
+}
+
+sup {
+  font-size: 40px;
+  padding-top: 4%;
+  font-weight: bold;
+  @include media-laptop {
+    font-size: 25px;
+  }
+    @include media-tablet {
+    font-size: 13px;
+  }
+}
+
+h3 {
+  @include media-laptop {
+    font-size: 1em;
+  }
+    @include media-tablet {
+    font-size: 0.8em;
+  }
+      @include media-mobile {
+    font-size: 0.7em;
+  }
 }

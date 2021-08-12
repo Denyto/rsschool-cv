@@ -1,6 +1,9 @@
 .options-button {
   display: flex;
   align-items: center;
+  @include media-mobile {
+    justify-content: center;
+  }
 }
 
 .options-button__button > sup {
@@ -17,6 +20,14 @@
   &:hover {
     cursor: pointer;
   }
+  @include media-mobile {
+    width: 34px;
+    height: 34px;
+    svg {
+      width: 12px;
+      height: 35px;
+    }
+  }
 }
 
 option {
@@ -25,6 +36,9 @@ option {
   font-size: 14px;
   height: 20px;
   background-color: rgb(146, 141, 141);
+  @include media-mobile {
+    font-size: 11px;
+  }
 }
 
 select:active,
@@ -34,13 +48,15 @@ select:hover {
 
 .options-button__refresh {
   margin-right: 10px;
-  background: rgba(180, 184, 187, 0.4);
+  background: url('./assets/img/Intersect_refresh.svg') 0% 100%/65%,
+    url('./assets/img/Subtract_refresh.svg') 95% 95%/65%
+      rgba(180, 184, 187, 0.4);
   background-repeat: no-repeat;
-  background-position: center;
   &_dis {
-    background: rgba(53, 57, 59, 0.4);
+    background: url('./assets/img/Subtract_refresh.svg') 95% 95%/65% no-repeat
+      rgba(53, 57, 59, 0.7);
     svg path {
-      fill: rgba(255, 255, 255, 0.4);
+      fill: rgba(29, 29, 29, 0.4);
     }
   }
 }
@@ -55,9 +71,16 @@ select:hover {
   line-height: 17px;
   text-transform: uppercase;
   background: rgba(174, 181, 185, 0.5);
+  @include media-mobile {
+    font-size: 11px;
+  }
 }
 
 .options-button__temp {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 17px;
   border-radius: 5px 0px 0px 5px;
   color: rgba(255, 255, 255, 0.4);
   background: rgba(76, 82, 85, 0.4);
@@ -67,5 +90,8 @@ select:hover {
   &_active {
     color: #fff;
     background: rgba(174, 181, 185, 0.5);
+  }
+  @include media-mobile {
+    font-size: 12px;
   }
 }

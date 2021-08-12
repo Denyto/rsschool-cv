@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>fancy-weather</title>
     <link rel="stylesheet" href="./src/style.css" />
+    <link rel="icon" href="./src/assets/img/clouds-small-1.svg">
 </head>
 
 <body>
@@ -32,9 +33,9 @@
                         class="options-button__button options-button__temp options-button__temp_active"><sup>o</sup>C</button>
                 </div>
                 <div class="title">
-                    <h1 class="title__city">Minsk, Belarus</h1>
+                    <h1 class="title__city"></h1>
                     <div class="title__line">
-                        <div class="title__line__date">Mon 02 August</div>
+                        <div class="title__line__date"></div>
                         <time class="title__line__time">21:21</time>
                     </div>
                 </div>
@@ -57,29 +58,32 @@
                     <div class="group-days__day group-days__day1">
                         <h3>tuesday</h3>
                         <div class="group-days__day__flex">
-                            <div class="group-days__day__temp">7<sup>o</sup></div>
+                            <div class="group-days__day__temp">5</div><sup>o</sup>
                             <div class="group-days__day__clouds"></div>
                         </div>
                     </div>
                     <div class="group-days__day group-days__day2">
                         <h3>wednesday</h3>
                         <div class="group-days__day__flex">
-                            <div class="group-days__day__temp">6<sup>o</sup></div>
+                            <div class="group-days__day__temp">8</div><sup>o</sup>
                             <div class="group-days__day__clouds"></div>
                         </div>
                     </div>
                     <div class="group-days__day group-days__day3">
                         <h3>thursday</h3>
                         <div class="group-days__day__flex">
-                            <div class="group-days__day__temp">3<sup>o</sup></div>
+                            <div class="group-days__day__temp">10</div><sup>o</sup>
                             <div class="group-days__day__clouds"></div>
                         </div>
                     </div>
                 </div>
             </section>
             <section class="location">
-                <input type="text" />
-                <button></button>
+                <div class="location__input">
+                    <input type="text" placeholder="Search city or ZIP"/>
+                    <button>search</button>
+                </div>
+                <div class="location__map">map</div>
             </section>
         </div>
     </div>
