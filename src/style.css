@@ -26,6 +26,7 @@
 body {
   background-image: url("./assets/img/city.jpg");
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .wrapper {
@@ -556,19 +557,18 @@ input::-webkit-input-placeholder {
 @media (max-width: 1130px) {
   .location__map {
     margin-top: 50px;
-    height: 50%;
+    height: 70%;
   }
 }
 @media (max-width: 795px) {
   .location__map {
     margin-top: 40px;
-    height: 45%;
+    line-height: 260px;
   }
 }
 @media (max-width: 500px) {
   .location__map {
     margin-top: 3px;
-    height: 45%;
   }
 }
 

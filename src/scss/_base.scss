@@ -29,6 +29,7 @@
 body {
   background-image: url('./assets/img/city.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .wrapper {
@@ -38,12 +39,17 @@ body {
   height: 100vh;
   background-image: url('./assets/img/gradient.svg');
   background-size: cover;
+  @include media-tablet {
+    align-items: end;
+    height: 100%;
+  }
   @include media-mobile {
     flex-direction: column;
     justify-content: start;
+    align-items: center;
     height: 100%;
   }
-    @include media-finish {
+  @include media-finish {
     justify-content: start;
     height: 568px;
   }
@@ -66,7 +72,7 @@ body {
     justify-content: center;
     align-items: center;
   }
-      @include media-finish {
+  @include media-finish {
     justify-content: start;
     margin: 5px 5px;
   }

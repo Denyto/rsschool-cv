@@ -72,14 +72,13 @@ input::-webkit-input-placeholder {
   border-radius: 5px;
   @include media-laptop {
     margin-top: 50px;
-    height: 50%;
+    height: 70%;
   }
   @include media-tablet {
     margin-top: 40px;
-    height: 45%;
+    line-height: 260px;
   }
   @include media-mobile {
     margin-top: 3px;
-    height: 45%;
   }
 }
