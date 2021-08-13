@@ -39,11 +39,14 @@ body {
 @media (max-width: 500px) {
   .wrapper {
     flex-direction: column;
+    justify-content: start;
+    height: 100%;
   }
 }
 @media (max-width: 320px) {
   .wrapper {
     justify-content: start;
+    height: 568px;
   }
 }
 

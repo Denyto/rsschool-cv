@@ -40,9 +40,12 @@ body {
   background-size: cover;
   @include media-mobile {
     flex-direction: column;
+    justify-content: start;
+    height: 100%;
   }
     @include media-finish {
     justify-content: start;
+    height: 568px;
   }
 }
 
