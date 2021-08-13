@@ -36,10 +36,16 @@ body {
   background-image: url("./assets/img/gradient.svg");
   background-size: cover;
 }
+@media (max-width: 795px) {
+  .wrapper {
+    align-items: end;
+  }
+}
 @media (max-width: 500px) {
   .wrapper {
     flex-direction: column;
     justify-content: start;
+    align-items: center;
     height: 100%;
   }
 }
