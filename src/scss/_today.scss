@@ -17,7 +17,7 @@
 }
 
 .today__temp {
-  width: 55%;
+  width: 63%;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -25,14 +25,16 @@
   line-height: 360px;
   text-transform: uppercase;
   @include media-laptop {
+    width: 55%;
     font-size: 210px;
     line-height: 260px;
   }
   @include media-tablet {
-    font-size: 150px;
+    font-size: 140px;
     line-height: 260px;
   }
   @include media-mobile {
+    font-size: 135px;
     text-align: center;
     line-height: 190px;
   }
@@ -40,8 +42,12 @@
 
 .today__description {
   width: 40%;
+      margin-right: 5px;
   display: flex;
   flex-direction: column;
+    @include media-tablet {
+    width: 45%;
+  }
 }
 
 .today__description__clouds {

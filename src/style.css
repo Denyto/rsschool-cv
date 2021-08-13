@@ -296,7 +296,7 @@ select:hover {
 }
 
 .today__temp {
-  width: 55%;
+  width: 63%;
   font-family: Montserrat;
   font-style: normal;
   font-weight: bold;
@@ -306,18 +306,20 @@ select:hover {
 }
 @media (max-width: 1130px) {
   .today__temp {
+    width: 55%;
     font-size: 210px;
     line-height: 260px;
   }
 }
 @media (max-width: 795px) {
   .today__temp {
-    font-size: 150px;
+    font-size: 140px;
     line-height: 260px;
   }
 }
 @media (max-width: 500px) {
   .today__temp {
+    font-size: 135px;
     text-align: center;
     line-height: 190px;
   }
@@ -325,8 +327,14 @@ select:hover {
 
 .today__description {
   width: 40%;
+  margin-right: 5px;
   display: flex;
   flex-direction: column;
+}
+@media (max-width: 795px) {
+  .today__description {
+    width: 45%;
+  }
 }
 
 .today__description__clouds {

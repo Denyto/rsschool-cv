@@ -6,14 +6,35 @@ export function init() {
   }
 
   function temp() {
+    const [temp1, temp2, temp3, tempToday] = [
+      constants.daysTemp[0].innerText,
+      constants.daysTemp[1].innerText,
+      constants.daysTemp[2].innerText,
+      constants.todayTemp.innerText,
+    ];
     constants.btnTemp.forEach((elem) => elem.addEventListener('click', () => {
       if (elem.innerText === 'oF') {
         if (!elem.classList.contains('options-button__temp_active')) {
-          constants.daysTemp.forEach((elm) => {
-            const el = elm;
-            el.innerText = convertFahrenheit(el.innerText);
-          });
+          [
+            constants.daysTemp[0].innerText,
+            constants.daysTemp[1].innerText,
+            constants.daysTemp[2].innerText,
+            constants.todayTemp.innerText,
+          ] = [
+            convertFahrenheit(temp1),
+            convertFahrenheit(temp2),
+            convertFahrenheit(temp3),
+            convertFahrenheit(tempToday),
+          ];
         }
+      }
+      if (elem.innerText === 'oC') {
+        [
+          constants.daysTemp[0].innerText,
+          constants.daysTemp[1].innerText,
+          constants.daysTemp[2].innerText,
+          constants.todayTemp.innerText,
+        ] = [temp1, temp2, temp3, tempToday];
       }
     }));
   }
