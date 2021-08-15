@@ -1,5 +1,5 @@
 .today {
-  max-width: 600px;
+  max-width: 680px;
   min-height: 373px;
   color: #fff;
   display: flex;
@@ -41,13 +41,10 @@
 }
 
 .today__description {
-  width: 40%;
-      margin-right: 5px;
+  width: 45%;
+  margin: 0 5px;
   display: flex;
   flex-direction: column;
-    @include media-tablet {
-    width: 45%;
-  }
 }
 
 .today__description__clouds {
@@ -89,10 +86,33 @@
     line-height: 32px;
   }
   @include media-tablet {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 25px;
   }
   @include media-mobile {
     line-height: 18px;
+  }
+}
+
+.feels-like {
+  display: flex;
+}
+
+.feels-like-temp {
+  height: 17px;
+  width: 7%;
+  background: url('./assets/img/circle.svg') 1px 10px/8px;
+  background-repeat: no-repeat;
+  @include media-laptop {
+    background: url('./assets/img/circle.svg') 1px 8px/8px;
+    background-repeat: no-repeat;
+  }
+  @include media-tablet {
+    background: url('./assets/img/circle.svg') 1px 7px/6px;
+    background-repeat: no-repeat;
+  }
+  @include media-mobile {
+    background: url('./assets/img/circle.svg') 1px 4px/6px;
+    background-repeat: no-repeat;
   }
 }

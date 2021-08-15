@@ -3,10 +3,15 @@ export const btnRefresh = document.querySelector('.options-button__refresh');
 export const input = document.querySelector('input');
 export const daysTemp = document.querySelectorAll('.group-days__day__temp');
 export const todayTemp = document.querySelector('.today__temp');
+export const todayHumidity = document.querySelector('.humidity');
+export const todayWind = document.querySelector('.wind');
+export const todayFeelsLike = document.querySelector('.feels-like');
+export const todayDescription = document.querySelector('.description');
 export const titleCity = document.querySelector('.title__city');
 export const titleDate = document.querySelector('.title__line__date');
 export const time = document.querySelector('.title__line__time');
 export const groupDays = document.querySelectorAll('h3');
+
 export const week = [
   'Sunday',
   'Monday',

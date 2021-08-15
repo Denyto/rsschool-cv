@@ -272,7 +272,7 @@ select:hover {
 }
 
 .today {
-  max-width: 600px;
+  max-width: 680px;
   min-height: 373px;
   color: #fff;
   display: flex;
@@ -326,15 +326,10 @@ select:hover {
 }
 
 .today__description {
-  width: 40%;
-  margin-right: 5px;
+  width: 45%;
+  margin: 0 5px;
   display: flex;
   flex-direction: column;
-}
-@media (max-width: 795px) {
-  .today__description {
-    width: 45%;
-  }
 }
 
 .today__description__clouds {
@@ -377,13 +372,42 @@ select:hover {
 }
 @media (max-width: 795px) {
   .today__description__description {
-    font-size: 14px;
+    font-size: 12px;
     line-height: 25px;
   }
 }
 @media (max-width: 500px) {
   .today__description__description {
     line-height: 18px;
+  }
+}
+
+.feels-like {
+  display: flex;
+}
+
+.feels-like-temp {
+  height: 17px;
+  width: 7%;
+  background: url("./assets/img/circle.svg") 1px 10px/8px;
+  background-repeat: no-repeat;
+}
+@media (max-width: 1130px) {
+  .feels-like-temp {
+    background: url("./assets/img/circle.svg") 1px 8px/8px;
+    background-repeat: no-repeat;
+  }
+}
+@media (max-width: 795px) {
+  .feels-like-temp {
+    background: url("./assets/img/circle.svg") 1px 7px/6px;
+    background-repeat: no-repeat;
+  }
+}
+@media (max-width: 500px) {
+  .feels-like-temp {
+    background: url("./assets/img/circle.svg") 1px 4px/6px;
+    background-repeat: no-repeat;
   }
 }
 
@@ -454,7 +478,7 @@ select:hover {
 }
 
 sup {
-  font-size: 40px;
+  font-size: 37px;
   padding-top: 4%;
   font-weight: bold;
 }

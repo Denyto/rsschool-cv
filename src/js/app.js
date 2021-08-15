@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 import * as imageApi from './imageApi';
-import * as temp from './temp';
 import * as title from './title';
+import * as weather from './weather';
 
 export class App {
   constructor() {
@@ -14,7 +14,7 @@ export class App {
       .then((com) => {
         this.imageApi.init(com.city);
         title.init(com.city);
-        temp.init();
+        weather.init();
       });
   }
 }
