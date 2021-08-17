@@ -1,8 +1,27 @@
 import * as constants from './constants';
 
-export function init(city) {
+export function init(city, country) {
   const today = new Date();
   const weekDay = today.getDay();
+
+  function addZero(n) {
+    return (n < 10 ? '0' : '') + n;
+  }
+
+  function showTime() {
+    const todayTime = new Date();
+    const hour = todayTime.getHours();
+    const min = todayTime.getMinutes();
+    const sec = todayTime.getSeconds();
+    constants.time.innerText = `${hour}:${addZero(min)}:${addZero(sec)}`;
+  }
+  setInterval(showTime, 1000);
+
+  fetch(`https://restcountries.eu/rest/v2/alpha/${country}`)
+    .then((response) => response.json())
+    .then((com) => {
+      constants.titleCity.innerText = `${city}, ${com.name}`;
+    });
 
   function setDate() {
     return `${constants.week[weekDay].substring(0, 3)} ${today.getDate()} ${
@@ -27,7 +46,6 @@ export function init(city) {
     ];
   }
 
-  constants.titleCity.innerText = `${city}`;
   constants.titleDate.innerText = setDate();
 
   [
@@ -35,19 +53,4 @@ export function init(city) {
     constants.groupDays[1].innerText,
     constants.groupDays[2].innerText,
   ] = setDayWeek();
-
-  function addZero(n) {
-    return (n < 10 ? '0' : '') + n;
-  }
-
-  function showTime() {
-    const todayTime = new Date();
-    const hour = todayTime.getHours();
-    const min = todayTime.getMinutes();
-    const sec = todayTime.getSeconds();
-
-    constants.time.innerText = `${hour}:${addZero(min)}:${addZero(sec)}`;
-  }
-
-  setInterval(showTime, 1000);
 }

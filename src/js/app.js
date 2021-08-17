@@ -13,7 +13,7 @@ export class App {
       .then((response) => response.json())
       .then((com) => {
         this.imageApi.init(com.city);
-        title.init(com.city);
+        title.init(com.city, com.country);
         weather.init();
       });
   }

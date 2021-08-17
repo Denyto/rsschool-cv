@@ -1,16 +1,17 @@
 import * as constants from './constants';
 
-export function init() {
+export function init(temperature) {
   function convertFahrenheit(celsius) {
     return Math.round(1.8 * +celsius + 32);
   }
 
   function temp() {
-    const [temp1, temp2, temp3, tempToday] = [
+    const [temp1, temp2, temp3, tempToday, tempFeelsLike] = [
       constants.daysTemp[0].innerText,
       constants.daysTemp[1].innerText,
       constants.daysTemp[2].innerText,
       constants.todayTemp.innerText,
+      temperature,
     ];
     constants.btnTemp.forEach((elem) => elem.addEventListener('click', () => {
       if (elem.innerText === 'oF') {
@@ -20,11 +21,14 @@ export function init() {
             constants.daysTemp[1].innerText,
             constants.daysTemp[2].innerText,
             constants.todayTemp.innerText,
+            constants.todayFeelsLike.innerHTML,
           ] = [
             convertFahrenheit(temp1),
             convertFahrenheit(temp2),
             convertFahrenheit(temp3),
             convertFahrenheit(tempToday),
+            `<p>FEELS LIKE: ${convertFahrenheit(tempFeelsLike)}</p>
+        <div class="feels-like-temp"></div>`,
           ];
         }
       }
@@ -34,7 +38,15 @@ export function init() {
           constants.daysTemp[1].innerText,
           constants.daysTemp[2].innerText,
           constants.todayTemp.innerText,
-        ] = [temp1, temp2, temp3, tempToday];
+          constants.todayFeelsLike.innerHTML,
+        ] = [
+          temp1,
+          temp2,
+          temp3,
+          tempToday,
+          `<p>FEELS LIKE: ${tempFeelsLike}</p>
+        <div class="feels-like-temp"></div>`,
+        ];
       }
     }));
   }

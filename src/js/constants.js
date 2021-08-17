@@ -1,8 +1,8 @@
 export const btnTemp = document.querySelectorAll('.options-button__temp');
 export const btnRefresh = document.querySelector('.options-button__refresh');
 export const input = document.querySelector('input');
-export const daysTemp = document.querySelectorAll('.group-days__day__temp');
-export const todayTemp = document.querySelector('.today__temp');
+export const daysTemp = document.querySelectorAll('.group-days__day__temp_standby');
+export const todayTemp = document.querySelector('.today__temp_standby');
 export const todayHumidity = document.querySelector('.humidity');
 export const todayWind = document.querySelector('.wind');
 export const todayFeelsLike = document.querySelector('.feels-like');

@@ -8,6 +8,8 @@
     <title>fancy-weather</title>
     <link rel="stylesheet" href="./src/style.css" />
     <link rel="icon" href="./src/assets/img/clouds-small-1.svg">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js"></script>
 </head>
 
 <body>
@@ -40,7 +42,7 @@
                     </div>
                 </div>
                 <div class="today">
-                    <div class="today__temp">00</div>
+                    <div class="today__temp_standby"></div>
                     <div class="today__description">
                         <div class="today__description__clouds"></div>
                         <div class="today__description__description">
@@ -61,21 +63,21 @@
                     <div class="group-days__day group-days__day1">
                         <h3>tuesday</h3>
                         <div class="group-days__day__flex">
-                            <div class="group-days__day__temp">00</div><sup>o</sup>
+                            <div class="group-days__day__temp_standby"></div><sup>o</sup>
                             <div class="group-days__day__clouds"></div>
                         </div>
                     </div>
                     <div class="group-days__day group-days__day2">
                         <h3>wednesday</h3>
                         <div class="group-days__day__flex">
-                            <div class="group-days__day__temp">00</div><sup>o</sup>
+                            <div class="group-days__day__temp_standby"></div><sup>o</sup>
                             <div class="group-days__day__clouds"></div>
                         </div>
                     </div>
                     <div class="group-days__day group-days__day3">
                         <h3>thursday</h3>
                         <div class="group-days__day__flex">
-                            <div class="group-days__day__temp">00</div><sup>o</sup>
+                            <div class="group-days__day__temp_standby"></div><sup>o</sup>
                             <div class="group-days__day__clouds"></div>
                         </div>
                     </div>
@@ -86,11 +88,16 @@
                     <input type="text" placeholder="Search city or ZIP" />
                     <button>search</button>
                 </div>
-                <div class="location__map">map</div>
+                <div id="map" class="location__map">map</div>
+                <ul id="buttons">
+                    <li id="button-ru" class="button">Ru</li>
+                    <li id="button-en" class="button button_active">En</li>
+                </ul>
             </section>
         </div>
     </div>
     <script src="./dist/bundle.js"></script>
+
 </body>
 
 </html>

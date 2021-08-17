@@ -30,7 +30,7 @@
     line-height: 260px;
   }
   @include media-tablet {
-    font-size: 140px;
+    font-size: 130px;
     line-height: 260px;
   }
   @include media-mobile {
@@ -40,9 +40,19 @@
   }
 }
 
+.today__temp_standby {
+  width: 63%;
+    background: url('./assets/img/loading.gif') 90px 65px/55%;
+  background-repeat: no-repeat;
+    @include media-tablet {
+    background: url('./assets/img/loading.gif') 45px 65px/55%;
+  background-repeat: no-repeat;
+  }
+}
+
 .today__description {
   width: 45%;
-  margin: 0 5px;
+  margin-right: 10px;
   display: flex;
   flex-direction: column;
 }
@@ -86,7 +96,7 @@
     line-height: 32px;
   }
   @include media-tablet {
-    font-size: 12px;
+    font-size: 11px;
     line-height: 25px;
   }
   @include media-mobile {
@@ -95,6 +105,7 @@
 }
 
 .feels-like {
+  width: 110%;
   display: flex;
 }
 
