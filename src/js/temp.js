@@ -28,7 +28,7 @@ export function init(temperature) {
             convertFahrenheit(temp3),
             convertFahrenheit(tempToday),
             `<p>FEELS LIKE: ${convertFahrenheit(tempFeelsLike)}</p>
-        <div class="feels-like-temp"></div>`,
+        <div class="today__circle"></div>`,
           ];
         }
       }
@@ -45,7 +45,7 @@ export function init(temperature) {
           temp3,
           tempToday,
           `<p>FEELS LIKE: ${tempFeelsLike}</p>
-        <div class="feels-like-temp"></div>`,
+        <div class="today__circle"></div>`,
         ];
       }
     }));

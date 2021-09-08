@@ -3,42 +3,37 @@
   padding-top: 7.7%;
   line-height: 54px;
   color: #ffffff;
+  &__city {
+    font-weight: bold;
+    font-size: 44px;
+    text-transform: uppercase;
     @include media-tablet {
-
-  padding-top: 0;
+      font-size: 30px;
+    }
   }
-      @include media-mobile {
-          text-align: center;
+  &__line {
+    display: flex;
+    flex-direction: row;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 36px;
+    @include media-tablet {
+      font-size: 18px;
+    }
+    @include media-mobile {
+      justify-content: center;
+      line-height: 25px;
+    }
+  }
+  &__time {
+    padding-left: 18px;
+  }
+  @include media-tablet {
+    padding-top: 0;
+  }
+  @include media-mobile {
+    text-align: center;
     line-height: 35px;
   }
-}
-
-.title__city {
-  font-weight: bold;
-  font-size: 44px;
-  text-transform: uppercase;
-          @include media-tablet {
-   font-size: 30px;
-  }
-}
-
-.title__line {
-  display: flex;
-  flex-direction: row;
-  font-style: normal;
-  font-weight: 600;
-  font-size: 26px;
-  line-height: 36px;
-          @include media-tablet {
-
-  font-size: 20px;
-  }
-        @include media-mobile {
-            justify-content: center;
-    line-height: 25px;
-  }
-}
-
-.title__line__time {
-  padding-left: 18px;
 }

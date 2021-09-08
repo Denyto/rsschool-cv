@@ -1,26 +1,17 @@
 import * as constants from './constants';
 
+const today = new Date();
+const weekDay = today.getDay();
+let timeID = null;
+
 export function init(city, country) {
-  const today = new Date();
-  const weekDay = today.getDay();
-
-  function addZero(n) {
-    return (n < 10 ? '0' : '') + n;
-  }
-
-  function showTime() {
-    const todayTime = new Date();
-    const hour = todayTime.getHours();
-    const min = todayTime.getMinutes();
-    const sec = todayTime.getSeconds();
-    constants.time.innerText = `${hour}:${addZero(min)}:${addZero(sec)}`;
-  }
-  setInterval(showTime, 1000);
-
   fetch(`https://restcountries.eu/rest/v2/alpha/${country}`)
     .then((response) => response.json())
     .then((com) => {
-      constants.titleCity.innerText = `${city}, ${com.name}`;
+      console.log('restcountries:', com);
+      constants.titleCity.innerText = `${city}, ${
+        com.name.length > 15 ? com.nativeName : com.name
+      }`;
     });
 
   function setDate() {
@@ -53,4 +44,79 @@ export function init(city, country) {
     constants.groupDays[1].innerText,
     constants.groupDays[2].innerText,
   ] = setDayWeek();
+}
+
+function addZero(n) {
+  return (n < 10 ? '0' : '') + n;
+}
+
+function showTime(utc) {
+  const todayTime = new Date();
+  const hour = (todayTime.getUTCHours() + utc / 3600) % 24;
+  const min = todayTime.getUTCMinutes();
+  const sec = todayTime.getUTCSeconds();
+  constants.time.innerText = `${hour}:${addZero(min)}:${addZero(sec)}`;
+}
+
+export function setTime(u) {
+  constants.time.innerText = '-- : -- : --';
+  clearInterval(timeID);
+  timeID = setInterval(() => {
+    showTime(u);
+  }, 1000);
+}
+
+export function setWeatherCurrentIcon(str) {
+  const node = document.createElement('div');
+  const node2 = document.createElement('div');
+  switch (str) {
+    case '01d':
+      node.classList.add('sunny');
+      break;
+    case '02d':
+      node.classList.add('sunny');
+      node2.classList.add('cloudy');
+      break;
+    case '03d':
+    case '03n':
+      node.classList.add('cloudy');
+      break;
+    case '04d':
+    case '04n':
+      node.classList.add('overcastcloudy');
+      break;
+    case '09d':
+    case '09n':
+      node.classList.add('rainy');
+      node2.classList.add('cloudy');
+      break;
+    case '10d':
+      node.classList.add('sunny');
+      node2.classList.add('rainy');
+      break;
+    case '11d':
+    case '11n':
+      node2.classList.add('stormy');
+      break;
+    case '13d':
+    case '13n':
+      node2.classList.add('snowy');
+      break;
+    case '01n':
+      node2.classList.add('starry');
+      break;
+    case '02n':
+      node.classList.add('cloudy');
+      node2.classList.add('starry');
+      break;
+    case '10n':
+      node.classList.add('rainy');
+      node2.classList.add('starry');
+      break;
+    default:
+      break;
+  }
+  constants.icons.innerHTML = '';
+  constants.icons.append(node);
+  constants.icons.append(node2);
 }
