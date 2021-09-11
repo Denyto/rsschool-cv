@@ -66,7 +66,8 @@ export function setTime(u) {
   }, 1000);
 }
 
-export function setWeatherCurrentIcon(str) {
+export function setWeatherCurrentIcon(str, str1, str2, str3) {
+  [str, str1, str2, str3].forEach((item, index) => console.log(item, index));
   const node = document.createElement('div');
   const node2 = document.createElement('div');
   switch (str) {
@@ -116,7 +117,7 @@ export function setWeatherCurrentIcon(str) {
     default:
       break;
   }
-  constants.icons.innerHTML = '';
-  constants.icons.append(node);
-  constants.icons.append(node2);
+  constants.todayIcons.innerHTML = '';
+  constants.todayIcons.append(node);
+  constants.todayIcons.append(node2);
 }

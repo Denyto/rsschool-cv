@@ -18,12 +18,17 @@ export class App {
         .then((response) => response.json())
         .then((com) => {
           console.log('api.opencagedata.com:', com);
+          constants.selectLang.value = 'en';
           this.title.init(city, com.results[0].components.country_code);
           constants.time.innerText = '-- : -- : --';
           this.weather.init(
             this.title.setTime,
             this.title.setWeatherCurrentIcon,
             com.results[0].geometry,
+            (arg) => {
+              constants.descriptionRu.push(arg);
+              console.log(arg);
+            },
           );
         });
     } else {
@@ -36,6 +41,11 @@ export class App {
           this.weather.init(
             this.title.setTime,
             this.title.setWeatherCurrentIcon,
+            '',
+            (arg) => {
+              constants.descriptionRu.push(arg);
+              console.log(arg);
+            },
           );
         });
     }

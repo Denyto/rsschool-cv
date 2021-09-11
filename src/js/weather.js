@@ -1,7 +1,7 @@
 import * as constants from './constants';
 import * as temp from './temp';
 
-export function init(setLatLonTime, setWeatherCurrentIcon, inputCoords) {
+export function init(setLatLonTime, setWeatherCurrentIcon, inputCoords, callback) {
   navigator.geolocation.getCurrentPosition((position) => {
     const [latitude, longitude] = inputCoords
       ? [inputCoords.lat, inputCoords.lng]
@@ -25,7 +25,8 @@ export function init(setLatLonTime, setWeatherCurrentIcon, inputCoords) {
       ]);
     });
 
-    const urlGeoPosition = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&lang=en&exclude=minutely,hourly&units=metric&appid=${constants.DATA.OPENWEATHERMAPKEY}`;
+    const urlGeoPosition = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&lang=en&exclude=minutely,hourly&units=metric&appid=${constants.DATA.OPENWEATHERMAPKEY}`;
+    const urlGeoPositionRu = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&lang=ru&exclude=minutely,hourly&units=metric&appid=${constants.DATA.OPENWEATHERMAPKEY}`;
     fetch(urlGeoPosition)
       .then((response) => response.json())
       .then((com) => {
@@ -36,26 +37,31 @@ export function init(setLatLonTime, setWeatherCurrentIcon, inputCoords) {
           elem.classList.remove('group-days__temp_standby');
           elem.classList.add('group-days__temp');
         });
-        constants.todayTemp.innerText = Math.round(com.current.temp);
-        constants.todayHumidity.innerText = `HUMIDITY: ${com.current.humidity}%`;
-        constants.todayWind.innerText = `WIND: ${com.current.wind_speed}m/s`;
-        constants.todayFeelsLike.innerHTML = `<p>FEELS LIKE: ${Math.floor(
-          com.current.feels_like,
-        )}</p>
-        <div class="today__circle"></div>`;
-        constants.todayDescription.innerText = com.current.weather[0].description;
-        [
-          constants.daysTemp[0].innerText,
-          constants.daysTemp[1].innerText,
-          constants.daysTemp[2].innerText,
-        ] = [
-          Math.round(com.daily[1].temp.day),
-          Math.round(com.daily[2].temp.day),
-          Math.round(com.daily[3].temp.day),
-        ];
-        temp.init(Math.floor(com.current.feels_like));
-        setLatLonTime(com.timezone_offset);
-        setWeatherCurrentIcon(com.current.weather[0].icon);
+        constants.todayHumidity.innerText = `HUMIDITY: ${com.list[0].main.humidity}%`;
+        constants.todayWind.innerText = `WIND: ${com.list[0].wind.speed}m/s`;
+        constants.todayDescription.innerText = com.list[0].weather[0].description;
+
+        setLatLonTime(com.city.timezone);
+        setWeatherCurrentIcon(
+          com.list[0].weather[0].icon,
+          com.list[8].weather[0].icon,
+          com.list[16].weather[0].icon,
+          com.list[24].weather[0].icon,
+        );
+        temp.init(
+          Math.round(com.list[8].main.temp),
+          Math.round(com.list[16].main.temp),
+          Math.round(com.list[24].main.temp),
+          Math.round(com.list[0].main.temp),
+          Math.floor(com.list[0].main.feels_like),
+        );
+      });
+    fetch(urlGeoPositionRu)
+      .then((response) => response.json())
+      .then((com) => {
+        constants.descriptionRu.length = 0;
+        console.log(com);
+        callback(com.list[0].weather[0].description);
       });
   });
 }

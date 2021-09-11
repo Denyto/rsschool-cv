@@ -17,7 +17,8 @@ export const time = document.querySelector('.title__time');
 export const groupDays = document.querySelectorAll('h3');
 export const search = document.querySelector('.location__input');
 export const searchBtn = document.querySelector('.location__input button');
-export const icons = document.querySelector('.today__icons');
+export const todayIcons = document.querySelector('.today__icons');
+export const groupIcons = document.querySelectorAll('.group-days__icons');
 
 export const week = [
   'Sunday',
@@ -28,15 +29,7 @@ export const week = [
   'Friday',
   'Saturday',
 ];
-// export const weekRu = [
-//   'Воскресенье',
-//   'Понедельник',
-//   'Вторник',
-//   'Среда',
-//   'Четверг',
-//   'Пятница',
-//   'Суббота',
-// ];
+export const descriptionRu = [];
 export const months = [
   'January',
   'February',

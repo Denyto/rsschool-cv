@@ -12,11 +12,11 @@
     justify-content: flex-end;
     text-transform: uppercase;
     @include media-laptop {
-      font-size: 19px;
+      font-size: 17px;
       line-height: 32px;
     }
     @include media-tablet {
-      font-size: 11px;
+      font-size: 10px;
       line-height: 25px;
     }
     @include media-mobile {
@@ -448,7 +448,7 @@
 }
 
 .cloudy {
-  animation: overcastcloudy 5s ease-in-out infinite;
+  animation: cloudy 5s ease-in-out infinite;
   background: #ebebeb;
   border-radius: 50%;
   box-shadow: #ebebeb 64px -15px 0 -5px, #ebebeb 25px -25px, #ebebeb 30px 10px,
