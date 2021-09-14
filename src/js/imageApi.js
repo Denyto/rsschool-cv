@@ -12,7 +12,7 @@ export function init(city) {
     fetch(`https://pixabay.com/api/?key=${constants.DATA.PIXABAYKEY}&q=${lacation}&image_type=photo`)
       .then((response) => response.json())
       .then((com) => {
-        console.log('imageApi:', com);
+        console.log('imageApi:', com, str, cityInner);
         document.body.style.backgroundImage = `url("${
           com.hits[random(com.hits.length)].largeImageURL
         }")`;

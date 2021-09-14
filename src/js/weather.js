@@ -1,7 +1,13 @@
 import * as constants from './constants';
 import * as temp from './temp';
 
-export function init(setLatLonTime, setWeatherCurrentIcon, inputCoords, callback) {
+export function init(
+  setLatLonTime,
+  setWeatherCurrentIcon,
+  setWeatherGroupIcon,
+  inputCoords,
+  callback,
+) {
   navigator.geolocation.getCurrentPosition((position) => {
     const [latitude, longitude] = inputCoords
       ? [inputCoords.lat, inputCoords.lng]
@@ -42,11 +48,27 @@ export function init(setLatLonTime, setWeatherCurrentIcon, inputCoords, callback
         constants.todayDescription.innerText = com.list[0].weather[0].description;
 
         setLatLonTime(com.city.timezone);
-        setWeatherCurrentIcon(
-          com.list[0].weather[0].icon,
+        setWeatherCurrentIcon(com.list[0].weather[0].icon);
+        setWeatherGroupIcon(
           com.list[8].weather[0].icon,
           com.list[16].weather[0].icon,
           com.list[24].weather[0].icon,
+          // '01d',
+          // '02d',
+          // '03d',
+          // '04d',
+          // '09d',
+          // '10d',
+          // '11d',
+          // '13d',
+          // '01n',
+          // '02n',
+          // '03n',
+          // '04n',
+          // '09n',
+          // '10n',
+          // '11n',
+          // '13n',
         );
         temp.init(
           Math.round(com.list[8].main.temp),

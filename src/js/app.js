@@ -24,10 +24,10 @@ export class App {
           this.weather.init(
             this.title.setTime,
             this.title.setWeatherCurrentIcon,
+            this.title.setWeatherGroupIcon,
             com.results[0].geometry,
             (arg) => {
               constants.descriptionRu.push(arg);
-              console.log(arg);
             },
           );
         });
@@ -41,10 +41,10 @@ export class App {
           this.weather.init(
             this.title.setTime,
             this.title.setWeatherCurrentIcon,
+            this.title.setWeatherGroupIcon,
             '',
             (arg) => {
               constants.descriptionRu.push(arg);
-              console.log(arg);
             },
           );
         });

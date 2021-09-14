@@ -66,8 +66,7 @@ export function setTime(u) {
   }, 1000);
 }
 
-export function setWeatherCurrentIcon(str, str1, str2, str3) {
-  [str, str1, str2, str3].forEach((item, index) => console.log(item, index));
+export function setWeatherCurrentIcon(str) {
   const node = document.createElement('div');
   const node2 = document.createElement('div');
   switch (str) {
@@ -120,4 +119,64 @@ export function setWeatherCurrentIcon(str, str1, str2, str3) {
   constants.todayIcons.innerHTML = '';
   constants.todayIcons.append(node);
   constants.todayIcons.append(node2);
+}
+
+export function setWeatherGroupIcon(a, b, c) {
+  [a, b, c].forEach((code, index) => {
+    const fragment = document.createDocumentFragment();
+    const node = document.createElement('div');
+    const node2 = document.createElement('div');
+    
+    switch (code) {
+      case '01d':
+        node.classList.add('group-days__icons_sunny');
+        break;
+      case '02d':
+        node.classList.add('group-days__icons_sunny');
+        node2.classList.add('group-days__icons_cloudy');
+        break;
+      case '03d':
+      case '03n':
+        node.classList.add('group-days__icons_cloudy');
+        break;
+      case '04d':
+      case '04n':
+        node.classList.add('group-days__icons_overcastcloudy');
+        break;
+      case '09d':
+      case '09n':
+        node.classList.add('group-days__icons_rainy');
+        node2.classList.add('group-days__icons_cloudy');
+        break;
+      case '10d':
+        node.classList.add('group-days__icons_sunny');
+        node2.classList.add('group-days__icons_rainy');
+        break;
+      case '11d':
+      case '11n':
+        node2.classList.add('group-days__icons_stormy');
+        break;
+      case '13d':
+      case '13n':
+        node2.classList.add('group-days__icons_snowy');
+        break;
+      case '01n':
+        node2.classList.add('group-days__icons_starry');
+        break;
+      case '02n':
+        node.classList.add('group-days__icons_cloudy');
+        node2.classList.add('group-days__icons_starry');
+        break;
+      case '10n':
+        node.classList.add('group-days__icons_rainy');
+        node2.classList.add('group-days__icons_starry');
+        break;
+      default:
+        break;
+    }
+    fragment.append(node);
+    fragment.append(node2);
+    constants.groupIcons[index].innerHTML = '';
+    constants.groupIcons[index].append(fragment);
+  });
 }

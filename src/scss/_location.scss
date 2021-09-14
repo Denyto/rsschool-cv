@@ -47,6 +47,20 @@
       font-size: 12px;
     }
   }
+  &__coord {
+    width: 100%;
+    color: #fff;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 1em;
+    line-height: 17px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    & p {
+      min-width: 50%;
+    }
+  }
   &__map {
     width: 100%;
     height: 65%;
@@ -103,7 +117,7 @@ input::-webkit-input-placeholder {
     top: -68%;
   }
   @include media-tablet {
-    top: -32%;
+    top: -30%;
   }
   @include media-mobile {
     top: -210px;

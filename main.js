@@ -6,7 +6,6 @@ const app = new App();
 let groupDays = [];
 app.init();
 i18n.default();
-console.log(constants.groupIcons);
 
 function showSelectValue() {
   if (constants.selectLang.value === 'ru') {
