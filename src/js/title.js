@@ -126,7 +126,6 @@ export function setWeatherGroupIcon(a, b, c) {
     const fragment = document.createDocumentFragment();
     const node = document.createElement('div');
     const node2 = document.createElement('div');
-    
     switch (code) {
       case '01d':
         node.classList.add('group-days__icons_sunny');

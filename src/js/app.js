@@ -11,10 +11,12 @@ export class App {
     this.weather = weather;
   }
 
-  init(city) {
+  init(city, callback) {
     if (city) {
       this.imageApi.init(city);
-      fetch(`https://api.opencagedata.com/geocode/v1/json?q=${city}&key=${constants.DATA.OPENCAGEDATAKEY}`)
+      fetch(
+        `https://api.opencagedata.com/geocode/v1/json?q=${city}&language=en&key=${constants.DATA.OPENCAGEDATAKEY}`,
+      )
         .then((response) => response.json())
         .then((com) => {
           console.log('api.opencagedata.com:', com);
@@ -27,9 +29,21 @@ export class App {
             this.title.setWeatherGroupIcon,
             com.results[0].geometry,
             (arg) => {
-              constants.descriptionRu.push(arg);
+              constants.objectRu.descriptionRu = arg;
             },
           );
+          callback();
+        });
+      fetch(
+        `https://api.opencagedata.com/geocode/v1/json?q=${city}&language=ru&key=${constants.DATA.OPENCAGEDATAKEY}`,
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          console.log('api.opencagedata.comRU:', data);
+          constants.objectRu.cityRu = '';
+          constants.objectRu.countryRu = '';
+          constants.objectRu.cityRu = data.results[0].components.city;
+          constants.objectRu.countryRu = data.results[0].components.country;
         });
     } else {
       fetch(`https://ipinfo.io?token=${constants.DATA.IPINFOTOKEN}`)
@@ -44,9 +58,20 @@ export class App {
             this.title.setWeatherGroupIcon,
             '',
             (arg) => {
-              constants.descriptionRu.push(arg);
+              constants.objectRu.descriptionRu = arg;
             },
           );
+          fetch(
+            `https://api.opencagedata.com/geocode/v1/json?q=${com.city}&language=ru&key=${constants.DATA.OPENCAGEDATAKEY}`,
+          )
+            .then((response) => response.json())
+            .then((data) => {
+              console.log('api.opencagedata.comRU:', data);
+              constants.objectRu.cityRu = '';
+              constants.objectRu.countryRu = '';
+              constants.objectRu.cityRu = data.results[0].components.city;
+              constants.objectRu.countryRu = data.results[0].components.country;
+            });
         });
     }
   }

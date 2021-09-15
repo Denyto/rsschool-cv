@@ -19,6 +19,8 @@ export const search = document.querySelector('.location__input');
 export const searchBtn = document.querySelector('.location__input button');
 export const todayIcons = document.querySelector('.today__icons');
 export const groupIcons = document.querySelectorAll('.group-days__icons');
+export const Latitude = document.getElementById('lat');
+export const Longitude = document.getElementById('lon');
 
 export const week = [
   'Sunday',
@@ -29,7 +31,11 @@ export const week = [
   'Friday',
   'Saturday',
 ];
-export const descriptionRu = [];
+export const objectRu = {
+  descriptionRu: '',
+  cityRu: '',
+  countryRu: '',
+};
 export const months = [
   'January',
   'February',

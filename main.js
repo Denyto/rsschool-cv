@@ -3,22 +3,25 @@ import * as constants from './src/js/constants';
 import * as i18n from './src/js/i18n';
 
 const app = new App();
-let groupDays = [];
+let temporarySave = [];
 app.init();
 i18n.default();
 
-function showSelectValue() {
+function translatePage() {
   if (constants.selectLang.value === 'ru') {
-    constants.groupDays.forEach((item) => groupDays.push(item.innerHTML));
-    groupDays.push(constants.titleDate.innerHTML);
-    groupDays.push(constants.todayFeelsLike.innerHTML);
-    groupDays.push(constants.todayWind.innerText);
-    groupDays.push(constants.todayHumidity.innerText);
-    groupDays.push(constants.todayDescription.innerText);
+    constants.groupDays.forEach((item) => temporarySave.push(item.innerHTML));
+    temporarySave.push(constants.titleDate.innerHTML);
+    temporarySave.push(constants.todayFeelsLike.innerHTML);
+    temporarySave.push(constants.todayWind.innerText);
+    temporarySave.push(constants.todayHumidity.innerText);
+    temporarySave.push(constants.todayDescription.innerText);
+    temporarySave.push(constants.Latitude.innerText);
+    temporarySave.push(constants.Longitude.innerText);
+    temporarySave.push(constants.titleCity.innerHTML);
     i18n.setLang();
   } else {
     constants.groupDays.forEach((elem, index) => {
-      elem.innerHTML = groupDays[index];
+      elem.innerHTML = temporarySave[index];
     });
     [
       constants.searchBtn.innerText,
@@ -28,21 +31,27 @@ function showSelectValue() {
       constants.todayWind.innerText,
       constants.todayHumidity.innerText,
       constants.todayDescription.innerText,
+      constants.Latitude.innerText,
+      constants.Longitude.innerText,
+      constants.titleCity.innerHTML,
     ] = [
       'search',
       'Search city or ZIP',
-      groupDays[3],
-      groupDays[4],
-      groupDays[5],
-      groupDays[6],
-      groupDays[7],
+      temporarySave[3],
+      temporarySave[4],
+      temporarySave[5],
+      temporarySave[6],
+      temporarySave[7],
+      temporarySave[8],
+      temporarySave[9],
+      temporarySave[10],
     ];
-    groupDays = [];
+    temporarySave = [];
   }
 }
 
 function startAppInit() {
-  app.init(constants.input.value);
+  app.init(constants.input.value, () => { temporarySave = []; console.log('clear', temporarySave); });
   constants.input.value = '';
 }
 
@@ -60,7 +69,7 @@ function initListeners() {
       startAppInit();
     }
   });
-  constants.selectLang.addEventListener('change', showSelectValue);
+  constants.selectLang.addEventListener('change', translatePage);
 }
 
 initListeners();
