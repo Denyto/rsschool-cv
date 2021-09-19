@@ -21,6 +21,7 @@ export const todayIcons = document.querySelector('.today__icons');
 export const groupIcons = document.querySelectorAll('.group-days__icons');
 export const Latitude = document.getElementById('lat');
 export const Longitude = document.getElementById('lon');
+// export const lastSelectTemp = localStorage.getItem('lastSelectTemp');
 
 export const week = [
   'Sunday',

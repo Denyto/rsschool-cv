@@ -6,7 +6,7 @@
   &__list {
     font-style: normal;
     font-weight: bold;
-    font-size: 22px;
+    font-size: 20px;
     line-height: 37px;
     display: flex;
     justify-content: flex-end;
@@ -44,7 +44,7 @@
   }
   &__description {
     width: 45%;
-    margin: 0 10px 0 15px;
+    margin: 0 10px 0 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

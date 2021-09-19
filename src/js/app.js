@@ -2,6 +2,7 @@
 import * as imageApi from './imageApi';
 import * as title from './title';
 import * as weather from './weather';
+import * as temp from './temp';
 import * as constants from './constants';
 
 export class App {
@@ -9,6 +10,7 @@ export class App {
     this.imageApi = imageApi;
     this.title = title;
     this.weather = weather;
+    this.temp = temp;
   }
 
   init(city, callback) {
@@ -31,6 +33,7 @@ export class App {
             (arg) => {
               constants.objectRu.descriptionRu = arg;
             },
+            this.temp.init,
           );
           callback();
         });
@@ -60,6 +63,7 @@ export class App {
             (arg) => {
               constants.objectRu.descriptionRu = arg;
             },
+            this.temp.init,
           );
           fetch(
             `https://api.opencagedata.com/geocode/v1/json?q=${com.city}&language=ru&key=${constants.DATA.OPENCAGEDATAKEY}`,

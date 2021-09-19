@@ -22,7 +22,6 @@ export function setLang() {
   constants.Latitude.innerText = `Широта: ${constants.Latitude.innerText.split(': ')[1]}`;
   constants.Longitude.innerText = `Долгота: ${constants.Longitude.innerText.split(': ')[1]}`;
   constants.titleCity.innerHTML = `${constants.objectRu.cityRu}, ${constants.objectRu.countryRu}`;
-  console.log(constants.objectRu);
 }
 
 export default function () {

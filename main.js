@@ -6,7 +6,7 @@ const app = new App();
 let temporarySave = [];
 app.init();
 i18n.default();
-
+// localStorage.clear();
 function translatePage() {
   if (constants.selectLang.value === 'ru') {
     constants.groupDays.forEach((item) => temporarySave.push(item.innerHTML));
@@ -19,6 +19,7 @@ function translatePage() {
     temporarySave.push(constants.Longitude.innerText);
     temporarySave.push(constants.titleCity.innerHTML);
     i18n.setLang();
+    // localStorage.setItem('lastSelectLang', 'en');
   } else {
     constants.groupDays.forEach((elem, index) => {
       elem.innerHTML = temporarySave[index];
@@ -70,6 +71,14 @@ function initListeners() {
     }
   });
   constants.selectLang.addEventListener('change', translatePage);
+
+  constants.btnTemp.forEach((item) => {
+    item.addEventListener('click', () => {
+      constants.btnTemp.forEach((el) => el.classList.remove('options-button__temp_active'));
+      item.classList.add('options-button__temp_active');
+      localStorage.setItem('lastSelectTemp', item.innerText);
+    });
+  });
 }
 
 initListeners();

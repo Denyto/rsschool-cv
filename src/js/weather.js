@@ -1,5 +1,4 @@
 import * as constants from './constants';
-import * as temp from './temp';
 
 export function init(
   setLatLonTime,
@@ -7,6 +6,7 @@ export function init(
   setWeatherGroupIcon,
   inputCoords,
   callback,
+  tempInit,
 ) {
   navigator.geolocation.getCurrentPosition((position) => {
     const [latitude, longitude] = inputCoords
@@ -22,14 +22,6 @@ export function init(
     });
     new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
     map.addControl(new mapboxgl.FullscreenControl());
-
-    document.getElementById('buttons').addEventListener('click', (event) => {
-      const language = event.target.id.substr('button-'.length);
-      map.setLayoutProperty('country-label', 'text-field', [
-        'get',
-        `name_${language}`,
-      ]);
-    });
 
     constants.Latitude.innerText = `Latitude: ${latitude.toFixed(2)}`;
     constants.Longitude.innerText = `Longitude: ${longitude.toFixed(2)}`;
@@ -57,7 +49,7 @@ export function init(
           com.list[16].weather[0].icon,
           com.list[24].weather[0].icon,
         );
-        temp.init(
+        tempInit(
           Math.round(com.list[8].main.temp),
           Math.round(com.list[16].main.temp),
           Math.round(com.list[24].main.temp),
