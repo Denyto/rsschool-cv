@@ -26,12 +26,28 @@
 body {
   width: 100%;
   min-height: 100%;
-  background-image: url("./assets/img/city.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+}
+
+#images {
+  width: 100%;
+  height: 100%;
+}
+#images img {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  transition: opacity 2s;
+  opacity: 0;
+}
+#images img.showed {
+  opacity: 1;
 }
 
 .wrapper {
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -57,7 +73,7 @@ body {
   min-height: 100vh;
   width: 1260px;
   display: flex;
-  margin: 5px 10px;
+  margin: 70px 30px 0 30px;
 }
 @media (max-width: 1130px) {
   .container {
@@ -68,6 +84,7 @@ body {
   .container {
     height: 100%;
     width: 600px;
+    margin: 20px 10px 0 10px;
   }
 }
 @media (max-width: 500px) {
@@ -86,7 +103,7 @@ body {
 
 .weather {
   width: 60%;
-  margin: 3% 0;
+  margin: 15px 0;
 }
 @media (max-width: 500px) {
   .weather {
@@ -174,7 +191,7 @@ body {
 @media (max-width: 500px) {
   .options-button {
     justify-content: center;
-    margin-bottom: 25px;
+    margin: 10px 0 20px 0;
   }
 }
 
@@ -208,14 +225,19 @@ select:hover {
   text-transform: uppercase;
   user-select: none;
 }
+@media (max-width: 1130px) {
+  .title__city {
+    font-size: 40px;
+  }
+}
 @media (max-width: 795px) {
   .title__city {
-    font-size: 30px;
+    font-size: 25px;
   }
 }
 @media (max-width: 500px) {
   .title__city {
-    margin-bottom: 20px;
+    margin-bottom: 15px;
   }
 }
 .title__line {
@@ -262,7 +284,7 @@ select:hover {
 .today__list {
   font-style: normal;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 19px;
   line-height: 37px;
   display: flex;
   justify-content: flex-end;
@@ -270,18 +292,20 @@ select:hover {
 }
 @media (max-width: 1130px) {
   .today__list {
-    font-size: 16px;
+    font-size: 15px;
     line-height: 32px;
   }
 }
 @media (max-width: 795px) {
   .today__list {
-    font-size: 10px;
-    line-height: 25px;
+    font-size: 9px;
+    line-height: 20px;
+    justify-content: center;
   }
 }
 @media (max-width: 500px) {
   .today__list {
+    font-size: 10px;
     line-height: 18px;
   }
 }
@@ -316,6 +340,11 @@ select:hover {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+@media (max-width: 795px) {
+  .today__description {
+    margin: 0 5px 0 5px;
+  }
 }
 .today__feelslike {
   width: 110%;
@@ -370,7 +399,7 @@ select:hover {
 @media (max-width: 1130px) {
   .today__temp {
     width: 55%;
-    font-size: 210px;
+    font-size: 190px;
     line-height: 260px;
   }
 }
@@ -902,12 +931,12 @@ select:hover {
 .group-days__temp_standby {
   width: 100%;
   height: 98px;
-  background: url("./assets/img/loading.gif") 0 20px/100%;
+  background: url("./assets/img/loading.gif") 0 20px/68%;
   background-repeat: no-repeat;
 }
 @media (max-width: 1130px) {
   .group-days__temp_standby {
-    background: url("./assets/img/loading.gif") 0 15px/100%;
+    background: url("./assets/img/loading.gif") 0 15px/80%;
     background-repeat: no-repeat;
   }
 }
@@ -1093,7 +1122,6 @@ select:hover {
   .group-days {
     flex-direction: column;
     align-items: center;
-    margin-bottom: 25px;
   }
 }
 
@@ -1332,13 +1360,14 @@ h3 {
 }
 @media (max-width: 1130px) {
   .location__map {
+    width: 90%;
     margin-top: 50px;
     height: 40%;
   }
 }
 @media (max-width: 795px) {
   .location__map {
-    height: 30%;
+    height: 280px;
     margin-top: 40px;
     line-height: 260px;
   }
@@ -1346,6 +1375,7 @@ h3 {
 @media (max-width: 500px) {
   .location__map {
     margin-top: 3px;
+    height: 250px;
   }
 }
 @media (max-width: 500px) {

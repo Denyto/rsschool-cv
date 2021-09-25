@@ -19,8 +19,8 @@ export function setLang() {
   constants.todayWind.innerText = `Ветер: ${constants.todayWind.innerText.split(': ')[1]}`;
   constants.todayHumidity.innerText = `Влажность: ${constants.todayHumidity.innerText.split(': ')[1]}`;
   constants.todayDescription.innerText = constants.objectRu.descriptionRu;
-  constants.Latitude.innerText = `Широта: ${constants.Latitude.innerText.split(': ')[1]}`;
-  constants.Longitude.innerText = `Долгота: ${constants.Longitude.innerText.split(': ')[1]}`;
+  constants.latitude.innerText = `Широта: ${constants.latitude.innerText.split(': ')[1]}`;
+  constants.longitude.innerText = `Долгота: ${constants.longitude.innerText.split(': ')[1]}`;
   constants.titleCity.innerHTML = `${constants.objectRu.cityRu}, ${constants.objectRu.countryRu}`;
 }
 

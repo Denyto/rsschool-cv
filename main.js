@@ -1,3 +1,4 @@
+/* eslint-disable no-const-assign */
 import { App } from './src/js/app';
 import * as constants from './src/js/constants';
 import * as i18n from './src/js/i18n';
@@ -6,7 +7,7 @@ const app = new App();
 let temporarySave = [];
 app.init();
 i18n.default();
-// localStorage.clear();
+
 function translatePage() {
   if (constants.selectLang.value === 'ru') {
     constants.groupDays.forEach((item) => temporarySave.push(item.innerHTML));
@@ -15,11 +16,10 @@ function translatePage() {
     temporarySave.push(constants.todayWind.innerText);
     temporarySave.push(constants.todayHumidity.innerText);
     temporarySave.push(constants.todayDescription.innerText);
-    temporarySave.push(constants.Latitude.innerText);
-    temporarySave.push(constants.Longitude.innerText);
+    temporarySave.push(constants.latitude.innerText);
+    temporarySave.push(constants.longitude.innerText);
     temporarySave.push(constants.titleCity.innerHTML);
     i18n.setLang();
-    // localStorage.setItem('lastSelectLang', 'en');
   } else {
     constants.groupDays.forEach((elem, index) => {
       elem.innerHTML = temporarySave[index];
@@ -32,8 +32,8 @@ function translatePage() {
       constants.todayWind.innerText,
       constants.todayHumidity.innerText,
       constants.todayDescription.innerText,
-      constants.Latitude.innerText,
-      constants.Longitude.innerText,
+      constants.latitude.innerText,
+      constants.longitude.innerText,
       constants.titleCity.innerHTML,
     ] = [
       'search',
@@ -52,8 +52,24 @@ function translatePage() {
 }
 
 function startAppInit() {
-  app.init(constants.input.value, () => { temporarySave = []; console.log('clear', temporarySave); });
+  app.init(constants.input.value, () => {
+    temporarySave = [];
+    console.log('clear', temporarySave);
+  });
   constants.input.value = '';
+}
+let i = 1;
+function showImages() {
+  const imageList = document.querySelectorAll('img');
+  imageList.forEach((it) => it.classList.remove('showed'));
+  if (!imageList[i]) {
+    i = 1;
+  }
+  imageList[i].classList.add('showed');
+  i += 1;
+  if (i >= imageList.length) {
+    i = 0;
+  }
 }
 
 function initListeners() {
@@ -78,6 +94,15 @@ function initListeners() {
       item.classList.add('options-button__temp_active');
       localStorage.setItem('lastSelectTemp', item.innerText);
     });
+  });
+
+  constants.btnRefresh.addEventListener('click', () => {
+    showImages();
+    constants.btnRefresh.classList.add('options-button__refresh_dis');
+    setTimeout(
+      () => constants.btnRefresh.classList.remove('options-button__refresh_dis'),
+      500,
+    );
   });
 }
 

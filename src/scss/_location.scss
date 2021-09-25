@@ -78,16 +78,18 @@
     border: 1px rgb(35, 248, 255) solid;
     border-radius: 5px;
     @include media-laptop {
+      width: 90%;
       margin-top: 50px;
       height: 40%;
     }
     @include media-tablet {
-      height: 30%;
+      height: 280px;
       margin-top: 40px;
       line-height: 260px;
     }
     @include media-mobile {
       margin-top: 3px;
+      height: 250px;
     }
   }
   @include media-mobile {

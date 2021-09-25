@@ -23,7 +23,9 @@ export class App {
         .then((com) => {
           console.log('api.opencagedata.com:', com);
           constants.selectLang.value = 'en';
-          this.title.init(city, com.results[0].components.country_code);
+          this.title.init(
+            `${com.results[0].geometry.lat},${com.results[0].geometry.lng}`, com.results[0].components.city,
+          );
           constants.time.innerText = '-- : -- : --';
           this.weather.init(
             this.title.setTime,
@@ -54,7 +56,7 @@ export class App {
         .then((com) => {
           console.log('ipinfo:', com);
           this.imageApi.init(com.city);
-          this.title.init(com.city, com.country);
+          this.title.init(com.loc);
           this.weather.init(
             this.title.setTime,
             this.title.setWeatherCurrentIcon,

@@ -6,20 +6,22 @@
   &__list {
     font-style: normal;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 19px;
     line-height: 37px;
     display: flex;
     justify-content: flex-end;
     text-transform: uppercase;
     @include media-laptop {
-      font-size: 16px;
+      font-size: 15px;
       line-height: 32px;
     }
     @include media-tablet {
-      font-size: 10px;
-      line-height: 25px;
+      font-size: 9px;
+      line-height: 20px;
+      justify-content: center;
     }
     @include media-mobile {
+      font-size: 10px;
       line-height: 18px;
     }
   }
@@ -48,6 +50,9 @@
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    @include media-tablet {
+      margin: 0 5px 0 5px;
+    }
   }
   &__feelslike {
     width: 110%;
@@ -92,7 +97,7 @@
     }
     @include media-laptop {
       width: 55%;
-      font-size: 210px;
+      font-size: 190px;
       line-height: 260px;
     }
     @include media-tablet {

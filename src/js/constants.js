@@ -19,9 +19,9 @@ export const search = document.querySelector('.location__input');
 export const searchBtn = document.querySelector('.location__input button');
 export const todayIcons = document.querySelector('.today__icons');
 export const groupIcons = document.querySelectorAll('.group-days__icons');
-export const Latitude = document.getElementById('lat');
-export const Longitude = document.getElementById('lon');
-// export const lastSelectTemp = localStorage.getItem('lastSelectTemp');
+export const latitude = document.getElementById('lat');
+export const longitude = document.getElementById('lon');
+export const images = document.getElementById('images');
 
 export const week = [
   'Sunday',

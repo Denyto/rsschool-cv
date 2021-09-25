@@ -23,8 +23,8 @@ export function init(
     new mapboxgl.Marker().setLngLat([longitude, latitude]).addTo(map);
     map.addControl(new mapboxgl.FullscreenControl());
 
-    constants.Latitude.innerText = `Latitude: ${latitude.toFixed(2)}`;
-    constants.Longitude.innerText = `Longitude: ${longitude.toFixed(2)}`;
+    constants.latitude.innerText = `Latitude: ${latitude.toFixed(2)}`;
+    constants.longitude.innerText = `Longitude: ${longitude.toFixed(2)}`;
 
     const urlGeoPosition = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&lang=en&exclude=minutely,hourly&units=metric&appid=${constants.DATA.OPENWEATHERMAPKEY}`;
     const urlGeoPositionRu = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&lang=ru&exclude=minutely,hourly&units=metric&appid=${constants.DATA.OPENWEATHERMAPKEY}`;

@@ -19,6 +19,11 @@
   font-style: normal;
 }
 
+// :root {
+//   --backgroundImageAfter: ;
+//   --opacityAfter: 1;
+// }
+
 * {
   margin: 0;
   padding: 0;
@@ -29,15 +34,41 @@
 body {
   width: 100%;
   min-height: 100%;
-  background-image: url('./assets/img/city.jpg');
-  background-size: cover;
-  background-repeat: no-repeat;
-  //  @include media-mobile {
-  //   background-size: inherit;
+  // &:after {
+  //   background: var(--backgroundImageAfter);
+  //   background-size: cover;
+  //   background-repeat: no-repeat;
+  //   content: '';
+  //   opacity: var(--opacityAfter);
+  //   top: 0;
+  //   left: 0;
+  //   bottom: 0;
+  //   right: 0;
+  //   position: absolute;
+  //   z-index: -1;
   // }
 }
 
+#images {
+width: 100%;
+height: 100%;
+  & img {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    transition: opacity 2s;
+    opacity: 0;
+    &.showed {
+      opacity: 1;
+    }
+  }
+}
+
 .wrapper {
+  overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -59,13 +90,14 @@ body {
   min-height: 100vh;
   width: 1260px;
   display: flex;
-  margin: 5px 10px;
+  margin: 70px 30px 0 30px;
   @include media-laptop {
     width: 1000px;
   }
   @include media-tablet {
     height: 100%;
     width: 600px;
+    margin: 20px 10px 0 10px;
   }
   @include media-mobile {
     width: 310px;
@@ -80,7 +112,7 @@ body {
 
 .weather {
   width: 60%;
-  margin: 3% 0;
+  margin: 15px 0;
   @include media-mobile {
     width: 100%;
     margin: 0;

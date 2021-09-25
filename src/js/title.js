@@ -4,14 +4,20 @@ const today = new Date();
 const weekDay = today.getDay();
 let timeID = null;
 
-export function init(city, country) {
-  fetch(`https://restcountries.eu/rest/v2/alpha/${country}`)
+export function init(latLon, city) {
+  fetch(`https://weatherapi-com.p.rapidapi.com/timezone.json?q=${latLon}`, {
+    method: 'GET',
+    headers: {
+      'x-rapidapi-host': 'weatherapi-com.p.rapidapi.com',
+      'x-rapidapi-key': 'afdefe152dmsh45cc985d6215143p167aaajsn66072671961c',
+    },
+  })
     .then((response) => response.json())
     .then((com) => {
-      console.log('restcountries:', com);
-      constants.titleCity.innerText = `${city}, ${
-        com.name.length > 15 ? com.nativeName : com.name
-      }`;
+      console.log('***free-geo-ip:', com);
+      constants.titleCity.innerText = city
+        ? `${city}, ${com.location.country}`
+        : `${com.location.name}, ${com.location.country}`;
     });
 
   function setDate() {
@@ -52,7 +58,8 @@ function addZero(n) {
 
 function showTime(utc) {
   const todayTime = new Date();
-  const hour = (todayTime.getUTCHours() + utc / 3600) % 24;
+  const hourTimezone = todayTime.getUTCHours() + utc / 3600;
+  const hour = hourTimezone < 0 ? (24 + hourTimezone) % 24 : hourTimezone % 24;
   const min = todayTime.getUTCMinutes();
   const sec = todayTime.getUTCSeconds();
   constants.time.innerText = `${hour}:${addZero(min)}:${addZero(sec)}`;
@@ -64,6 +71,7 @@ export function setTime(u) {
   timeID = setInterval(() => {
     showTime(u);
   }, 1000);
+  constants.time.innerText = '-- : -- : --';
 }
 
 export function setWeatherCurrentIcon(str) {

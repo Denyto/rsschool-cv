@@ -33,10 +33,10 @@
   &__temp_standby {
     width: 100%;
     height: 98px;
-    background: url('./assets/img/loading.gif') 0 20px/100%;
+    background: url('./assets/img/loading.gif') 0 20px/68%;
     background-repeat: no-repeat;
     @include media-laptop {
-      background: url('./assets/img/loading.gif') 0 15px/100%;
+      background: url('./assets/img/loading.gif') 0 15px/80%;
       background-repeat: no-repeat;
     }
     @include media-tablet {
@@ -237,7 +237,6 @@
   @include media-mobile {
     flex-direction: column;
     align-items: center;
-    margin-bottom: 25px;
   }
 }
 
