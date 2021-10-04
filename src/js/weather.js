@@ -60,13 +60,13 @@ export function init(
           com[0].list[16].weather[0].icon,
           com[0].list[24].weather[0].icon,
         );
-        tempInit(
-          Math.round(com[0].list[8].main.temp),
-          Math.round(com[0].list[16].main.temp),
-          Math.round(com[0].list[24].main.temp),
-          Math.round(com[0].list[0].main.temp),
-          Math.floor(com[0].list[0].main.feels_like),
-        );
+        tempInit({
+          tempTomorrow: Math.round(com[0].list[8].main.temp),
+          tempAfterTomorrow: Math.round(com[0].list[16].main.temp),
+          tempNextDay: Math.round(com[0].list[24].main.temp),
+          tempToday: Math.round(com[0].list[0].main.temp),
+          tempFeelsLike: Math.floor(com[0].list[0].main.feels_like),
+        });
         console.log('openweathermapRU:', com[1]);
         callback(com[1].list[0].weather[0].description);
         if (localStorage.getItem('lastSelectLang') === 'ru') {

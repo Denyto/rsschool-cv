@@ -1,8 +1,8 @@
 import * as constants from './constants';
 
-export function init(
+export function init({
   tempTomorrow, tempAfterTomorrow, tempNextDay, tempToday, tempFeelsLike,
-) {
+}) {
   const lastSelectTemp = localStorage.getItem('lastSelectTemp');
   function toFahrenheit(celsius) {
     return Math.round(1.8 * +celsius + 32);
