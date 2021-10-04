@@ -22,6 +22,7 @@ export const groupIcons = document.querySelectorAll('.group-days__icons');
 export const latitude = document.getElementById('lat');
 export const longitude = document.getElementById('lon');
 export const images = document.getElementById('images');
+export const lastSelectLang = localStorage.getItem('lastSelectLang');
 
 export const week = [
   'Sunday',

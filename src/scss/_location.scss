@@ -48,6 +48,8 @@
     }
   }
   &__coord {
+    margin-top: 20px;
+    padding: 0 15px;
     width: 100%;
     color: #fff;
     font-style: normal;
@@ -59,6 +61,8 @@
     align-items: end;
     & p {
       min-width: 50%;
+      text-align: right;
+      margin: 3px 0px;
     }
   }
   &__map {

@@ -5,9 +5,14 @@ export function init(city) {
 
   function getImage(str) {
     const lacation = str || cityInner;
-    fetch(`https://pixabay.com/api/?key=${constants.DATA.PIXABAYKEY}&q=${lacation}&image_type=photo`)
+    fetch(
+      `https://pixabay.com/api/?key=${constants.DATA.PIXABAYKEY}&q=${lacation}&image_type=photo`,
+    )
       .then((response) => response.json())
       .then((com) => {
+        if (com.hits.length === 0) {
+          return;
+        }
         console.log('imageApi:', com.hits);
         constants.images.innerHTML = '';
         com.hits.forEach((el) => {
@@ -16,7 +21,8 @@ export function init(city) {
           constants.images.append(img);
         });
         document.querySelectorAll('img')[0].classList.add('showed');
-      });
+      })
+      .catch(() => { });
   }
   getImage();
 }

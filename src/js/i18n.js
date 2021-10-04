@@ -6,7 +6,7 @@ export function setLang() {
     elem.innerHTML = i18next.t(elem.innerHTML);
   });
   constants.searchBtn.innerText = i18next.t(constants.searchBtn.innerText);
-  constants.input.placeholder = 'Поиск по городу или почтовому индексу';
+  constants.input.placeholder = 'Поиск по городу . . .';
   constants.titleDate.innerHTML = `${i18next.t(
     constants.titleDate.innerHTML.split(' ')[0],
   )} ${constants.titleDate.innerHTML.split(' ')[1]} ${i18next.t(
@@ -22,6 +22,7 @@ export function setLang() {
   constants.latitude.innerText = `Широта: ${constants.latitude.innerText.split(': ')[1]}`;
   constants.longitude.innerText = `Долгота: ${constants.longitude.innerText.split(': ')[1]}`;
   constants.titleCity.innerHTML = `${constants.objectRu.cityRu}, ${constants.objectRu.countryRu}`;
+  console.log(constants.objectRu.cityRu, constants.objectRu.countryRu);
 }
 
 export default function () {

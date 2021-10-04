@@ -60,19 +60,19 @@
   }
   &__circle {
     height: 17px;
-    width: 7%;
-    background: url('./assets/img/circle.svg') 1px 10px/8px;
+    width:8%;
+    background: url('./assets/img/circle.svg') 2px 5px/8px;
     background-repeat: no-repeat;
     @include media-laptop {
-      background: url('./assets/img/circle.svg') 1px 8px/8px;
+      background: url('./assets/img/circle.svg') 1px 5px/7px;
       background-repeat: no-repeat;
     }
     @include media-tablet {
-      background: url('./assets/img/circle.svg') 1px 7px/6px;
+      background: url('./assets/img/circle.svg') 1px 3px/5px;
       background-repeat: no-repeat;
     }
     @include media-mobile {
-      background: url('./assets/img/circle.svg') 1px 4px/6px;
+      background: url('./assets/img/circle.svg') 2px 1px/5px;
       background-repeat: no-repeat;
     }
   }
