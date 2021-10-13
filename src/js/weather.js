@@ -42,7 +42,6 @@ export function init(
       .then((responses) => responses)
       .then((responses) => Promise.all(responses.map((res) => res.json())))
       .then((com) => {
-        console.log('openweathermap:', com[0]);
         constants.todayTemp.classList.remove('today__temp_standby');
         constants.todayTemp.classList.add('today__temp');
         constants.daysTemp.forEach((elem) => {
@@ -67,7 +66,6 @@ export function init(
           tempToday: Math.round(com[0].list[0].main.temp),
           tempFeelsLike: Math.floor(com[0].list[0].main.feels_like),
         });
-        console.log('openweathermapRU:', com[1]);
         callback(com[1].list[0].weather[0].description);
         if (localStorage.getItem('lastSelectLang') === 'ru') {
           main.translatePage();

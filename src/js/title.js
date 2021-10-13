@@ -14,7 +14,6 @@ export function init(latLon, city) {
   })
     .then((response) => response.json())
     .then((com) => {
-      console.log('***free-geo-ip:', com);
       constants.titleCity.innerText = city
         ? `${city}, ${com.location.country}`
         : `${com.location.name}, ${com.location.country}`;

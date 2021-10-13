@@ -22,7 +22,6 @@ export function setLang() {
   constants.latitude.innerText = `Широта: ${constants.latitude.innerText.split(': ')[1]}`;
   constants.longitude.innerText = `Долгота: ${constants.longitude.innerText.split(': ')[1]}`;
   constants.titleCity.innerHTML = `${constants.objectRu.cityRu}, ${constants.objectRu.countryRu}`;
-  console.log(constants.objectRu.cityRu, constants.objectRu.countryRu);
 }
 
 export default function () {
@@ -39,7 +38,6 @@ export default function () {
             Thursday: 'Четверг',
             Friday: 'Пятница',
             Saturday: 'Суббота',
-            feelslike: 'Ощущается',
             SEARCH: 'поиск',
             Sun: 'Вск',
             Mon: 'Пнд',
@@ -68,6 +66,5 @@ export default function () {
       debug: false,
     })
     .then(() => {
-      //   setLang();
     });
 }

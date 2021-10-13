@@ -15,7 +15,7 @@ export function init({
       constants.daysTemp[2].innerText,
     ] = [tempTomorrow, tempAfterTomorrow, tempNextDay];
     constants.todayTemp.innerText = tempToday;
-    constants.todayFeelsLike.innerHTML = `<p>FEELS LIKE: ${tempFeelsLike}</p>
+    constants.todayFeelsLike.innerHTML = `<p>${constants.todayFeelsLike.innerText.split(': ')[0]}: ${tempFeelsLike}</p>
         <div class="today__circle"></div>`;
     constants.btnTemp[1].classList.add('options-button__temp_active');
   }
@@ -32,7 +32,7 @@ export function init({
       toFahrenheit(tempAfterTomorrow),
       toFahrenheit(tempNextDay),
       toFahrenheit(tempToday),
-      `<p>FEELS LIKE: ${toFahrenheit(tempFeelsLike)}</p>
+      `<p>${constants.todayFeelsLike.innerText.split(': ')[0]}: ${toFahrenheit(tempFeelsLike)}</p>
         <div class="today__circle"></div>`,
     ];
     constants.btnTemp[0].classList.add('options-button__temp_active');

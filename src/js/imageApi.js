@@ -13,7 +13,6 @@ export function init(city) {
         if (com.hits.length === 0) {
           return;
         }
-        console.log('imageApi:', com.hits);
         constants.images.innerHTML = '';
         com.hits.forEach((el) => {
           const img = document.createElement('img');
