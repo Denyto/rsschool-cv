@@ -1,0 +1,47 @@
+.title {
+  width: 100%;
+  padding-top: 7.7%;
+  line-height: 54px;
+  color: #ffffff;
+  &__city {
+    font-weight: bold;
+    font-size: 44px;
+    text-transform: uppercase;
+    user-select: none;
+    @include media-laptop {
+      font-size: 40px;
+    }
+    @include media-tablet {
+      font-size: 25px;
+    }
+    @include media-mobile {
+      margin-bottom: 15px;
+    }
+  }
+  &__line {
+    display: flex;
+    flex-direction: row;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 36px;
+    @include media-tablet {
+      font-size: 18px;
+    }
+    @include media-mobile {
+      justify-content: center;
+      line-height: 25px;
+    }
+  }
+  &__time {
+    padding-left: 18px;
+  }
+  @include media-tablet {
+    padding-top: 0;
+  }
+  @include media-mobile {
+    text-align: center;
+    line-height: 35px;
+    margin-bottom: 30px;
+  }
+}

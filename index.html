@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>fancy-weather</title>
+    <link rel="stylesheet" href="./src/style.css" />
+    <link rel="icon" href="./src/assets/img/clouds-small-1.svg">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.css" rel="stylesheet">
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.4.0/mapbox-gl.js"></script>
+</head>
+
+<body>
+    <div id="images"></div>
+        <div class="wrapper">
+            <div class="container">
+                <section class="weather">
+                    <div class="options-button">
+                        <button class="options-button__button options-button__refresh">
+                            <svg width="15" height="45" viewBox="0 0 15 20" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0.0491975 10.7003C-0.0686153 9.64172 0.029562 8.61981 0.296604 7.67525C1.18413 4.53623 3.96844 2.22777 7.27112 2.18705V0.135087C7.27112 0.021089 7.40857 -0.0399815 7.49889 0.0292317L11.5713 3.13161C11.638 3.18454 11.638 3.29039 11.5713 3.33925L7.50282 6.44163C7.40857 6.51084 7.27505 6.44977 7.27505 6.33577V4.28788C5.10337 4.32452 3.24978 5.71285 2.45258 7.67525C2.15019 8.41624 1.99704 9.23458 2.04023 10.0936C2.09914 11.2743 2.52719 12.3614 3.20265 13.2408C3.56395 13.709 3.47755 14.393 3.01023 14.7472C2.56646 15.0851 1.94598 14.9915 1.60433 14.5436C0.767855 13.4607 0.210208 12.1415 0.0491975 10.7003ZM11.8069 6.7592C12.4863 7.63454 12.9144 8.72566 12.9693 9.90636C13.0125 10.7695 12.8554 11.5878 12.557 12.3247C11.7598 14.2871 9.9062 15.6796 7.73452 15.7121V13.6642C7.73452 13.5502 7.59707 13.4892 7.50675 13.5584L3.43435 16.6607C3.36759 16.7137 3.36759 16.8195 3.43435 16.8684L7.50282 19.9708C7.59707 20.04 7.73059 19.9789 7.73059 19.8649V17.8129C11.0333 17.7763 13.8215 15.4678 14.7051 12.3247C14.9721 11.3802 15.0664 10.3583 14.9525 9.29973C14.7954 7.85846 14.2378 6.53934 13.4013 5.45636C13.0557 5.00851 12.4392 4.91487 11.9954 5.25279C11.532 5.607 11.4456 6.29099 11.8069 6.7592Z"
+                                    fill="white" />
+                            </svg>
+                        </button>
+                        <select class="options-button__button options-button__lang" name="select">
+                            <option value="ru">RU</option>
+                            <option value="en" selected>EN</option>
+                        </select>
+                        <button class="options-button__button options-button__temp">
+                            <sup>o</sup>F
+                        </button>
+                        <button class="options-button__button options-button__temp"><sup>o</sup>C</button>
+                    </div>
+                    <div class="title">
+                        <h1 class="title__city"></h1>
+                        <div class="title__line">
+                            <div class="title__date"></div>
+                            <time class="title__time">-- : -- : --</time>
+                        </div>
+                    </div>
+                    <div class="today">
+                        <div class="today__temp_standby"></div>
+                        <div class="today__description">
+                            <div class="today__icons">
+                                <!-- <div class="sunny"></div> -->
+                                <!-- <div class="rainy"></div> -->
+                                <!-- <div class="snowy"></div> -->
+                                <!-- <div class="cloudy"></div> -->
+                                <!-- <div class="stormy"></div> -->
+                                <!-- <div class="starry"></div> -->
+                            </div>
+                            <div class="today__list">
+                                <div>
+                                    <p class="today__now">await</p>
+                                    <div class="today__feelslike">
+                                        <p>FEELS LIKE: --</p>
+                                        <div class="today__circle"></div>
+                                    </div>
+                                    <p class="today__wind">wind: -- M/C</p>
+                                    <p class="today__humidity">humidity: -- %</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="group-days">
+                        <div class="group-days__day group-days__day1">
+                            <h3>tuesday</h3>
+                            <div class="group-days__flex">
+                                <div class="group-days__temp_standby"></div><sup>o</sup>
+                                <div class="group-days__icons">
+                                    <!-- <div class="group-days__icons_sunny"></div>
+                                         <div class="group-days__icons_rainy"></div> -->
+                                    <!-- <div class="group-days__icons_snowy"></div> -->
+                                    <!-- <div class="group-days__icons_cloudy"></div> -->
+                                    <!-- <div class="group-days__icons_stormy"></div> -->
+                                    <!-- <div class="group-days__icons_starry"></div> -->
+                                    <!-- <div class="group-days__icons_overcastcloudy"></div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group-days__day group-days__day2">
+                            <h3>wednesday</h3>
+                            <div class="group-days__flex">
+                                <div class="group-days__temp_standby"></div><sup>o</sup>
+                                <div class="group-days__icons">
+                                    <!-- <div class="group-days__icons_sunny"></div>
+                                         <div class="group-days__icons_rainy"></div> -->
+                                    <!-- <div class="group-days__icons_snowy"></div> -->
+                                    <!-- <div class="group-days__icons_cloudy"></div> -->
+                                    <!-- <div class="group-days__icons_stormy"></div> -->
+                                    <!-- <div class="group-days__icons_starry"></div> -->
+                                    <!-- <div class="group-days__icons_overcastcloudy"></div> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="group-days__day group-days__day3">
+                            <h3>thursday</h3>
+                            <div class="group-days__flex">
+                                <div class="group-days__temp_standby"></div><sup>o</sup>
+                                <div class="group-days__icons">
+                                    <!-- <div class="group-days__icons_sunny"></div>
+                                         <div class="group-days__icons_rainy"></div> -->
+                                    <!-- <div class="group-days__icons_snowy"></div> -->
+                                    <!-- <div class="group-days__icons_cloudy"></div> -->
+                                    <!-- <div class="group-days__icons_stormy"></div> -->
+                                    <!-- <div class="group-days__icons_starry"></div> -->
+                                    <!-- <div class="group-days__icons_overcastcloudy"></div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="location">
+                    <div class="location__input">
+                        <input type="text" placeholder="Search city or ZIP" />
+                        <button>search</button>
+                    </div>
+                    <div id="map" class="location__map">map</div>
+                    <div class="location__coord">
+                        <p id="lat">Latitude: --,--</p>
+                        <p id="lon">Longitude: --,--</p>
+                    </div>
+
+                </section>
+            </div>
+        </div>
+
+    <script src="./dist/bundle.js"></script>
+</body>
+
+</html>
